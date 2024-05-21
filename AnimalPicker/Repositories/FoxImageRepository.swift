@@ -13,7 +13,7 @@ struct FoxImageResponse: Codable {
     var imageUrl: String
     
     enum CodingKeys: String, CodingKey {
-        case imageUrl = "imageUrl"
+        case imageUrl = "image"
     }
 }
 
@@ -31,6 +31,6 @@ class RealFoxImageRepository: FoxImageRepository {
     }
     
     func getImage() -> AnyPublisher<FoxImageResponse, Error> {
-        return self.network.get(baseUrl, host: "/floof")
+        return self.network.get("/floof", host: baseUrl)
     }
 }

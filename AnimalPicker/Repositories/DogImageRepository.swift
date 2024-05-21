@@ -13,7 +13,7 @@ struct DogImageResponse: Codable {
     var imageUrl: String
     
     enum CodingKeys: String, CodingKey {
-        case imageUrl = "imageUrl"
+        case imageUrl = "url"
     }
 }
 
@@ -31,6 +31,6 @@ class RealDogImageRepository: DogImageRepository {
     }
     
     func getImage() -> AnyPublisher<DogImageResponse, Error> {
-        return self.network.get(baseUrl, host: "/woof.json")
+        return self.network.get("/woof.json", host: baseUrl)
     }
 }

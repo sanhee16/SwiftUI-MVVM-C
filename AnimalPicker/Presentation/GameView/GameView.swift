@@ -10,8 +10,8 @@ import SwiftUI
 
 struct GameView: View {
     typealias VM = GameVM
-    public static func vc(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, completion: (()-> Void)? = nil) -> UIViewController {
-        let vm = VM.init(coordinator, interactors: interactors)
+    public static func vc(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, level: Level, completion: (()-> Void)? = nil) -> UIViewController {
+        let vm = VM.init(coordinator, interactors: interactors, level: level)
         let view = Self.init(vm: vm)
         let vc = BaseViewController.init(view, completion: completion)
         vc.attachViewModel(vm)

@@ -36,11 +36,11 @@ enum CellType {
     }
 }
 
-enum Level {
-    case easy
-    case normal
-    case hard
-    case hell
+enum Level: String {
+    case easy = "Easy"
+    case normal = "Normal"
+    case hard = "Hard"
+    case hell = "Hell"
     
     var cell: CellType {
         switch self {

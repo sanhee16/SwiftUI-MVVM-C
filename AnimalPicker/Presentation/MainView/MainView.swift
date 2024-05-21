@@ -26,10 +26,26 @@ struct MainView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
-                Spacer()
                 Text("Animal Picker")
-                    .font(.kr45b)
+                    .font(.kr20b)
                     .foregroundStyle(.black)
+                Spacer()
+
+                ForEach(vm.levels, id: \.self) { level in
+                    Text(level.rawValue)
+                        .font(.kr14r)
+                        .paddingVertical(15)
+                        .frame(width: UIScreen.main.bounds.size.width - 40, alignment: .center)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundStyle(Color.blue.opacity(0.8))
+                        )
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            vm.onClickLevel(level: level)
+                        }
+                        .paddingBottom(20)
+                }
                 Spacer()
             }
             .frame(width: geometry.size.width, alignment: .center)

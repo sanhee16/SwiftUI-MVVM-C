@@ -23,7 +23,7 @@ class SplashVM: BaseViewModel {
     
     private func MoveToMain() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[weak self] in
-            self?.coordinator?.startMain()
+            self?.coordinator?.pushMain()
         }
     }
 }

@@ -55,8 +55,14 @@ class AppCoordinator: BaseCoordinator, Terminatable {
     }
     
     //MARK: Main
-    func startMain() {
+    func pushMain() {
         let vc = MainView.vc(self, interactors: self.container.interactors)
+        self.push(vc, animated: false)
+    }
+    
+    //MARK: SubViews
+    func pushGameView(level: Level) {
+        let vc = GameView.vc(self, interactors: self.container.interactors, level: level)
         self.push(vc, animated: false)
     }
 }
