@@ -9,7 +9,7 @@ import Foundation
 
 extension DIContainer {
     struct Interactors {
-        
+        let animalImageInteractor: AnimalImageInteractor
     }
 }
 
