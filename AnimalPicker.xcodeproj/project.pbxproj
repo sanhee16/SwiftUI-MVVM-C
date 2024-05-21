@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		585BB4D42BFC654C007CCD51 /* AnimalPickerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB4D32BFC654C007CCD51 /* AnimalPickerApp.swift */; };
-		585BB4D62BFC654C007CCD51 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB4D52BFC654C007CCD51 /* ContentView.swift */; };
 		585BB4D82BFC654D007CCD51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 585BB4D72BFC654D007CCD51 /* Assets.xcassets */; };
 		585BB4DB2BFC654D007CCD51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 585BB4DA2BFC654D007CCD51 /* Preview Assets.xcassets */; };
 		585BB4E52BFC654E007CCD51 /* AnimalPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB4E42BFC654E007CCD51 /* AnimalPickerTests.swift */; };
@@ -16,6 +14,24 @@
 		585BB4F12BFC654E007CCD51 /* AnimalPickerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB4F02BFC654E007CCD51 /* AnimalPickerUITestsLaunchTests.swift */; };
 		585BB5012BFC6753007CCD51 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 585BB5002BFC6753007CCD51 /* Alamofire */; };
 		585BB5042BFC6789007CCD51 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 585BB5032BFC6789007CCD51 /* Kingfisher */; };
+		585BB5072BFC67B8007CCD51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5062BFC67B8007CCD51 /* AppDelegate.swift */; };
+		585BB5092BFC67CC007CCD51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5082BFC67CC007CCD51 /* SceneDelegate.swift */; };
+		585BB50C2BFC67F5007CCD51 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB50B2BFC67F5007CCD51 /* AppCoordinator.swift */; };
+		585BB50E2BFC67FB007CCD51 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB50D2BFC67FB007CCD51 /* BaseCoordinator.swift */; };
+		585BB5112BFC6816007CCD51 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5102BFC6816007CCD51 /* DIContainer.swift */; };
+		585BB5132BFC681C007CCD51 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5122BFC681C007CCD51 /* AppEnvironment.swift */; };
+		585BB5162BFC6837007CCD51 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5152BFC6837007CCD51 /* Endpoints.swift */; };
+		585BB5182BFC683E007CCD51 /* InteractorsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5172BFC683E007CCD51 /* InteractorsContainer.swift */; };
+		585BB51A2BFC6866007CCD51 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5192BFC6866007CCD51 /* Constants.swift */; };
+		585BB51F2BFC68D8007CCD51 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB51E2BFC68D8007CCD51 /* SplashView.swift */; };
+		585BB5212BFC68DF007CCD51 /* SplashVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5202BFC68DF007CCD51 /* SplashVM.swift */; };
+		585BB5232BFC6902007CCD51 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5222BFC6902007CCD51 /* BaseViewModel.swift */; };
+		585BB5252BFC6922007CCD51 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5242BFC6922007CCD51 /* BaseViewController.swift */; };
+		585BB5272BFC6949007CCD51 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5262BFC6949007CCD51 /* MainView.swift */; };
+		585BB5292BFC6954007CCD51 /* MainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5282BFC6954007CCD51 /* MainVM.swift */; };
+		585BB52C2BFC698B007CCD51 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB52B2BFC698B007CCD51 /* Util.swift */; };
+		585BB52F2BFC69C6007CCD51 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB52E2BFC69C6007CCD51 /* View+Extension.swift */; };
+		585BB5312BFC69F1007CCD51 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5302BFC69F1007CCD51 /* Font+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +53,6 @@
 
 /* Begin PBXFileReference section */
 		585BB4D02BFC654C007CCD51 /* AnimalPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		585BB4D32BFC654C007CCD51 /* AnimalPickerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPickerApp.swift; sourceTree = "<group>"; };
-		585BB4D52BFC654C007CCD51 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		585BB4D72BFC654D007CCD51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		585BB4DA2BFC654D007CCD51 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		585BB4E02BFC654E007CCD51 /* AnimalPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimalPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +60,25 @@
 		585BB4EA2BFC654E007CCD51 /* AnimalPickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimalPickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		585BB4EE2BFC654E007CCD51 /* AnimalPickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPickerUITests.swift; sourceTree = "<group>"; };
 		585BB4F02BFC654E007CCD51 /* AnimalPickerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPickerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		585BB5062BFC67B8007CCD51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		585BB5082BFC67CC007CCD51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		585BB50B2BFC67F5007CCD51 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		585BB50D2BFC67FB007CCD51 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		585BB5102BFC6816007CCD51 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		585BB5122BFC681C007CCD51 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		585BB5152BFC6837007CCD51 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		585BB5172BFC683E007CCD51 /* InteractorsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorsContainer.swift; sourceTree = "<group>"; };
+		585BB5192BFC6866007CCD51 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		585BB51E2BFC68D8007CCD51 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		585BB5202BFC68DF007CCD51 /* SplashVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVM.swift; sourceTree = "<group>"; };
+		585BB5222BFC6902007CCD51 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		585BB5242BFC6922007CCD51 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		585BB5262BFC6949007CCD51 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		585BB5282BFC6954007CCD51 /* MainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVM.swift; sourceTree = "<group>"; };
+		585BB52B2BFC698B007CCD51 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		585BB52E2BFC69C6007CCD51 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		585BB5302BFC69F1007CCD51 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		585BB5322BFC6BAE007CCD51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +131,14 @@
 		585BB4D22BFC654C007CCD51 /* AnimalPicker */ = {
 			isa = PBXGroup;
 			children = (
-				585BB4D32BFC654C007CCD51 /* AnimalPickerApp.swift */,
-				585BB4D52BFC654C007CCD51 /* ContentView.swift */,
+				585BB5322BFC6BAE007CCD51 /* Info.plist */,
+				585BB52D2BFC69BE007CCD51 /* Extensions */,
+				585BB52A2BFC6983007CCD51 /* Helper */,
+				585BB51B2BFC68BD007CCD51 /* Presentation */,
+				585BB5142BFC682D007CCD51 /* Interactors */,
+				585BB50F2BFC680C007CCD51 /* Injected */,
+				585BB50A2BFC67EA007CCD51 /* Coordinator */,
+				585BB5052BFC67AD007CCD51 /* Application */,
 				585BB4D72BFC654D007CCD51 /* Assets.xcassets */,
 				585BB4D92BFC654D007CCD51 /* Preview Content */,
 			);
@@ -129,6 +168,89 @@
 				585BB4F02BFC654E007CCD51 /* AnimalPickerUITestsLaunchTests.swift */,
 			);
 			path = AnimalPickerUITests;
+			sourceTree = "<group>";
+		};
+		585BB5052BFC67AD007CCD51 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				585BB5062BFC67B8007CCD51 /* AppDelegate.swift */,
+				585BB5082BFC67CC007CCD51 /* SceneDelegate.swift */,
+				585BB5192BFC6866007CCD51 /* Constants.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		585BB50A2BFC67EA007CCD51 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				585BB50B2BFC67F5007CCD51 /* AppCoordinator.swift */,
+				585BB50D2BFC67FB007CCD51 /* BaseCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		585BB50F2BFC680C007CCD51 /* Injected */ = {
+			isa = PBXGroup;
+			children = (
+				585BB5102BFC6816007CCD51 /* DIContainer.swift */,
+				585BB5122BFC681C007CCD51 /* AppEnvironment.swift */,
+			);
+			path = Injected;
+			sourceTree = "<group>";
+		};
+		585BB5142BFC682D007CCD51 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				585BB5152BFC6837007CCD51 /* Endpoints.swift */,
+				585BB5172BFC683E007CCD51 /* InteractorsContainer.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		585BB51B2BFC68BD007CCD51 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				585BB51D2BFC68CC007CCD51 /* MainView */,
+				585BB51C2BFC68C9007CCD51 /* SplashView */,
+				585BB5222BFC6902007CCD51 /* BaseViewModel.swift */,
+				585BB5242BFC6922007CCD51 /* BaseViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		585BB51C2BFC68C9007CCD51 /* SplashView */ = {
+			isa = PBXGroup;
+			children = (
+				585BB51E2BFC68D8007CCD51 /* SplashView.swift */,
+				585BB5202BFC68DF007CCD51 /* SplashVM.swift */,
+			);
+			path = SplashView;
+			sourceTree = "<group>";
+		};
+		585BB51D2BFC68CC007CCD51 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				585BB5262BFC6949007CCD51 /* MainView.swift */,
+				585BB5282BFC6954007CCD51 /* MainVM.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		585BB52A2BFC6983007CCD51 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				585BB52B2BFC698B007CCD51 /* Util.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		585BB52D2BFC69BE007CCD51 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				585BB52E2BFC69C6007CCD51 /* View+Extension.swift */,
+				585BB5302BFC69F1007CCD51 /* Font+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,8 +391,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				585BB4D62BFC654C007CCD51 /* ContentView.swift in Sources */,
-				585BB4D42BFC654C007CCD51 /* AnimalPickerApp.swift in Sources */,
+				585BB5112BFC6816007CCD51 /* DIContainer.swift in Sources */,
+				585BB52C2BFC698B007CCD51 /* Util.swift in Sources */,
+				585BB5292BFC6954007CCD51 /* MainVM.swift in Sources */,
+				585BB52F2BFC69C6007CCD51 /* View+Extension.swift in Sources */,
+				585BB51A2BFC6866007CCD51 /* Constants.swift in Sources */,
+				585BB5072BFC67B8007CCD51 /* AppDelegate.swift in Sources */,
+				585BB5312BFC69F1007CCD51 /* Font+Extension.swift in Sources */,
+				585BB50E2BFC67FB007CCD51 /* BaseCoordinator.swift in Sources */,
+				585BB5092BFC67CC007CCD51 /* SceneDelegate.swift in Sources */,
+				585BB5252BFC6922007CCD51 /* BaseViewController.swift in Sources */,
+				585BB51F2BFC68D8007CCD51 /* SplashView.swift in Sources */,
+				585BB50C2BFC67F5007CCD51 /* AppCoordinator.swift in Sources */,
+				585BB5132BFC681C007CCD51 /* AppEnvironment.swift in Sources */,
+				585BB5272BFC6949007CCD51 /* MainView.swift in Sources */,
+				585BB5182BFC683E007CCD51 /* InteractorsContainer.swift in Sources */,
+				585BB5162BFC6837007CCD51 /* Endpoints.swift in Sources */,
+				585BB5212BFC68DF007CCD51 /* SplashVM.swift in Sources */,
+				585BB5232BFC6902007CCD51 /* BaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +575,7 @@
 				DEVELOPMENT_TEAM = 3RZRY2TK85;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = AnimalPicker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -466,7 +604,7 @@
 				DEVELOPMENT_TEAM = 3RZRY2TK85;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = AnimalPicker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

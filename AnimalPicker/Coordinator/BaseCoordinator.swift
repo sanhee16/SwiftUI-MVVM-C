@@ -1,0 +1,160 @@
+//
+//  BaseCoordinator.swift
+//  AnimalPicker
+//
+//  Created by Sandy on 5/21/24.
+//
+
+import SwiftUI
+
+protocol Terminatable {
+    func appTerminate()
+}
+
+class BaseCoordinator {
+    var navigationController = UINavigationController()
+    var childViewController: [UIViewController] = []
+    var presentViewController: UIViewController {
+        get {
+            return childViewController.last ?? navigationController
+        }
+    }
+    
+    //MARK: Present & Dismiss
+    func justPresent(_ vc: UIViewController, animated: Bool = true) {
+        self.presentViewController.present(vc, animated: animated)
+    }
+    
+    func present(_ vc: UIViewController, animated: Bool = true, onDismiss: (() -> Void)? = nil) {
+        if let vc = vc as? Dismissible {
+            vc.attachDismissCallback(onDismiss: onDismiss)
+        }
+        
+        self.presentViewController.present(vc, animated: animated)
+        self.childViewController.append(vc)
+    }
+    
+    func dismiss(_ animated: Bool = true, completion: (() -> Void)? = nil) {
+        if self.presentViewController == navigationController {
+            completion?()
+            return
+        }
+        
+        weak var dismissedVc = self.childViewController.removeLast()
+        dismissedVc?.dismiss(animated: animated) {
+            if let baseViewController = dismissedVc as? Dismissible, let onDismiss = baseViewController.onDismiss {
+                onDismiss()
+            }
+            completion?()
+        }
+    }
+    
+    func showSystemAlert(title: String, message: String) {
+        func moveToAppSetting() {
+            DispatchQueue.main.async {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+        }
+        DispatchQueue.main.async {
+            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            
+            let completeAction = UIAlertAction(title: "확인", style: .destructive) {[weak self] action in
+                self?.dismiss()
+                moveToAppSetting()
+            }
+            let cancelAction = UIAlertAction(title: "취소", style: .default) {[weak self] action in
+                self?.dismiss()
+            }
+            
+            alertVC.addAction(completeAction)
+            alertVC.addAction(cancelAction)
+            self.present(alertVC)
+        }
+    }
+    
+    
+    //MARK: Push & Pop
+    func push(_ vc: UIViewController, animated: Bool = true, onDismiss: (() -> Void)? = nil) {
+        print("push: \((vc as? Nameable)?.name)")
+        if let vc = vc as? Dismissible {
+            vc.attachDismissCallback(onDismiss: onDismiss)
+        }
+        
+        self.navigationController.pushViewController(vc, animated: animated)
+        self.childViewController.append(vc)
+    }
+    
+    func popToVC<View>(_ view: View.Type, animated: Bool = true) {
+        if self.isHasView(view) {
+            print("[popToVC]Success: isHasView (\(view))")
+            for viewController in self.childViewController.reversed() {
+                if let vc = viewController as? Nameable, vc.isSameView(view: view) {
+                    self.navigationController.popToViewController(viewController, animated: false)
+                    if let baseViewController = vc as? Dismissible, let onDismiss = baseViewController.onDismiss {
+                        onDismiss()
+                    }
+                    break
+                }
+                self.childViewController.removeLast()
+                print("[popToVC]delete: \((viewController as? Nameable)?.name)")
+            }
+        } else {
+            print("[popToVC]Fail: No View (\(view))")
+        }
+    }
+    
+    func pop(_ animated: Bool = true, completion: (() -> Void)? = nil) {
+        if self.presentViewController == navigationController {
+            completion?()
+            return
+        }
+        
+        weak var dismissedVc = self.childViewController.removeLast()
+        self.navigationController.popViewController(animated: animated)
+        if let baseViewController = dismissedVc as? Dismissible, let onDismiss = baseViewController.onDismiss {
+            print("pop completion")
+            onDismiss()
+        }
+        completion?()
+    }
+    
+    func change(_ vc: UIViewController, animated: Bool = false, onDismiss: (() -> Void)? = nil) {
+        pop(false) {[weak self] in
+            self?.push(vc, animated: animated, onDismiss: onDismiss)
+        }
+    }
+    
+    func swipeBack() {
+        weak var dismissedVc = self.childViewController.removeLast()
+        if let baseViewController = dismissedVc as? Dismissible, let onDismiss = baseViewController.onDismiss {
+            print("swipe back completion")
+            onDismiss()
+        }
+    }
+    
+    //MARK: HasView
+    func isHasView<View>(_ view: View.Type) -> Bool {
+        for vc in self.navigationController.viewControllers {
+            if let named = vc as? Nameable, named.isSameView(view: view) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isCurrentVC<View>(_ view: View.Type) -> Bool {
+        if let named = self.presentViewController as? Nameable, named.isSameView(view: view) {
+            return true
+        }
+        return false
+    }
+}
+
+extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        navigationBar.isHidden = true
+    }
+}
