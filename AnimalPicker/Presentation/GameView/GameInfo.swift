@@ -17,21 +17,25 @@ enum ImageType {
 }
 
 enum CellType {
-    case m3x3
-    case m5x5
-    case m8x8
-    case m12x12
+    case c9 // 3x3
+    case c15 // 3x5
+    case c24 // 3x8
+    case c30 // 3x10
     
-    var count: Int {
+    var row: Int {
+        return 3
+    }
+    
+    var column: Int {
         switch self {
-        case .m3x3:
+        case .c9:
             return 3
-        case .m5x5:
+        case .c15:
             return 5
-        case .m8x8:
+        case .c24:
             return 8
-        case .m12x12:
-            return 12
+        case .c30:
+            return 10
         }
     }
 }
@@ -45,13 +49,13 @@ enum Level: String {
     var cell: CellType {
         switch self {
         case .easy:
-            return .m3x3
+            return .c9
         case .normal:
-            return .m5x5
+            return .c15
         case .hard:
-            return .m8x8
+            return .c24
         case .hell:
-            return .m12x12
+            return .c30
         }
     }
     
@@ -70,7 +74,12 @@ enum Level: String {
 }
 
 
-struct GameItem {
+struct GameItem: Equatable, Hashable {
+    static func == (lhs: GameItem, rhs: GameItem) -> Bool {
+        return lhs.id == rhs.id && lhs.url == rhs.url && lhs.isSelected == rhs.isSelected
+    }
+    
+    let id: Int
     let type: ImageType
     let url: String
     var isSelected: Bool

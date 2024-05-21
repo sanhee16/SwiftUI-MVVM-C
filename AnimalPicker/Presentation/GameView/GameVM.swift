@@ -31,8 +31,14 @@ class GameVM: BaseViewModel {
         
     }
     
+    func onSelectItem(item: GameItem) {
+        guard let idx = self.results.firstIndex(where: { $0.id == item.id }) else { return }
+        self.results[idx].isSelected.toggle()
+        self.objectWillChange.send()
+    }
+    
     private func loadImages(level: Level) {
-        let totalCount = level.cell.count
+        let totalCount = level.cell.row * level.cell.column
         let distributeTotalCount = distributeTotalCount(totalCount: totalCount, into: self.types.count)
         
         self.types.indices.forEach({
@@ -46,13 +52,17 @@ class GameVM: BaseViewModel {
         )
         .run(in: &self.subscription) {[weak self] (dogs, foxes) in
             guard let self = self else { return }
+            var idx: Int = 0
             dogs.forEach {
-                self.results.append(GameItem(type: .dog, url: $0.imageUrl, isSelected: false))
+                self.results.append(GameItem(id: idx, type: .dog, url: $0.imageUrl, isSelected: false))
+                idx += 1
             }
             foxes.forEach {
-                self.results.append(GameItem(type: .fox, url: $0.imageUrl, isSelected: false))
+                self.results.append(GameItem(id: idx, type: .fox, url: $0.imageUrl, isSelected: false))
+                idx += 1
             }
             self.results.shuffle()
+            self.objectWillChange.send()
             print("self.results: \(self.results)")
         }
     }
