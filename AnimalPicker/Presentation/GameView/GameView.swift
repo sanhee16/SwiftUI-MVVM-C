@@ -35,6 +35,7 @@ struct GameView: View {
                         .font(.kr20b)
                     Spacer()
                 }
+                .paddingHorizontal(20.0)
                 .paddingVertical(12)
                 
                 ScrollView(.vertical, showsIndicators: false) {
@@ -53,14 +54,15 @@ struct GameView: View {
                                     }
                                     .clipShape(RoundedRectangle(cornerRadius: 8))
                                     .clipped()
+                                    .shadow(color: .black.opacity(0.3), radius: 2, x: 2, y: 2)
                                     .contentShape(Rectangle())
                                     .onTapGesture {
                                         vm.onSelectItem(item: item)
                                     }
                             }
                         }
-                        .paddingHorizontal(20.0)
                     })
+                    .paddingHorizontal(20.0)
                 }
             }
             .frame(width: geometry.size.width, alignment: .center)
