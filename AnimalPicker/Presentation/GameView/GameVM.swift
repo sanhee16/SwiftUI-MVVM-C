@@ -15,7 +15,8 @@ class GameVM: BaseViewModel {
     let types: [ImageType] = [.dog, .fox]
     var countWithType: [ImageType: Int] = [:]
     var results: [GameItem] = []
-    
+    var answer: ImageType? = nil
+    var answerNum: Int = 0
     
     init(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, level: Level) {
         self.interactors = interactors
@@ -24,6 +25,7 @@ class GameVM: BaseViewModel {
     }
     
     func onAppear() {
+        UIScrollView.appearance().bounces = false
         self.loadImages(level: self.level)
     }
     
