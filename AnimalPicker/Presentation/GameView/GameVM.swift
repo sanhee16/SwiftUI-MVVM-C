@@ -16,9 +16,10 @@ class GameVM: BaseViewModel {
     var countWithType: [ImageType: Int] = [:]
     var results: [GameItem] = []
     var answer: ImageType? = nil
-    var answerNum: Int = 0
     
     @Published var leftTime: Int? = nil
+    @Published var isCorrect: Bool = false
+    @Published var isGaming: Bool = true
     private var timer: Timer? = nil
     
     init(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, level: Level) {
@@ -36,10 +37,28 @@ class GameVM: BaseViewModel {
         
     }
     
+    func reset() {
+        self.stopTimer()
+        self.isCorrect = false
+        self.answer = nil
+        self.results.removeAll()
+        self.countWithType.removeAll()
+        self.isGaming = true
+        self.loadImages(level: self.level)
+    }
+    
     func onSelectItem(item: GameItem) {
-        guard let idx = self.results.firstIndex(where: { $0.id == item.id }) else { return }
+        if isCorrect { return }
+        guard let answer = self.answer, let idx = self.results.firstIndex(where: { $0.id == item.id }) else { return }
         self.results[idx].isSelected.toggle()
         self.objectWillChange.send()
+        
+        print("left: \(self.results.filter({ $0.type == answer }).filter({ !$0.isSelected }))")
+        if self.results.filter({ $0.type == answer }).filter({ !$0.isSelected }).isEmpty {
+            self.stopTimer()
+            self.isCorrect = true
+            self.isGaming = false
+        }
     }
     
     private func loadImages(level: Level) {
@@ -101,6 +120,7 @@ class GameVM: BaseViewModel {
                 self.leftTime = leftTime - 1
             }
             if let leftTime = self.leftTime, leftTime <= 0 {
+                self.isGaming = false
                 self.stopTimer()
             }
         }
@@ -112,7 +132,6 @@ class GameVM: BaseViewModel {
     }
 
     private func stopTimer() {
-        self.leftTime = 0
         self.timer?.invalidate()
     }
 

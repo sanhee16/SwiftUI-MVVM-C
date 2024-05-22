@@ -29,14 +29,40 @@ struct GameView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            if let answer = $vm.answer.wrappedValue, let leftTime = $vm.leftTime.wrappedValue, leftTime <= 0 {
-                Text("Time is Up")
-                    .font(.kr30b)
-                    .foregroundStyle(Color.white)
-                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
-                    .background(Color.black.opacity(0.75))
-                    .zIndex(1)
+            if !$vm.isGaming.wrappedValue {
+                VStack(alignment: .center, spacing: 16, content: {
+                    if let answer = $vm.answer.wrappedValue, let leftTime = $vm.leftTime.wrappedValue, leftTime <= 0 {
+                        Text("Time is Up")
+                            .font(.kr35b)
+                            .foregroundStyle(Color.white)
+                    }
+                    
+                    if $vm.isCorrect.wrappedValue {
+                        Text("Cleared!")
+                            .font(.kr35b)
+                            .foregroundStyle(Color.white)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 12, content: {
+                        Text("Retry")
+                            .font(.kr15m)
+                            .foregroundStyle(Color.black)
+                            .frame(width: 100, height: 40, alignment: .center)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundStyle(Color.yellow)
+                            )
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                vm.reset()
+                            }
+                    })
+                })
+                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                .background(Color.black.opacity(0.75))
+                .zIndex(1)
             }
+            
             VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading, spacing: 0, content: {
                     HStack {
