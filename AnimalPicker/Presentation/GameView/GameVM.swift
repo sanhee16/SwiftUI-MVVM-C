@@ -18,6 +18,9 @@ class GameVM: BaseViewModel {
     var answer: ImageType? = nil
     var answerNum: Int = 0
     
+    @Published var leftTime: Int? = nil
+    private var timer: Timer? = nil
+    
     init(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, level: Level) {
         self.interactors = interactors
         self.level = level
@@ -65,6 +68,9 @@ class GameVM: BaseViewModel {
             }
             self.results.shuffle()
             self.objectWillChange.send()
+            self.leftTime = level.timer
+            self.startTimeCount()
+            self.answer = self.types.randomElement()
             print("self.results: \(self.results)")
         }
     }
@@ -87,5 +93,28 @@ class GameVM: BaseViewModel {
         
         return result
     }
+    
+    private func startTimeCount() {
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] timer in
+            guard let self = self else { return }
+            if let leftTime = self.leftTime {
+                self.leftTime = leftTime - 1
+            }
+            if let leftTime = self.leftTime, leftTime <= 0 {
+                self.stopTimer()
+            }
+        }
+        
+        // Ensure the timer fires when on the main run loop
+        if let timer = self.timer {
+            RunLoop.main.add(timer, forMode: .common)
+        }
+    }
+
+    private func stopTimer() {
+        self.leftTime = 0
+        self.timer?.invalidate()
+    }
+
 }
 

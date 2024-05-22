@@ -231,6 +231,7 @@
 		585BB51B2BFC68BD007CCD51 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				58637C4B2BFD837600F48A95 /* CustomView */,
 				585BB5332BFC6C69007CCD51 /* Base */,
 				585BB5352BFC700F007CCD51 /* GameView */,
 				585BB51D2BFC68CC007CCD51 /* MainView */,
@@ -310,6 +311,13 @@
 				585BB5412BFC7516007CCD51 /* BaseNetwork.swift */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		58637C4B2BFD837600F48A95 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

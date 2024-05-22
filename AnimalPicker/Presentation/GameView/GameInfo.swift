@@ -8,12 +8,27 @@
 import Foundation
 
 
-enum ImageType {
+enum ImageType: String {
     case dog
     case duck
     case fox
     case cat
     case bird
+    
+    var plural: String {
+        switch self {
+        case .dog:
+            return "dogs"
+        case .duck:
+            return "ducks"
+        case .fox:
+            return "foxes"
+        case .cat:
+            return "cats"
+        case .bird:
+            return "birds"
+        }
+    }
 }
 
 enum CellType {
@@ -62,13 +77,13 @@ enum Level: String {
     var timer: Int {
         switch self {
         case .easy:
-            return 8
+            return 10
         case .normal:
-            return 6
+            return 10
         case .hard:
-            return 5
+            return 9
         case .hell:
-            return 5
+            return 7
         }
     }
 }

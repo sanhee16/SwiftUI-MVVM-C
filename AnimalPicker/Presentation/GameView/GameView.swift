@@ -29,12 +29,33 @@ struct GameView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            if let answer = $vm.answer.wrappedValue, let leftTime = $vm.leftTime.wrappedValue, leftTime <= 0 {
+                Text("Time is Up")
+                    .font(.kr30b)
+                    .foregroundStyle(Color.white)
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                    .background(Color.black.opacity(0.75))
+                    .zIndex(1)
+            }
             VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Text(vm.level.rawValue)
-                        .font(.kr20b)
-                    Spacer()
-                }
+                VStack(alignment: .leading, spacing: 0, content: {
+                    HStack {
+                        Text(vm.level.rawValue)
+                            .font(.kr20b)
+                        Spacer()
+                    }
+                    if let answer = $vm.answer.wrappedValue {
+                        Text("Select All of \(answer.plural)!")
+                            .font(.kr18b)
+                            .paddingTop(6)
+                        if let leftTime = $vm.leftTime.wrappedValue {
+                            Text("Left Time: \(leftTime)")
+                                .font(.kr14r)
+                                .paddingTop(4)
+                        }
+                    }
+                    
+                })
                 .paddingHorizontal(20.0)
                 .paddingVertical(12)
                 
