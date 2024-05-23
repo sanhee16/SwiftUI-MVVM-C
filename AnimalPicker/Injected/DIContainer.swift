@@ -22,6 +22,7 @@ extension DIContainer {
     struct ApiRepositories {
         let foxImageRepository: FoxImageRepository
         let dogImageRepository: DogImageRepository
+        let duckImageRepository: DuckImageRepository
     }
     
     struct DBRepositories {

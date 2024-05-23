@@ -28,7 +28,12 @@ extension AppEnvironment {
     private static func configuredApiRepositories() -> DIContainer.ApiRepositories {
         let foxImageRepository = RealFoxImageRepository(network: BaseNetwork(), baseUrl: "https://randomfox.ca")
         let dogImageRepository = RealDogImageRepository(network: BaseNetwork(), baseUrl: "https://dog.ceo/api")
-        return .init(foxImageRepository: foxImageRepository, dogImageRepository: dogImageRepository)
+        let duckImageRepository = RealDuckImageRepository(network: BaseNetwork(), baseUrl: "https://random-d.uk/api/v2")
+        return .init(
+            foxImageRepository: foxImageRepository,
+            dogImageRepository: dogImageRepository,
+            duckImageRepository: duckImageRepository
+        )
     }
     
     private static func configuredDBRepositories() -> DIContainer.DBRepositories {
@@ -41,7 +46,8 @@ extension AppEnvironment {
     ) -> DIContainer.Interactors {
         let animalImageInteractor = RealAnimalImageInteractor(
             foxImageRepository: apiRepositories.foxImageRepository,
-            dogImageRepository: apiRepositories.dogImageRepository
+            dogImageRepository: apiRepositories.dogImageRepository,
+            duckImageRepository: apiRepositories.duckImageRepository
         )
         return .init(animalImageInteractor: animalImageInteractor)
     }

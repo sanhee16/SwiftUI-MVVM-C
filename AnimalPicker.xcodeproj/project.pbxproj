@@ -41,6 +41,7 @@
 		585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5432BFC764A007CCD51 /* DogImageRepository.swift */; };
 		585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */; };
 		585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */; };
+		5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		585BB5432BFC764A007CCD51 /* DogImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImageRepository.swift; sourceTree = "<group>"; };
 		585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalImageInteractor.swift; sourceTree = "<group>"; };
 		585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
+		5892AE152BFEC961009663C1 /* DuckImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuckImageRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,9 +290,10 @@
 		585BB5342BFC6D49007CCD51 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				585BB53E2BFC74CE007CCD51 /* ApiRepository.swift */,
 				585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */,
 				585BB5432BFC764A007CCD51 /* DogImageRepository.swift */,
-				585BB53E2BFC74CE007CCD51 /* ApiRepository.swift */,
+				5892AE152BFEC961009663C1 /* DuckImageRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				585BB5312BFC69F1007CCD51 /* Font+Extension.swift in Sources */,
 				585BB50E2BFC67FB007CCD51 /* BaseCoordinator.swift in Sources */,
 				585BB5422BFC7516007CCD51 /* BaseNetwork.swift in Sources */,
+				5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */,
 				585BB5392BFC702E007CCD51 /* GameVM.swift in Sources */,
 				585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */,
 				585BB5092BFC67CC007CCD51 /* SceneDelegate.swift in Sources */,

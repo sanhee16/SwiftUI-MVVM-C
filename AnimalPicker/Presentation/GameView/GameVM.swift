@@ -20,7 +20,7 @@ enum GameStatus {
 class GameVM: BaseViewModel {
     private let interactors: DIContainer.Interactors
     let level: Level
-    let types: [ImageType] = [.dog, .fox]
+    let types: [ImageType] = [.dog, .fox, .duck]
     var countWithType: [ImageType: Int] = [:]
     var results: [GameItem] = []
     var answer: ImageType? = nil
@@ -77,11 +77,12 @@ class GameVM: BaseViewModel {
         })
         if countWithType.isEmpty { return }
         
-        Publishers.Zip(
+        Publishers.Zip3(
             self.interactors.animalImageInteractor.getDogImages(countWithType[.dog]),
-            self.interactors.animalImageInteractor.getFoxImages(countWithType[.fox])
+            self.interactors.animalImageInteractor.getFoxImages(countWithType[.fox]),
+            self.interactors.animalImageInteractor.getDuckImages(countWithType[.duck])
         )
-        .run(in: &self.subscription) {[weak self] (dogs, foxes) in
+        .run(in: &self.subscription) {[weak self] (dogs, foxes, ducks) in
             guard let self = self else { return }
             var idx: Int = 0
             dogs.forEach {
@@ -92,6 +93,11 @@ class GameVM: BaseViewModel {
                 self.results.append(GameItem(id: idx, type: .fox, url: $0.imageUrl, isSelected: false))
                 idx += 1
             }
+            ducks.forEach {
+                self.results.append(GameItem(id: idx, type: .duck, url: $0.imageUrl, isSelected: false))
+                idx += 1
+            }
+            
             self.results.shuffle()
             self.objectWillChange.send()
             self.leftTime = level.timer
