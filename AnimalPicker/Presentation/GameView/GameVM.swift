@@ -58,7 +58,7 @@ class GameVM: BaseViewModel {
         self.results[idx].isSelected.toggle()
         self.objectWillChange.send()
         
-        if self.results.filter({ $0.type == answer }).filter({ !$0.isSelected }).isEmpty {
+        if self.results.filter({ $0.type == self.answer && !$0.isSelected}).isEmpty && self.results.filter({ $0.type != self.answer && $0.isSelected}).isEmpty {
             self.stopTimer()
             self.status = .clear
         }
