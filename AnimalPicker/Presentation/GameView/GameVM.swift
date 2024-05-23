@@ -20,7 +20,7 @@ enum GameStatus {
 class GameVM: BaseViewModel {
     private let interactors: DIContainer.Interactors
     let level: Level
-    let types: [ImageType] = [.dog, .fox, .duck]
+    let types: [ImageType] = [.dog, .fox, .duck, .lizard]
     var countWithType: [ImageType: Int] = [:]
     var results: [GameItem] = []
     var answer: ImageType? = nil
@@ -77,12 +77,13 @@ class GameVM: BaseViewModel {
         })
         if countWithType.isEmpty { return }
         
-        Publishers.Zip3(
+        Publishers.Zip4(
             self.interactors.animalImageInteractor.getDogImages(countWithType[.dog]),
             self.interactors.animalImageInteractor.getFoxImages(countWithType[.fox]),
-            self.interactors.animalImageInteractor.getDuckImages(countWithType[.duck])
+            self.interactors.animalImageInteractor.getDuckImages(countWithType[.duck]),
+            self.interactors.animalImageInteractor.getLizardImages(countWithType[.lizard])
         )
-        .run(in: &self.subscription) {[weak self] (dogs, foxes, ducks) in
+        .run(in: &self.subscription) {[weak self] (dogs, foxes, ducks, lizards) in
             guard let self = self else { return }
             var idx: Int = 0
             dogs.forEach {
@@ -95,6 +96,10 @@ class GameVM: BaseViewModel {
             }
             ducks.forEach {
                 self.results.append(GameItem(id: idx, type: .duck, url: $0.imageUrl, isSelected: false))
+                idx += 1
+            }
+            lizards.forEach {
+                self.results.append(GameItem(id: idx, type: .lizard, url: $0.imageUrl, isSelected: false))
                 idx += 1
             }
             

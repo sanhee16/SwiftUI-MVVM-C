@@ -29,10 +29,12 @@ extension AppEnvironment {
         let foxImageRepository = RealFoxImageRepository(network: BaseNetwork(), baseUrl: "https://randomfox.ca")
         let dogImageRepository = RealDogImageRepository(network: BaseNetwork(), baseUrl: "https://dog.ceo/api")
         let duckImageRepository = RealDuckImageRepository(network: BaseNetwork(), baseUrl: "https://random-d.uk/api/v2")
+        let lizardIamgeRepository = RealLizardImageRepository(network: BaseNetwork(), baseUrl: "https://nekos.life/api/v2")
         return .init(
             foxImageRepository: foxImageRepository,
             dogImageRepository: dogImageRepository,
-            duckImageRepository: duckImageRepository
+            duckImageRepository: duckImageRepository,
+            lizardIamgeRepository: lizardIamgeRepository
         )
     }
     
@@ -47,7 +49,8 @@ extension AppEnvironment {
         let animalImageInteractor = RealAnimalImageInteractor(
             foxImageRepository: apiRepositories.foxImageRepository,
             dogImageRepository: apiRepositories.dogImageRepository,
-            duckImageRepository: apiRepositories.duckImageRepository
+            duckImageRepository: apiRepositories.duckImageRepository,
+            lizardIamgeRepository: apiRepositories.lizardIamgeRepository
         )
         return .init(animalImageInteractor: animalImageInteractor)
     }

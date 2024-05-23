@@ -14,6 +14,7 @@ enum ImageType: String {
     case fox
     case cat
     case bird
+    case lizard
     
     var plural: String {
         switch self {
@@ -27,6 +28,8 @@ enum ImageType: String {
             return "cats"
         case .bird:
             return "birds"
+        case .lizard:
+            return "lizards"
         }
     }
 }

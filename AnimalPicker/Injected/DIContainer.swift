@@ -23,6 +23,7 @@ extension DIContainer {
         let foxImageRepository: FoxImageRepository
         let dogImageRepository: DogImageRepository
         let duckImageRepository: DuckImageRepository
+        let lizardIamgeRepository: LizardImageRepository
     }
     
     struct DBRepositories {

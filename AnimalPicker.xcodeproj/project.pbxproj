@@ -42,6 +42,7 @@
 		585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */; };
 		585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */; };
 		5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
+		5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalImageInteractor.swift; sourceTree = "<group>"; };
 		585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
 		5892AE152BFEC961009663C1 /* DuckImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuckImageRepository.swift; sourceTree = "<group>"; };
+		5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LizardImageRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 				585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */,
 				585BB5432BFC764A007CCD51 /* DogImageRepository.swift */,
 				5892AE152BFEC961009663C1 /* DuckImageRepository.swift */,
+				5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				585BB53D2BFC745B007CCD51 /* FoxImageRepository.swift in Sources */,
 				585BB5182BFC683E007CCD51 /* InteractorsContainer.swift in Sources */,
 				585BB5162BFC6837007CCD51 /* Endpoints.swift in Sources */,
+				5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */,
 				585BB5212BFC68DF007CCD51 /* SplashVM.swift in Sources */,
 				585BB5232BFC6902007CCD51 /* BaseViewModel.swift in Sources */,
 			);
