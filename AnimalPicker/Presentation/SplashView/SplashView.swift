@@ -17,7 +17,7 @@ struct SplashView: View {
         vc.attachViewModel(vm)
         return vc
     }
-    @ObservedObject var vm: VM
+    @StateObject var vm: VM
     @ObservedObject var coordinator: AppCoordinator
     
     private var safeTop: CGFloat { get { Util.safeTop() }}
