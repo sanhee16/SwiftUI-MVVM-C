@@ -11,13 +11,14 @@ import SwiftUI
 struct SplashView: View {
     typealias VM = SplashVM
     public static func vc(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, completion: (()-> Void)? = nil) -> UIViewController {
-        let vm = VM.init(coordinator, interactors: interactors)
-        let view = Self.init(vm: vm)
-        let vc = BaseViewController.init(view, completion: completion)
+        let vm = VM.init(interactors)
+        let view = Self.init(vm: vm, coordinator: coordinator)
+        let vc = BaseViewController.init(view, isAvailableToSwipe: false, completion: completion)
         vc.attachViewModel(vm)
         return vc
     }
     @ObservedObject var vm: VM
+    @ObservedObject var coordinator: AppCoordinator
     
     private var safeTop: CGFloat { get { Util.safeTop() }}
     private var safeBottom: CGFloat { get { Util.safeBottom() }}
@@ -36,7 +37,9 @@ struct SplashView: View {
         .ignoresSafeArea()
         .background(Color.primary)
         .onAppear {
-            vm.onAppear()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.coordinator.pushMain()
+            }
         }
     }
 }

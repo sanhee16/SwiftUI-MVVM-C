@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-protocol Terminatable {
-    func appTerminate()
-}
-
 class BaseCoordinator {
     var navigationController = UINavigationController()
     var childViewController: [UIViewController] = []
@@ -21,10 +17,6 @@ class BaseCoordinator {
     }
     
     //MARK: Present & Dismiss
-    func justPresent(_ vc: UIViewController, animated: Bool = true) {
-        self.presentViewController.present(vc, animated: animated)
-    }
-    
     func present(_ vc: UIViewController, animated: Bool = true, onDismiss: (() -> Void)? = nil) {
         if let vc = vc as? Dismissible {
             vc.attachDismissCallback(onDismiss: onDismiss)
@@ -77,7 +69,6 @@ class BaseCoordinator {
     
     //MARK: Push & Pop
     func push(_ vc: UIViewController, animated: Bool = true, onDismiss: (() -> Void)? = nil) {
-        print("push: \((vc as? Nameable)?.name)")
         if let vc = vc as? Dismissible {
             vc.attachDismissCallback(onDismiss: onDismiss)
         }
@@ -88,7 +79,6 @@ class BaseCoordinator {
     
     func popToVC<View>(_ view: View.Type, animated: Bool = true) {
         if self.isHasView(view) {
-            print("[popToVC]Success: isHasView (\(view))")
             for viewController in self.childViewController.reversed() {
                 if let vc = viewController as? Nameable, vc.isSameView(view: view) {
                     self.navigationController.popToViewController(viewController, animated: false)
@@ -98,10 +88,7 @@ class BaseCoordinator {
                     break
                 }
                 self.childViewController.removeLast()
-                print("[popToVC]delete: \((viewController as? Nameable)?.name)")
             }
-        } else {
-            print("[popToVC]Fail: No View (\(view))")
         }
     }
     
@@ -114,7 +101,6 @@ class BaseCoordinator {
         weak var dismissedVc = self.childViewController.removeLast()
         self.navigationController.popViewController(animated: animated)
         if let baseViewController = dismissedVc as? Dismissible, let onDismiss = baseViewController.onDismiss {
-            print("pop completion")
             onDismiss()
         }
         completion?()
@@ -123,14 +109,6 @@ class BaseCoordinator {
     func change(_ vc: UIViewController, animated: Bool = false, onDismiss: (() -> Void)? = nil) {
         pop(false) {[weak self] in
             self?.push(vc, animated: animated, onDismiss: onDismiss)
-        }
-    }
-    
-    func swipeBack() {
-        weak var dismissedVc = self.childViewController.removeLast()
-        if let baseViewController = dismissedVc as? Dismissible, let onDismiss = baseViewController.onDismiss {
-            print("swipe back completion")
-            onDismiss()
         }
     }
     

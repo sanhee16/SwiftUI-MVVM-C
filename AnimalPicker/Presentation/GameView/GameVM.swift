@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import UIKit
 
 enum GameStatus {
     case ready
@@ -15,7 +14,6 @@ enum GameStatus {
     case clear
     case onGaming
 }
-
 
 class GameVM: BaseViewModel {
     private let interactors: DIContainer.Interactors
@@ -31,14 +29,13 @@ class GameVM: BaseViewModel {
     @Published var status: GameStatus = .ready
     private var timer: Timer? = nil
     
-    init(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, level: Level) {
+    init(_ interactors: DIContainer.Interactors, level: Level) {
         self.interactors = interactors
         self.level = level
-        super.init(coordinator)
+        super.init()
     }
     
     func onAppear() {
-        UIScrollView.appearance().bounces = false
         self.loadImages(level: self.level)
     }
     
@@ -61,7 +58,6 @@ class GameVM: BaseViewModel {
         self.results[idx].isSelected.toggle()
         self.objectWillChange.send()
         
-//        print("left: \(self.results.filter({ $0.type == answer }).filter({ !$0.isSelected }))")
         if self.results.filter({ $0.type == answer }).filter({ !$0.isSelected }).isEmpty {
             self.stopTimer()
             self.status = .clear

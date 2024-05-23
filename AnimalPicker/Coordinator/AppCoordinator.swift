@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class AppCoordinator: BaseCoordinator, Terminatable {
+class AppCoordinator: BaseCoordinator, ObservableObject {
     // UIWindow = 화면에 나타나는 View를 묶고, UI의 배경을 제공하고, 이벤트 처리행동을 제공하는 객체 = View들을 담는 컨테이너
     let window: UIWindow
     let container: DIContainer
@@ -25,21 +25,6 @@ class AppCoordinator: BaseCoordinator, Terminatable {
         // rootViewController 지정 + makeKeyAndVisible 호출 = 지정한 rootViewController가 상호작용을 받는 현재 화면으로 세팅 완료
         self.window.rootViewController = navigationController // window의 rootViewController
         window.makeKeyAndVisible()
-    }
-    
-    // Terminatable
-    func appTerminate() {
-        print("app Terminate")
-//        for vc in self.childViewControllers {
-//            print("terminate : \(type(of: vc))")
-//            (vc as? Terminatable)?.appTerminate()
-//        }
-        for vc in self.navigationController.viewControllers {
-            print("terminate : \(type(of: vc))")
-            (vc as? Terminatable)?.appTerminate()
-        }
-        print("terminate : \(type(of: self.navigationController))")
-        (self.navigationController as? Terminatable)?.appTerminate()
     }
     
     func popToRoot(animated: Bool = true, completion: (() -> Void)? = nil) {

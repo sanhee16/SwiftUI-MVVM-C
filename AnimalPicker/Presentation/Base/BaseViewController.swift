@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-class BaseViewController<Content>: UIViewController, Dismissible, Nameable, UIGestureRecognizerDelegate where Content: View {
+class BaseViewController<Content>: UIViewController, Dismissible, Nameable, Swipeable, UIGestureRecognizerDelegate where Content: View {
+    var isAvailableToSwipe: Bool
     let rootView: Content
     let controller: UIHostingController<Content>
     var completion: (() -> Void)?
     var onDismiss: (() -> Void)?
     var viewDidLoadCallback: (() -> ())? = nil
-    var isSwipePop: Bool = false
     var vm: BaseViewModel? = nil
     
     var name: String {
@@ -22,21 +22,12 @@ class BaseViewController<Content>: UIViewController, Dismissible, Nameable, UIGe
         }
     }
     
-    public init(_ rootView: Content, completion: (() -> Void)? = nil, viewDidLoadCallback: (() -> ())? = nil) {
+    
+    public init(_ rootView: Content, isAvailableToSwipe: Bool = true, completion: (() -> Void)? = nil) {
         print("\(type(of: self)): init, \(String(describing: Content.self))")
         self.rootView = rootView
         self.controller = UIHostingController(rootView: rootView)
-        self.completion = completion
-        self.viewDidLoadCallback = viewDidLoadCallback
-        super.init(nibName: nil, bundle: nil)
-        self.modalPresentationStyle = .fullScreen
-    }
-    
-    
-    public init(_ rootView: Content, completion: (() -> Void)? = nil) {
-        print("\(type(of: self)): init, \(String(describing: Content.self))")
-        self.rootView = rootView
-        self.controller = UIHostingController(rootView: rootView)
+        self.isAvailableToSwipe = isAvailableToSwipe
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .fullScreen
@@ -81,31 +72,15 @@ class BaseViewController<Content>: UIViewController, Dismissible, Nameable, UIGe
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        self.isSwipePop = false
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = self.isAvailableToSwipe
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        vm?.viewDidDisappear(isSwipePop)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    }
-    
-    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if self.isSameView(view: SplashView.self) || self.isSameView(view: MainView.self) {
-            isSwipePop = false
-            return false
-        }
-        
-        switch gestureRecognizer.state {
-        case .possible, .began, .changed:
-            isSwipePop = true
-        default:
-            isSwipePop = false
-        }
-        return true
     }
 }
 
@@ -123,4 +98,8 @@ extension Nameable {
     func isSameView<Type>(view: Type.Type) -> Bool {
         name == String(describing: Type.self)
     }
+}
+
+public protocol Swipeable {
+    var isAvailableToSwipe: Bool { get set }
 }
