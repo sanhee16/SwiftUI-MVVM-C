@@ -19,7 +19,7 @@ struct GameView: View {
         
         return vc
     }
-    @ObservedObject var vm: VM
+    @StateObject var vm: VM
     
     private var safeTop: CGFloat { get { Util.safeTop() }}
     private var safeBottom: CGFloat { get { Util.safeBottom() }}
@@ -29,15 +29,15 @@ struct GameView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            if !$vm.isGaming.wrappedValue {
+            if $vm.status.wrappedValue == .timeOut || $vm.status.wrappedValue == .clear {
                 VStack(alignment: .center, spacing: 16, content: {
-                    if let answer = $vm.answer.wrappedValue, let leftTime = $vm.leftTime.wrappedValue, leftTime <= 0 {
+                    if $vm.status.wrappedValue == .timeOut {
                         Text("Time is Up")
                             .font(.kr35b)
                             .foregroundStyle(Color.white)
                     }
                     
-                    if $vm.isCorrect.wrappedValue {
+                    if $vm.status.wrappedValue == .clear {
                         Text("Cleared!")
                             .font(.kr35b)
                             .foregroundStyle(Color.white)

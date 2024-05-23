@@ -9,6 +9,14 @@ import Foundation
 import Combine
 import UIKit
 
+enum GameStatus {
+    case ready
+    case timeOut
+    case clear
+    case onGaming
+}
+
+
 class GameVM: BaseViewModel {
     private let interactors: DIContainer.Interactors
     let level: Level
@@ -20,6 +28,7 @@ class GameVM: BaseViewModel {
     @Published var leftTime: Int? = nil
     @Published var isCorrect: Bool = false
     @Published var isGaming: Bool = true
+    @Published var status: GameStatus = .ready
     private var timer: Timer? = nil
     
     init(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, level: Level) {
@@ -39,11 +48,10 @@ class GameVM: BaseViewModel {
     
     func reset() {
         self.stopTimer()
-        self.isCorrect = false
         self.answer = nil
         self.results.removeAll()
         self.countWithType.removeAll()
-        self.isGaming = true
+        self.status = .ready
         self.loadImages(level: self.level)
     }
     
@@ -53,11 +61,10 @@ class GameVM: BaseViewModel {
         self.results[idx].isSelected.toggle()
         self.objectWillChange.send()
         
-        print("left: \(self.results.filter({ $0.type == answer }).filter({ !$0.isSelected }))")
+//        print("left: \(self.results.filter({ $0.type == answer }).filter({ !$0.isSelected }))")
         if self.results.filter({ $0.type == answer }).filter({ !$0.isSelected }).isEmpty {
             self.stopTimer()
-            self.isCorrect = true
-            self.isGaming = false
+            self.status = .clear
         }
     }
     
@@ -88,6 +95,7 @@ class GameVM: BaseViewModel {
             self.results.shuffle()
             self.objectWillChange.send()
             self.leftTime = level.timer
+            self.status = .onGaming
             self.startTimeCount()
             self.answer = self.types.randomElement()
             print("self.results: \(self.results)")
@@ -120,7 +128,7 @@ class GameVM: BaseViewModel {
                 self.leftTime = leftTime - 1
             }
             if let leftTime = self.leftTime, leftTime <= 0 {
-                self.isGaming = false
+                self.status = .timeOut
                 self.stopTimer()
             }
         }
