@@ -53,29 +53,33 @@ struct AuthView: View {
             Text("Login")
                 .font(.kr20b)
                 .foregroundStyle(Color.black)
+                .paddingBottom(12)
             
-            
-            HStack(alignment: .center, spacing: 8, content: {
-                Text("Nickname")
-                    .font(.kr14b)
-                    .foregroundStyle(Color.black.opacity(0.7))
+            SingleBoxTextField(placeholder: "Nickname", text: $nickname) { _ in
                 
-                SingleBoxTextField(placeholder: "Nickname", text: $nickname) { _ in
+            }
+            
+            SingleBoxTextField(placeholder: "Password", text: $password) { _ in
+                
+            }
+            
+            Text("Login")
+                .font(.kr14b)
+                .foregroundStyle(Color.white)
+                .paddingVertical(14)
+                .frame(width: UIScreen.main.bounds.size.width - 80)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .foregroundStyle(Color.blue.opacity(0.8))
+                )
+                .paddingHorizontal(20)
+                .paddingTop(30)
+                .contentShape(Rectangle())
+                .onTapGesture {
                     
                 }
-            })
-            
-            HStack(alignment: .center, spacing: 8, content: {
-                Text("Password")
-                    .font(.kr14b)
-                    .foregroundStyle(Color.black.opacity(0.7))
-                
-                SingleBoxTextField(placeholder: "Password", text: $password) { _ in
-                    
-                }
-            })
-            
         })
+        .paddingHorizontal(20)
     }
 }
 
