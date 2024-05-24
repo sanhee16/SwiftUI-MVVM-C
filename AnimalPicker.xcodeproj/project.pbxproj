@@ -40,6 +40,14 @@
 		585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5432BFC764A007CCD51 /* DogImageRepository.swift */; };
 		585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */; };
 		585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */; };
+		5878B4742C00130800A7329B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4732C00130800A7329B /* AuthView.swift */; };
+		5878B4762C00130D00A7329B /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4752C00130D00A7329B /* AuthVM.swift */; };
+		5878B4782C00188600A7329B /* UserInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4772C00188600A7329B /* UserInfoInteractor.swift */; };
+		5878B47B2C0018D800A7329B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47A2C0018D800A7329B /* UserInfo.swift */; };
+		5878B47E2C00193300A7329B /* UserDBRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47D2C00193300A7329B /* UserDBRespository.swift */; };
+		5878B4812C001B3A00A7329B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4802C001B3A00A7329B /* UserDefaultsService.swift */; };
+		5878B4832C002A5800A7329B /* SingleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4822C002A5800A7329B /* SingleTextField.swift */; };
+		5878B4892C007DCF00A7329B /* SingleBoxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */; };
 		5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
 		5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */; };
 /* End PBXBuildFile section */
@@ -97,6 +105,14 @@
 		585BB5432BFC764A007CCD51 /* DogImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImageRepository.swift; sourceTree = "<group>"; };
 		585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalImageInteractor.swift; sourceTree = "<group>"; };
 		585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
+		5878B4732C00130800A7329B /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		5878B4752C00130D00A7329B /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
+		5878B4772C00188600A7329B /* UserInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInteractor.swift; sourceTree = "<group>"; };
+		5878B47A2C0018D800A7329B /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		5878B47D2C00193300A7329B /* UserDBRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDBRespository.swift; sourceTree = "<group>"; };
+		5878B4802C001B3A00A7329B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		5878B4822C002A5800A7329B /* SingleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextField.swift; sourceTree = "<group>"; };
+		5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBoxTextField.swift; sourceTree = "<group>"; };
 		5892AE152BFEC961009663C1 /* DuckImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuckImageRepository.swift; sourceTree = "<group>"; };
 		5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LizardImageRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				585BB5322BFC6BAE007CCD51 /* Info.plist */,
+				5878B47F2C001B2900A7329B /* Persistence */,
 				585BB5402BFC74FF007CCD51 /* Infrastructure */,
 				585BB50F2BFC680C007CCD51 /* Injected */,
 				585BB5342BFC6D49007CCD51 /* Repositories */,
@@ -159,6 +176,7 @@
 				585BB52A2BFC6983007CCD51 /* Helper */,
 				585BB51B2BFC68BD007CCD51 /* Presentation */,
 				585BB5142BFC682D007CCD51 /* Interactors */,
+				5878B4792C0018CA00A7329B /* Domain */,
 				585BB50A2BFC67EA007CCD51 /* Coordinator */,
 				585BB5052BFC67AD007CCD51 /* Application */,
 				585BB4D72BFC654D007CCD51 /* Assets.xcassets */,
@@ -225,6 +243,7 @@
 			children = (
 				585BB5172BFC683E007CCD51 /* InteractorsContainer.swift */,
 				585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */,
+				5878B4772C00188600A7329B /* UserInfoInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -234,6 +253,7 @@
 			children = (
 				58637C4B2BFD837600F48A95 /* CustomView */,
 				585BB5332BFC6C69007CCD51 /* Base */,
+				5878B4722C0012F100A7329B /* AuthView */,
 				585BB5352BFC700F007CCD51 /* GameView */,
 				585BB51D2BFC68CC007CCD51 /* MainView */,
 				585BB51C2BFC68C9007CCD51 /* SplashView */,
@@ -294,6 +314,7 @@
 				585BB5432BFC764A007CCD51 /* DogImageRepository.swift */,
 				5892AE152BFEC961009663C1 /* DuckImageRepository.swift */,
 				5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */,
+				5878B47D2C00193300A7329B /* UserDBRespository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -319,8 +340,43 @@
 		58637C4B2BFD837600F48A95 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				5878B4822C002A5800A7329B /* SingleTextField.swift */,
+				5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		5878B4722C0012F100A7329B /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				5878B4732C00130800A7329B /* AuthView.swift */,
+				5878B4752C00130D00A7329B /* AuthVM.swift */,
+			);
+			path = AuthView;
+			sourceTree = "<group>";
+		};
+		5878B4792C0018CA00A7329B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5878B47C2C0018E100A7329B /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		5878B47C2C0018E100A7329B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				5878B47A2C0018D800A7329B /* UserInfo.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		5878B47F2C001B2900A7329B /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				5878B4802C001B3A00A7329B /* UserDefaultsService.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,18 +517,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5878B4762C00130D00A7329B /* AuthVM.swift in Sources */,
 				585BB5112BFC6816007CCD51 /* DIContainer.swift in Sources */,
 				585BB52C2BFC698B007CCD51 /* Util.swift in Sources */,
 				585BB5292BFC6954007CCD51 /* MainVM.swift in Sources */,
 				585BB52F2BFC69C6007CCD51 /* View+Extension.swift in Sources */,
+				5878B4832C002A5800A7329B /* SingleTextField.swift in Sources */,
 				585BB53B2BFC7137007CCD51 /* GameInfo.swift in Sources */,
+				5878B4782C00188600A7329B /* UserInfoInteractor.swift in Sources */,
 				585BB51A2BFC6866007CCD51 /* Constants.swift in Sources */,
 				585BB5072BFC67B8007CCD51 /* AppDelegate.swift in Sources */,
 				585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */,
 				585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */,
 				585BB5312BFC69F1007CCD51 /* Font+Extension.swift in Sources */,
+				5878B4812C001B3A00A7329B /* UserDefaultsService.swift in Sources */,
 				585BB50E2BFC67FB007CCD51 /* BaseCoordinator.swift in Sources */,
 				585BB5422BFC7516007CCD51 /* BaseNetwork.swift in Sources */,
+				5878B47B2C0018D800A7329B /* UserInfo.swift in Sources */,
 				5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */,
 				585BB5392BFC702E007CCD51 /* GameVM.swift in Sources */,
 				585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */,
@@ -480,13 +541,16 @@
 				585BB5252BFC6922007CCD51 /* BaseViewController.swift in Sources */,
 				585BB51F2BFC68D8007CCD51 /* SplashView.swift in Sources */,
 				585BB50C2BFC67F5007CCD51 /* AppCoordinator.swift in Sources */,
+				5878B4742C00130800A7329B /* AuthView.swift in Sources */,
 				585BB5132BFC681C007CCD51 /* AppEnvironment.swift in Sources */,
 				585BB5372BFC7029007CCD51 /* GameView.swift in Sources */,
+				5878B4892C007DCF00A7329B /* SingleBoxTextField.swift in Sources */,
 				585BB53F2BFC74CE007CCD51 /* ApiRepository.swift in Sources */,
 				585BB5272BFC6949007CCD51 /* MainView.swift in Sources */,
 				585BB53D2BFC745B007CCD51 /* FoxImageRepository.swift in Sources */,
 				585BB5182BFC683E007CCD51 /* InteractorsContainer.swift in Sources */,
 				5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */,
+				5878B47E2C00193300A7329B /* UserDBRespository.swift in Sources */,
 				585BB5212BFC68DF007CCD51 /* SplashVM.swift in Sources */,
 				585BB5232BFC6902007CCD51 /* BaseViewModel.swift in Sources */,
 			);
