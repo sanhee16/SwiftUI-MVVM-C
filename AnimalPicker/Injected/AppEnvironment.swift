@@ -39,8 +39,8 @@ extension AppEnvironment {
     }
     
     private static func configuredDBRepositories() -> DIContainer.DBRepositories {
-        let userDBRespository = RealUserDBRespository(userDefaultsService: UserDefaultsService())
-        return .init(userDBRespository: userDBRespository)
+        let rankingDBRespository = RealRankingDBRespository(userDefaultsService: UserDefaultsService())
+        return .init(rankingDBRespository: rankingDBRespository)
     }
     
     private static func configuredInteractors(
@@ -53,7 +53,7 @@ extension AppEnvironment {
             duckImageRepository: apiRepositories.duckImageRepository,
             lizardIamgeRepository: apiRepositories.lizardIamgeRepository
         )
-        let userInfoInteractor = RealUserInfoInteractor(userDBRespository: dbRepositories.userDBRespository)
-        return .init(animalImageInteractor: animalImageInteractor, userInfoInteractor: userInfoInteractor)
+        let rankingInteractor = RealRankingInteractor(rankingDBRespository: dbRepositories.rankingDBRespository)
+        return .init(animalImageInteractor: animalImageInteractor, rankingInteractor: rankingInteractor)
     }
 }

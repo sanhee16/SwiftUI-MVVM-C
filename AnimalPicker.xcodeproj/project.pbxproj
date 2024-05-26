@@ -39,11 +39,11 @@
 		585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5432BFC764A007CCD51 /* DogImageRepository.swift */; };
 		585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */; };
 		585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */; };
-		5878B4742C00130800A7329B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4732C00130800A7329B /* AuthView.swift */; };
-		5878B4762C00130D00A7329B /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4752C00130D00A7329B /* AuthVM.swift */; };
+		5878B4742C00130800A7329B /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4732C00130800A7329B /* RankingView.swift */; };
+		5878B4762C00130D00A7329B /* RankingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4752C00130D00A7329B /* RankingVM.swift */; };
 		5878B4782C00188600A7329B /* UserInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4772C00188600A7329B /* UserInfoInteractor.swift */; };
 		5878B47B2C0018D800A7329B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47A2C0018D800A7329B /* UserInfo.swift */; };
-		5878B47E2C00193300A7329B /* UserDBRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47D2C00193300A7329B /* UserDBRespository.swift */; };
+		5878B47E2C00193300A7329B /* RankingDBRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47D2C00193300A7329B /* RankingDBRespository.swift */; };
 		5878B4812C001B3A00A7329B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4802C001B3A00A7329B /* UserDefaultsService.swift */; };
 		5878B4832C002A5800A7329B /* SingleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4822C002A5800A7329B /* SingleTextField.swift */; };
 		5878B4892C007DCF00A7329B /* SingleBoxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */; };
@@ -105,11 +105,11 @@
 		585BB5432BFC764A007CCD51 /* DogImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImageRepository.swift; sourceTree = "<group>"; };
 		585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalImageInteractor.swift; sourceTree = "<group>"; };
 		585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
-		5878B4732C00130800A7329B /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
-		5878B4752C00130D00A7329B /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
+		5878B4732C00130800A7329B /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
+		5878B4752C00130D00A7329B /* RankingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingVM.swift; sourceTree = "<group>"; };
 		5878B4772C00188600A7329B /* UserInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInteractor.swift; sourceTree = "<group>"; };
 		5878B47A2C0018D800A7329B /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		5878B47D2C00193300A7329B /* UserDBRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDBRespository.swift; sourceTree = "<group>"; };
+		5878B47D2C00193300A7329B /* RankingDBRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDBRespository.swift; sourceTree = "<group>"; };
 		5878B4802C001B3A00A7329B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		5878B4822C002A5800A7329B /* SingleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextField.swift; sourceTree = "<group>"; };
 		5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBoxTextField.swift; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 			children = (
 				58637C4B2BFD837600F48A95 /* CustomView */,
 				585BB5332BFC6C69007CCD51 /* Base */,
-				5878B4722C0012F100A7329B /* AuthView */,
+				5878B4722C0012F100A7329B /* RankingView */,
 				585BB5352BFC700F007CCD51 /* GameView */,
 				585BB51D2BFC68CC007CCD51 /* MainView */,
 				585BB51C2BFC68C9007CCD51 /* SplashView */,
@@ -314,7 +314,7 @@
 				585BB5432BFC764A007CCD51 /* DogImageRepository.swift */,
 				5892AE152BFEC961009663C1 /* DuckImageRepository.swift */,
 				5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */,
-				5878B47D2C00193300A7329B /* UserDBRespository.swift */,
+				5878B47D2C00193300A7329B /* RankingDBRespository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -346,13 +346,13 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
-		5878B4722C0012F100A7329B /* AuthView */ = {
+		5878B4722C0012F100A7329B /* RankingView */ = {
 			isa = PBXGroup;
 			children = (
-				5878B4732C00130800A7329B /* AuthView.swift */,
-				5878B4752C00130D00A7329B /* AuthVM.swift */,
+				5878B4732C00130800A7329B /* RankingView.swift */,
+				5878B4752C00130D00A7329B /* RankingVM.swift */,
 			);
-			path = AuthView;
+			path = RankingView;
 			sourceTree = "<group>";
 		};
 		5878B4792C0018CA00A7329B /* Domain */ = {
@@ -517,7 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5878B4762C00130D00A7329B /* AuthVM.swift in Sources */,
+				5878B4762C00130D00A7329B /* RankingVM.swift in Sources */,
 				585BB5112BFC6816007CCD51 /* DIContainer.swift in Sources */,
 				585BB52C2BFC698B007CCD51 /* Util.swift in Sources */,
 				585BB5292BFC6954007CCD51 /* MainVM.swift in Sources */,
@@ -541,7 +541,7 @@
 				585BB5252BFC6922007CCD51 /* BaseViewController.swift in Sources */,
 				585BB51F2BFC68D8007CCD51 /* SplashView.swift in Sources */,
 				585BB50C2BFC67F5007CCD51 /* AppCoordinator.swift in Sources */,
-				5878B4742C00130800A7329B /* AuthView.swift in Sources */,
+				5878B4742C00130800A7329B /* RankingView.swift in Sources */,
 				585BB5132BFC681C007CCD51 /* AppEnvironment.swift in Sources */,
 				585BB5372BFC7029007CCD51 /* GameView.swift in Sources */,
 				5878B4892C007DCF00A7329B /* SingleBoxTextField.swift in Sources */,
@@ -550,7 +550,7 @@
 				585BB53D2BFC745B007CCD51 /* FoxImageRepository.swift in Sources */,
 				585BB5182BFC683E007CCD51 /* InteractorsContainer.swift in Sources */,
 				5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */,
-				5878B47E2C00193300A7329B /* UserDBRespository.swift in Sources */,
+				5878B47E2C00193300A7329B /* RankingDBRespository.swift in Sources */,
 				585BB5212BFC68DF007CCD51 /* SplashVM.swift in Sources */,
 				585BB5232BFC6902007CCD51 /* BaseViewModel.swift in Sources */,
 			);

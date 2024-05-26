@@ -27,6 +27,6 @@ extension DIContainer {
     }
     
     struct DBRepositories {
-        let userDBRespository: UserDBRespository
+        let rankingDBRespository: RankingDBRespository
     }
 }

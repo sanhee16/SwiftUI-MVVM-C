@@ -1,5 +1,5 @@
 //
-//  UserDBRespository.swift
+//  RankingDBRespository.swift
 //  AnimalPicker
 //
 //  Created by Sandy on 5/24/24.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol UserDBRespository {
+protocol RankingDBRespository {
     func loadUserInfo() -> UserInfo
     func saveUserInfo(userInfo: UserInfo)
 }
 
-class RealUserDBRespository: UserDBRespository {
+class RealRankingDBRespository: RankingDBRespository {
     var userDefaultsService: UserDefaultsService
     
     init(userDefaultsService: UserDefaultsService) {

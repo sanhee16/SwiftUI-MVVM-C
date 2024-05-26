@@ -51,8 +51,8 @@ class AppCoordinator: BaseCoordinator, ObservableObject {
         self.push(vc, animated: false)
     }
     
-    func pushAuthView() {
-        let vc = AuthView.vc(self, interactors: self.container.interactors)
+    func pushRankingView() {
+        let vc = RankingView.vc(self, interactors: self.container.interactors)
         self.push(vc, animated: false)
     }
 }
