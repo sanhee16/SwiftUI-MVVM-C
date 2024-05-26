@@ -32,6 +32,12 @@ struct RankingView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
+                Text("Ranking")
+                    .font(.kr20b)
+                    .foregroundStyle(.black)
+                
+                
+                
 
             }
             .frame(width: geometry.size.width, alignment: .center)

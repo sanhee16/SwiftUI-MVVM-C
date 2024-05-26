@@ -1,5 +1,5 @@
 //
-//  UserInfo.swift
+//  RankingInfo.swift
 //  AnimalPicker
 //
 //  Created by Sandy on 5/24/24.
@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct UserInfo {
+struct RankingInfo {
     var nickname: String
-    var password: String
+    var score: Int
+    var createdAt: Int
 }

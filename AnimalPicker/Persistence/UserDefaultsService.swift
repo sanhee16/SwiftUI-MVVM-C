@@ -7,17 +7,12 @@
 
 import Foundation
 
-enum UserDefaultsKeys: String {
-    case nickname
-    case password
+enum UserDefaultsKeys {
+    
 }
 
 class UserDefaultsService {
-    @UserDefault<String>(key: UserDefaultsKeys.nickname.rawValue, defaultValue: "")
-    var nickname
     
-    @UserDefault<String>(key: UserDefaultsKeys.password.rawValue, defaultValue: "")
-    var password
 }
 
 @propertyWrapper struct UserDefault<T> {

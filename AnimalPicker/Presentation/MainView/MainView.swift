@@ -31,6 +31,20 @@ struct MainView: View {
                 Text("Animal Picker")
                     .font(.kr20b)
                     .foregroundStyle(.black)
+                Text("Ranking")
+                    .font(.kr14r)
+                    .paddingVertical(15)
+                    .frame(width: UIScreen.main.bounds.size.width - 40, alignment: .center)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundStyle(Color.green.opacity(0.8))
+                    )
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        self.coordinator.pushRankingView()
+                    }
+                    .paddingVertical(14)
+                
                 Spacer()
 
                 ForEach(vm.levels, id: \.self) { level in
@@ -48,6 +62,8 @@ struct MainView: View {
                         }
                         .paddingBottom(20)
                 }
+
+                
                 Spacer()
             }
             .frame(width: geometry.size.width, alignment: .center)

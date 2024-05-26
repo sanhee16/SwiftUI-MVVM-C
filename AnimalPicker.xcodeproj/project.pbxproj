@@ -42,7 +42,7 @@
 		5878B4742C00130800A7329B /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4732C00130800A7329B /* RankingView.swift */; };
 		5878B4762C00130D00A7329B /* RankingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4752C00130D00A7329B /* RankingVM.swift */; };
 		5878B4782C00188600A7329B /* UserInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4772C00188600A7329B /* UserInfoInteractor.swift */; };
-		5878B47B2C0018D800A7329B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47A2C0018D800A7329B /* UserInfo.swift */; };
+		5878B47B2C0018D800A7329B /* RankingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47A2C0018D800A7329B /* RankingInfo.swift */; };
 		5878B47E2C00193300A7329B /* RankingDBRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47D2C00193300A7329B /* RankingDBRespository.swift */; };
 		5878B4812C001B3A00A7329B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4802C001B3A00A7329B /* UserDefaultsService.swift */; };
 		5878B4832C002A5800A7329B /* SingleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4822C002A5800A7329B /* SingleTextField.swift */; };
@@ -108,7 +108,7 @@
 		5878B4732C00130800A7329B /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		5878B4752C00130D00A7329B /* RankingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingVM.swift; sourceTree = "<group>"; };
 		5878B4772C00188600A7329B /* UserInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInteractor.swift; sourceTree = "<group>"; };
-		5878B47A2C0018D800A7329B /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		5878B47A2C0018D800A7329B /* RankingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingInfo.swift; sourceTree = "<group>"; };
 		5878B47D2C00193300A7329B /* RankingDBRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDBRespository.swift; sourceTree = "<group>"; };
 		5878B4802C001B3A00A7329B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		5878B4822C002A5800A7329B /* SingleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextField.swift; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 		5878B47C2C0018E100A7329B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				5878B47A2C0018D800A7329B /* UserInfo.swift */,
+				5878B47A2C0018D800A7329B /* RankingInfo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -533,7 +533,7 @@
 				5878B4812C001B3A00A7329B /* UserDefaultsService.swift in Sources */,
 				585BB50E2BFC67FB007CCD51 /* BaseCoordinator.swift in Sources */,
 				585BB5422BFC7516007CCD51 /* BaseNetwork.swift in Sources */,
-				5878B47B2C0018D800A7329B /* UserInfo.swift in Sources */,
+				5878B47B2C0018D800A7329B /* RankingInfo.swift in Sources */,
 				5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */,
 				585BB5392BFC702E007CCD51 /* GameVM.swift in Sources */,
 				585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */,

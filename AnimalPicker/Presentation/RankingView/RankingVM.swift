@@ -22,4 +22,8 @@ class RankingVM: BaseViewModel {
     func onDisappear() {
         
     }
+    
+    func loadRankings() {
+//        self.interactors.rankingInteractor
+    }
 }
