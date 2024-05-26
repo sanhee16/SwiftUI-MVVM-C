@@ -8,8 +8,8 @@
 import Foundation
 
 protocol RankingInteractor {
-    func loadRankings() -> UserInfo?
-    func saveRanking(userInfo: UserInfo) -> SaveUserInfoResult
+//    func loadRankings() -> UserInfo?
+//    func saveRanking(userInfo: UserInfo) -> SaveUserInfoResult
 }
 
 struct RealRankingInteractor: RankingInteractor {

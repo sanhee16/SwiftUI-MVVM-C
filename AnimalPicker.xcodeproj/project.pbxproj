@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2679FAC62C030F6700631B96 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2679FAC42C030F6700631B96 /* animal_picker_db.xcdatamodeld */; };
 		585BB4D82BFC654D007CCD51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 585BB4D72BFC654D007CCD51 /* Assets.xcassets */; };
 		585BB4DB2BFC654D007CCD51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 585BB4DA2BFC654D007CCD51 /* Preview Assets.xcassets */; };
 		585BB4E52BFC654E007CCD51 /* AnimalPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB4E42BFC654E007CCD51 /* AnimalPickerTests.swift */; };
@@ -42,7 +43,6 @@
 		5878B4742C00130800A7329B /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4732C00130800A7329B /* RankingView.swift */; };
 		5878B4762C00130D00A7329B /* RankingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4752C00130D00A7329B /* RankingVM.swift */; };
 		5878B4782C00188600A7329B /* UserInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4772C00188600A7329B /* UserInfoInteractor.swift */; };
-		5878B47B2C0018D800A7329B /* RankingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47A2C0018D800A7329B /* RankingInfo.swift */; };
 		5878B47E2C00193300A7329B /* RankingDBRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47D2C00193300A7329B /* RankingDBRespository.swift */; };
 		5878B4812C001B3A00A7329B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4802C001B3A00A7329B /* UserDefaultsService.swift */; };
 		5878B4832C002A5800A7329B /* SingleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4822C002A5800A7329B /* SingleTextField.swift */; };
@@ -70,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2679FAC52C030F6700631B96 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
 		585BB4D02BFC654C007CCD51 /* AnimalPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		585BB4D72BFC654D007CCD51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		585BB4DA2BFC654D007CCD51 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -108,7 +109,6 @@
 		5878B4732C00130800A7329B /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		5878B4752C00130D00A7329B /* RankingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingVM.swift; sourceTree = "<group>"; };
 		5878B4772C00188600A7329B /* UserInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInteractor.swift; sourceTree = "<group>"; };
-		5878B47A2C0018D800A7329B /* RankingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingInfo.swift; sourceTree = "<group>"; };
 		5878B47D2C00193300A7329B /* RankingDBRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDBRespository.swift; sourceTree = "<group>"; };
 		5878B4802C001B3A00A7329B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		5878B4822C002A5800A7329B /* SingleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextField.swift; sourceTree = "<group>"; };
@@ -366,7 +366,6 @@
 		5878B47C2C0018E100A7329B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				5878B47A2C0018D800A7329B /* RankingInfo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -374,6 +373,7 @@
 		5878B47F2C001B2900A7329B /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				2679FAC42C030F6700631B96 /* animal_picker_db.xcdatamodeld */,
 				5878B4802C001B3A00A7329B /* UserDefaultsService.swift */,
 			);
 			path = Persistence;
@@ -527,13 +527,13 @@
 				5878B4782C00188600A7329B /* UserInfoInteractor.swift in Sources */,
 				585BB51A2BFC6866007CCD51 /* Constants.swift in Sources */,
 				585BB5072BFC67B8007CCD51 /* AppDelegate.swift in Sources */,
+				2679FAC62C030F6700631B96 /* animal_picker_db.xcdatamodeld in Sources */,
 				585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */,
 				585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */,
 				585BB5312BFC69F1007CCD51 /* Font+Extension.swift in Sources */,
 				5878B4812C001B3A00A7329B /* UserDefaultsService.swift in Sources */,
 				585BB50E2BFC67FB007CCD51 /* BaseCoordinator.swift in Sources */,
 				585BB5422BFC7516007CCD51 /* BaseNetwork.swift in Sources */,
-				5878B47B2C0018D800A7329B /* RankingInfo.swift in Sources */,
 				5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */,
 				585BB5392BFC702E007CCD51 /* GameVM.swift in Sources */,
 				585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */,
@@ -914,6 +914,20 @@
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		2679FAC42C030F6700631B96 /* animal_picker_db.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2679FAC52C030F6700631B96 /* animal_picker_db.xcdatamodel */,
+			);
+			currentVersion = 2679FAC52C030F6700631B96 /* animal_picker_db.xcdatamodel */;
+			name = animal_picker_db.xcdatamodeld;
+			path = "/Users/sandy/dev/SwiftUI-MVVM-C/AnimalPicker/Persistence/animal_picker_db.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 585BB4C82BFC654C007CCD51 /* Project object */;
 }

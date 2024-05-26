@@ -8,8 +8,8 @@
 import Foundation
 
 protocol RankingDBRespository {
-    func loadUserInfo() -> UserInfo
-    func saveUserInfo(userInfo: UserInfo)
+//    func loadUserInfo() -> UserInfo
+//    func saveUserInfo(userInfo: UserInfo)
 }
 
 class RealRankingDBRespository: RankingDBRespository {
@@ -19,12 +19,12 @@ class RealRankingDBRespository: RankingDBRespository {
         self.userDefaultsService = userDefaultsService
     }
     
-    func loadUserInfo() -> UserInfo {
-        return UserInfo(nickname: userDefaultsService.nickname, password: userDefaultsService.password)
-    }
-    
-    func saveUserInfo(userInfo: UserInfo) {
-        userDefaultsService.nickname = userInfo.nickname
-        userDefaultsService.password = userInfo.password
-    }
+//    func loadUserInfo() -> UserInfo {
+//        return UserInfo(nickname: userDefaultsService.nickname, password: userDefaultsService.password)
+//    }
+//    
+//    func saveUserInfo(userInfo: UserInfo) {
+//        userDefaultsService.nickname = userInfo.nickname
+//        userDefaultsService.password = userInfo.password
+//    }
 }
