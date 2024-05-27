@@ -52,6 +52,7 @@
 		58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */; };
 		58C50D282C04150000C4E0F1 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D272C04150000C4E0F1 /* CoreDataService.swift */; };
 		58C50D2F2C041A1D00C4E0F1 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */; };
+		58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D302C047E5400C4E0F1 /* Topbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
 		58C50D272C04150000C4E0F1 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
+		58C50D302C047E5400C4E0F1 /* Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +348,7 @@
 			children = (
 				5878B4822C002A5800A7329B /* SingleTextField.swift */,
 				5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */,
+				58C50D302C047E5400C4E0F1 /* Topbar.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				585BB5092BFC67CC007CCD51 /* SceneDelegate.swift in Sources */,
 				585BB5252BFC6922007CCD51 /* BaseViewController.swift in Sources */,
 				585BB51F2BFC68D8007CCD51 /* SplashView.swift in Sources */,
+				58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */,
 				585BB50C2BFC67F5007CCD51 /* AppCoordinator.swift in Sources */,
 				5878B4742C00130800A7329B /* RankingView.swift in Sources */,
 				585BB5132BFC681C007CCD51 /* AppEnvironment.swift in Sources */,
