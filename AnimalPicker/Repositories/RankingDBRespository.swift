@@ -6,25 +6,54 @@
 //
 
 import Foundation
+import CoreData
 
 protocol RankingDBRespository {
-//    func loadUserInfo() -> UserInfo
-//    func saveUserInfo(userInfo: UserInfo)
+    func loadRankings() -> [Ranking]
+    func loadRanking(id: UUID) -> Ranking?
+    func saveRanking(rankingData: Ranking)
 }
 
 class RealRankingDBRespository: RankingDBRespository {
     var userDefaultsService: UserDefaultsService
+    var coredataService: CoreDataService
     
-    init(userDefaultsService: UserDefaultsService) {
+    init(userDefaultsService: UserDefaultsService, coredataService: CoreDataService) {
         self.userDefaultsService = userDefaultsService
+        self.coredataService = coredataService
     }
     
-//    func loadUserInfo() -> UserInfo {
-//        return UserInfo(nickname: userDefaultsService.nickname, password: userDefaultsService.password)
-//    }
-//    
-//    func saveUserInfo(userInfo: UserInfo) {
-//        userDefaultsService.nickname = userInfo.nickname
-//        userDefaultsService.password = userInfo.password
-//    }
+    func loadRankings() -> [Ranking] {
+        do {
+            let rankings = try self.coredataService.container.viewContext.fetch(Ranking.fetchRequest()) as! [Ranking]
+            return rankings
+        } catch {
+            print(error.localizedDescription)
+            return []
+        }
+    }
+    
+    func loadRanking(id: UUID) -> Ranking? {
+        do {
+            let ranking = try self.coredataService.container.viewContext.fetch(Ranking.fetchRequest()).first(where: { $0.id == id })
+            return ranking
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    func saveRanking(rankingData: Ranking) {
+        let context = self.coredataService.container.viewContext
+
+        if let entity = NSEntityDescription.entity(forEntityName: "Ranking", in: context) {
+            let ranking = NSManagedObject(entity: entity, insertInto: context)
+
+            ranking.setValue(rankingData.id, forKey: "id")
+            ranking.setValue(rankingData.nickname, forKey: "nickname")
+            ranking.setValue(rankingData.score, forKey: "score")
+            ranking.setValue(rankingData.level, forKey: "level")
+            ranking.setValue(rankingData.createdAt, forKey: "createdAt")
+        }
+    }
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2679FAC62C030F6700631B96 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2679FAC42C030F6700631B96 /* animal_picker_db.xcdatamodeld */; };
 		585BB4D82BFC654D007CCD51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 585BB4D72BFC654D007CCD51 /* Assets.xcassets */; };
 		585BB4DB2BFC654D007CCD51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 585BB4DA2BFC654D007CCD51 /* Preview Assets.xcassets */; };
 		585BB4E52BFC654E007CCD51 /* AnimalPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB4E42BFC654E007CCD51 /* AnimalPickerTests.swift */; };
@@ -42,7 +41,7 @@
 		585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */; };
 		5878B4742C00130800A7329B /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4732C00130800A7329B /* RankingView.swift */; };
 		5878B4762C00130D00A7329B /* RankingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4752C00130D00A7329B /* RankingVM.swift */; };
-		5878B4782C00188600A7329B /* UserInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4772C00188600A7329B /* UserInfoInteractor.swift */; };
+		5878B4782C00188600A7329B /* RankingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4772C00188600A7329B /* RankingInteractor.swift */; };
 		5878B47E2C00193300A7329B /* RankingDBRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47D2C00193300A7329B /* RankingDBRespository.swift */; };
 		5878B4812C001B3A00A7329B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4802C001B3A00A7329B /* UserDefaultsService.swift */; };
 		5878B4832C002A5800A7329B /* SingleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4822C002A5800A7329B /* SingleTextField.swift */; };
@@ -50,6 +49,9 @@
 		5878B48D2C008AD100A7329B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5878B48C2C008AD100A7329B /* Kingfisher */; };
 		5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
 		5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */; };
+		58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */; };
+		58C50D282C04150000C4E0F1 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D272C04150000C4E0F1 /* CoreDataService.swift */; };
+		58C50D2F2C041A1D00C4E0F1 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +72,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2679FAC52C030F6700631B96 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
 		585BB4D02BFC654C007CCD51 /* AnimalPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		585BB4D72BFC654D007CCD51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		585BB4DA2BFC654D007CCD51 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -108,13 +109,16 @@
 		585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
 		5878B4732C00130800A7329B /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		5878B4752C00130D00A7329B /* RankingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingVM.swift; sourceTree = "<group>"; };
-		5878B4772C00188600A7329B /* UserInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInteractor.swift; sourceTree = "<group>"; };
+		5878B4772C00188600A7329B /* RankingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingInteractor.swift; sourceTree = "<group>"; };
 		5878B47D2C00193300A7329B /* RankingDBRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDBRespository.swift; sourceTree = "<group>"; };
 		5878B4802C001B3A00A7329B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		5878B4822C002A5800A7329B /* SingleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextField.swift; sourceTree = "<group>"; };
 		5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBoxTextField.swift; sourceTree = "<group>"; };
 		5892AE152BFEC961009663C1 /* DuckImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuckImageRepository.swift; sourceTree = "<group>"; };
 		5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LizardImageRepository.swift; sourceTree = "<group>"; };
+		58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
+		58C50D272C04150000C4E0F1 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,7 @@
 		585BB4D22BFC654C007CCD51 /* AnimalPicker */ = {
 			isa = PBXGroup;
 			children = (
+				58C50D2C2C041A1000C4E0F1 /* Domain */,
 				585BB5322BFC6BAE007CCD51 /* Info.plist */,
 				5878B47F2C001B2900A7329B /* Persistence */,
 				585BB5402BFC74FF007CCD51 /* Infrastructure */,
@@ -176,7 +181,6 @@
 				585BB52A2BFC6983007CCD51 /* Helper */,
 				585BB51B2BFC68BD007CCD51 /* Presentation */,
 				585BB5142BFC682D007CCD51 /* Interactors */,
-				5878B4792C0018CA00A7329B /* Domain */,
 				585BB50A2BFC67EA007CCD51 /* Coordinator */,
 				585BB5052BFC67AD007CCD51 /* Application */,
 				585BB4D72BFC654D007CCD51 /* Assets.xcassets */,
@@ -243,7 +247,7 @@
 			children = (
 				585BB5172BFC683E007CCD51 /* InteractorsContainer.swift */,
 				585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */,
-				5878B4772C00188600A7329B /* UserInfoInteractor.swift */,
+				5878B4772C00188600A7329B /* RankingInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -355,28 +359,30 @@
 			path = RankingView;
 			sourceTree = "<group>";
 		};
-		5878B4792C0018CA00A7329B /* Domain */ = {
+		5878B47F2C001B2900A7329B /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				5878B47C2C0018E100A7329B /* Entities */,
+				58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */,
+				5878B4802C001B3A00A7329B /* UserDefaultsService.swift */,
+				58C50D272C04150000C4E0F1 /* CoreDataService.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		58C50D2C2C041A1000C4E0F1 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				58C50D2D2C041A1700C4E0F1 /* Entities */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		5878B47C2C0018E100A7329B /* Entities */ = {
+		58C50D2D2C041A1700C4E0F1 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		5878B47F2C001B2900A7329B /* Persistence */ = {
-			isa = PBXGroup;
-			children = (
-				2679FAC42C030F6700631B96 /* animal_picker_db.xcdatamodeld */,
-				5878B4802C001B3A00A7329B /* UserDefaultsService.swift */,
-			);
-			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,6 +523,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */,
 				5878B4762C00130D00A7329B /* RankingVM.swift in Sources */,
 				585BB5112BFC6816007CCD51 /* DIContainer.swift in Sources */,
 				585BB52C2BFC698B007CCD51 /* Util.swift in Sources */,
@@ -524,14 +531,15 @@
 				585BB52F2BFC69C6007CCD51 /* View+Extension.swift in Sources */,
 				5878B4832C002A5800A7329B /* SingleTextField.swift in Sources */,
 				585BB53B2BFC7137007CCD51 /* GameInfo.swift in Sources */,
-				5878B4782C00188600A7329B /* UserInfoInteractor.swift in Sources */,
+				5878B4782C00188600A7329B /* RankingInteractor.swift in Sources */,
+				58C50D282C04150000C4E0F1 /* CoreDataService.swift in Sources */,
 				585BB51A2BFC6866007CCD51 /* Constants.swift in Sources */,
 				585BB5072BFC67B8007CCD51 /* AppDelegate.swift in Sources */,
-				2679FAC62C030F6700631B96 /* animal_picker_db.xcdatamodeld in Sources */,
 				585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */,
 				585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */,
 				585BB5312BFC69F1007CCD51 /* Font+Extension.swift in Sources */,
 				5878B4812C001B3A00A7329B /* UserDefaultsService.swift in Sources */,
+				58C50D2F2C041A1D00C4E0F1 /* RankingData.swift in Sources */,
 				585BB50E2BFC67FB007CCD51 /* BaseCoordinator.swift in Sources */,
 				585BB5422BFC7516007CCD51 /* BaseNetwork.swift in Sources */,
 				5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */,
@@ -916,14 +924,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		2679FAC42C030F6700631B96 /* animal_picker_db.xcdatamodeld */ = {
+		58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				2679FAC52C030F6700631B96 /* animal_picker_db.xcdatamodel */,
+				58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */,
 			);
-			currentVersion = 2679FAC52C030F6700631B96 /* animal_picker_db.xcdatamodel */;
+			currentVersion = 58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */;
 			name = animal_picker_db.xcdatamodeld;
-			path = "/Users/sandy/dev/SwiftUI-MVVM-C/AnimalPicker/Persistence/animal_picker_db.xcdatamodeld";
+			path = /Users/hessegg_pollberry/dev/AnimalPicker/AnimalPicker/Persistence/animal_picker_db.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

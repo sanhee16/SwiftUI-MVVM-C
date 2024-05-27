@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct AppEnvironment {
     let container: DIContainer
@@ -39,7 +40,13 @@ extension AppEnvironment {
     }
     
     private static func configuredDBRepositories() -> DIContainer.DBRepositories {
-        let rankingDBRespository = RealRankingDBRespository(userDefaultsService: UserDefaultsService())
+        let coredataService = CoreDataService()
+        
+        
+        let rankingDBRespository = RealRankingDBRespository(
+            userDefaultsService: UserDefaultsService(),
+            coredataService: coredataService
+        )
         return .init(rankingDBRespository: rankingDBRespository)
     }
     
