@@ -44,17 +44,18 @@ struct GameView: View {
                         Text("Score: \($vm.score.wrappedValue)")
                             .font(.kr30b)
                             .foregroundStyle(Color.white)
-                            
+                        
                         
                         // 랭킹 기록
-                        SingleBoxTextField(
-                            placeholder: "Nickname", text: $nickname) { _ in
+                        if $vm.score.wrappedValue > 0 {
+                            SingleBoxTextField(placeholder: "Nickname", text: $nickname, lengthLimit: 10) { _ in
                                 
                             }
+                            .frame(width: UIScreen.main.bounds.size.width - 100, height: 42, alignment: .center)
+                        }
                         
-                        // 이름
                         HStack(alignment: .center, spacing: 12, content: {
-                            Text("Cancel")
+                            Text("Retry")
                                 .font(.kr16m)
                                 .foregroundStyle(Color.white)
                                 .frame(width: 100, height: 40, alignment: .center)
@@ -67,20 +68,26 @@ struct GameView: View {
                                     vm.reset()
                                 }
                             
-                            Text("Register")
-                                .font(.kr16m)
-                                .foregroundStyle(Color.white)
-                                .frame(width: 100, height: 40, alignment: .center)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .foregroundStyle(Color.yellow)
-                                )
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    vm.reset()
-                                }
-
+                            if $vm.score.wrappedValue > 0 {
+                                Text("Register")
+                                    .font(.kr16m)
+                                    .foregroundStyle(Color.white)
+                                    .frame(width: 100, height: 40, alignment: .center)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .foregroundStyle($nickname.wrappedValue.isEmpty ? Color.gray : Color.yellow)
+                                    )
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        if !$nickname.wrappedValue.isEmpty {
+                                            vm.onUploadRanking($nickname.wrappedValue)
+                                        }
+                                    }
+                            }
                         })
+                        .paddingTop(20)
+                        
+                        
                         
                         
                     }

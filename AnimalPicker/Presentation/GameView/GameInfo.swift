@@ -64,6 +64,19 @@ enum Level: String {
     case hard = "Hard"
     case hell = "Hell"
     
+    var levelInt: Int {
+        switch self {
+        case .easy:
+            return 0
+        case .normal:
+            return 1
+        case .hard:
+            return 2
+        case .hell:
+            return 3
+        }
+    }
+    
     var cell: CellType {
         switch self {
         case .easy:

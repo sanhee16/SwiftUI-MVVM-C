@@ -11,6 +11,6 @@ struct RankingData {
     var id: UUID
     var nickname: String
     var score: Int
-    var level: Int
+    var level: Level
     var createdAt: Int
 }

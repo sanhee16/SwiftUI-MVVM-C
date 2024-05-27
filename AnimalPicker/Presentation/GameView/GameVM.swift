@@ -39,6 +39,7 @@ class GameVM: BaseViewModel {
     }
     
     func onAppear() {
+        self.loadRankings()
         self.loadImages(level: self.level)
     }
     
@@ -47,24 +48,40 @@ class GameVM: BaseViewModel {
     }
     
     func nextLevel() {
+        self.stopTimer()
         self.step += 1
-        self.reset()
         self.loadImages(level: self.level)
     }
     
     func reset() {
         self.stopTimer()
-        self.answer = nil
-        self.results.removeAll()
-        self.countWithType.removeAll()
-        self.status = .ready
         self.step = 0
         self.loadImages(level: self.level)
     }
     
+    func onUploadRanking(_ nickname: String) {
+        if score <= 0 {
+             return
+        }
+        self.interactors.rankingInteractor.saveRanking(
+            rankingData: RankingData(
+                id: UUID(),
+                nickname: nickname,
+                score: self.score,
+                level: self.level,
+                createdAt: Int(Date().timeIntervalSince1970)
+            )
+        )
+    }
+    
+    private func loadRankings() {
+        let rankings = self.interactors.rankingInteractor.loadRankings()
+        print("ranking: \(rankings)")
+    }
+    
     func onSelectItem(item: GameItem) {
         if isCorrect { return }
-        guard let answer = self.answer, let idx = self.results.firstIndex(where: { $0.id == item.id }) else { return }
+        guard let _ = self.answer, let idx = self.results.firstIndex(where: { $0.id == item.id }) else { return }
         self.results[idx].isSelected.toggle()
         self.objectWillChange.send()
         
@@ -75,6 +92,11 @@ class GameVM: BaseViewModel {
     }
     
     private func loadImages(level: Level) {
+        self.results.removeAll()
+        self.countWithType.removeAll()
+        self.status = .ready
+        self.answer = nil
+        
         let totalCount = level.cell.row * level.cell.column
         let distributeTotalCount = distributeTotalCount(totalCount: totalCount, into: self.types.count)
         

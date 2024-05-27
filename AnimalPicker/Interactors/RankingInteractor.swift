@@ -8,9 +8,9 @@
 import Foundation
 
 protocol RankingInteractor {
-    func loadRankings() -> [Ranking]
-    func loadRanking(id: UUID) -> Ranking?
-    func saveRanking(rankingData: Ranking)
+    func loadRankings() -> [RankingData]
+    func loadRanking(id: UUID) -> RankingData?
+    func saveRanking(rankingData: RankingData)
 }
 
 struct RealRankingInteractor: RankingInteractor {
@@ -20,14 +20,22 @@ struct RealRankingInteractor: RankingInteractor {
         self.rankingDBRespository = rankingDBRespository
     }
     
-    func loadRankings() -> [Ranking] {
-        self.rankingDBRespository.loadRankings()
+    func loadRankings() -> [RankingData] {
+        let rankings = self.rankingDBRespository.loadRankings()
+        let rankingDatas = rankings.map { (r: Ranking) in
+            return RankingData(id: r.id ?? UUID(), nickname: r.nickname ?? "", score: Int(r.score), level: r.level.getLevel, createdAt: Int(r.createdAt))
+        }
+        return rankingDatas
     }
     
-    func loadRanking(id: UUID) -> Ranking? {
-        self.rankingDBRespository.loadRanking(id: id)
-    }   
-    func saveRanking(rankingData: Ranking) {
+    func loadRanking(id: UUID) -> RankingData? {
+        let ranking = self.rankingDBRespository.loadRanking(id: id)
+        let rankingData = ranking.map { (r: Ranking) in
+            return RankingData(id: r.id ?? UUID(), nickname: r.nickname ?? "", score: Int(r.score), level: r.level.getLevel, createdAt: Int(r.createdAt))
+        }
+        return rankingData
+    }
+    func saveRanking(rankingData: RankingData) {
         self.rankingDBRespository.saveRanking(rankingData: rankingData)
     }
 }

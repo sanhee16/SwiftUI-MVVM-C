@@ -11,7 +11,7 @@ import CoreData
 protocol RankingDBRespository {
     func loadRankings() -> [Ranking]
     func loadRanking(id: UUID) -> Ranking?
-    func saveRanking(rankingData: Ranking)
+    func saveRanking(rankingData: RankingData)
 }
 
 class RealRankingDBRespository: RankingDBRespository {
@@ -43,7 +43,7 @@ class RealRankingDBRespository: RankingDBRespository {
         }
     }
     
-    func saveRanking(rankingData: Ranking) {
+    func saveRanking(rankingData: RankingData) {
         let context = self.coredataService.container.viewContext
 
         if let entity = NSEntityDescription.entity(forEntityName: "Ranking", in: context) {
@@ -52,8 +52,26 @@ class RealRankingDBRespository: RankingDBRespository {
             ranking.setValue(rankingData.id, forKey: "id")
             ranking.setValue(rankingData.nickname, forKey: "nickname")
             ranking.setValue(rankingData.score, forKey: "score")
-            ranking.setValue(rankingData.level, forKey: "level")
+            ranking.setValue(rankingData.level.levelInt, forKey: "level")
             ranking.setValue(rankingData.createdAt, forKey: "createdAt")
+            
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+extension Int16 {
+    var getLevel: Level {
+        switch self {
+        case 0: return .easy
+        case 1: return .normal
+        case 2: return .hard
+        case 3: return .hell
+        default: return .easy
         }
     }
 }
