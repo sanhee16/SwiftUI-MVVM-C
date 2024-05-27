@@ -11,9 +11,9 @@ import SwiftUI
 
 struct GameView: View {
     typealias VM = GameVM
-    public static func vc(interactors: DIContainer.Interactors, level: Level, completion: (()-> Void)? = nil) -> UIViewController {
+    public static func vc(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, level: Level, completion: (()-> Void)? = nil) -> UIViewController {
         let vm = VM.init(interactors, level: level)
-        let view = Self.init(vm: vm)
+        let view = Self.init(vm: vm, coordinator: coordinator)
         let vc = BaseViewController.init(view, completion: completion)
         vc.attachViewModel(vm)
         
@@ -21,6 +21,7 @@ struct GameView: View {
     }
     
     @StateObject var vm: VM
+    @ObservedObject var coordinator: AppCoordinator
     
     private var safeTop: CGFloat { get { Util.safeTop() }}
     private var safeBottom: CGFloat { get { Util.safeBottom() }}
@@ -123,16 +124,20 @@ struct GameView: View {
                 VStack(alignment: .leading, spacing: 0, content: {
                     HStack {
                         Text(vm.level.rawValue)
-                            .font(.kr20b)
+                            .font(.kr24b)
                         Spacer()
+                        Text("score: \($vm.score.wrappedValue)")
+                            .font(.kr16m)
                     }
+                    
                     if let answer = $vm.answer.wrappedValue {
                         Text("Select All of \(answer.plural)!")
                             .font(.kr18b)
-                            .paddingTop(6)
+                            .paddingTop(16)
                         if let leftTime = $vm.leftTime.wrappedValue {
                             Text("Left Time: \(leftTime)")
-                                .font(.kr14r)
+                                .font(leftTime < 4 ? .kr16b : .kr16r)
+                                .foregroundStyle(leftTime < 4 ? Color.red : Color.black)
                                 .paddingTop(4)
                         }
                     }

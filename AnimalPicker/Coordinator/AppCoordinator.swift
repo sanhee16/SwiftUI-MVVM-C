@@ -47,7 +47,7 @@ class AppCoordinator: BaseCoordinator, ObservableObject {
     
     //MARK: SubViews
     func pushGameView(level: Level) {
-        let vc = GameView.vc(interactors: self.container.interactors, level: level)
+        let vc = GameView.vc(self, interactors: self.container.interactors, level: level)
         self.push(vc, animated: false)
     }
     
