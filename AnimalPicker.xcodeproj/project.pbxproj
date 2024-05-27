@@ -171,8 +171,8 @@
 		585BB4D22BFC654C007CCD51 /* AnimalPicker */ = {
 			isa = PBXGroup;
 			children = (
-				58C50D2C2C041A1000C4E0F1 /* Domain */,
 				585BB5322BFC6BAE007CCD51 /* Info.plist */,
+				58C50D2C2C041A1000C4E0F1 /* Domain */,
 				5878B47F2C001B2900A7329B /* Persistence */,
 				585BB5402BFC74FF007CCD51 /* Infrastructure */,
 				585BB50F2BFC680C007CCD51 /* Injected */,

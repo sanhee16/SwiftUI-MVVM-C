@@ -27,6 +27,9 @@ class GameVM: BaseViewModel {
     @Published var isCorrect: Bool = false
     @Published var isGaming: Bool = true
     @Published var status: GameStatus = .ready
+    @Published var step: Int = 0 { didSet { self.score = self.step * 10 }}
+    @Published var score: Int = 0
+    
     private var timer: Timer? = nil
     
     init(_ interactors: DIContainer.Interactors, level: Level) {
@@ -43,12 +46,19 @@ class GameVM: BaseViewModel {
         
     }
     
+    func nextLevel() {
+        self.step += 1
+        self.reset()
+        self.loadImages(level: self.level)
+    }
+    
     func reset() {
         self.stopTimer()
         self.answer = nil
         self.results.removeAll()
         self.countWithType.removeAll()
         self.status = .ready
+        self.step = 0
         self.loadImages(level: self.level)
     }
     
@@ -82,6 +92,8 @@ class GameVM: BaseViewModel {
         .run(in: &self.subscription) {[weak self] (dogs, foxes, ducks, lizards) in
             guard let self = self else { return }
             var idx: Int = 0
+            self.results.removeAll()
+            
             dogs.forEach {
                 self.results.append(GameItem(id: idx, type: .dog, url: $0.imageUrl, isSelected: false))
                 idx += 1
@@ -129,25 +141,25 @@ class GameVM: BaseViewModel {
     }
     
     private func startTimeCount() {
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] timer in
-            guard let self = self else { return }
-            if let leftTime = self.leftTime {
-                self.leftTime = leftTime - 1
-            }
-            if let leftTime = self.leftTime, leftTime <= 0 {
-                self.status = .timeOut
-                self.stopTimer()
-            }
+        self.stopTimer()
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+    }
+
+    @objc
+    func timerFired() {
+        if let leftTime = self.leftTime {
+            self.leftTime = leftTime - 1
         }
         
-        // Ensure the timer fires when on the main run loop
-        if let timer = self.timer {
-            RunLoop.main.add(timer, forMode: .common)
+        if let leftTime = self.leftTime, leftTime <= 0 {
+            self.status = .timeOut
+            self.stopTimer()
         }
     }
 
     private func stopTimer() {
         self.timer?.invalidate()
+        self.timer = nil
     }
 
 }

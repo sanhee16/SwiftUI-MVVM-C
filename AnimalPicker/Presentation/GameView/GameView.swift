@@ -28,6 +28,9 @@ struct GameView: View {
     let spacing: CGFloat = 16.0
     let size: CGFloat = (UIScreen.main.bounds.width - (20*2 + 16*2)) / 3
     
+    @State private var nickname: String = ""
+    
+    
     var body: some View {
         GeometryReader { geometry in
             if $vm.status.wrappedValue == .timeOut || $vm.status.wrappedValue == .clear {
@@ -36,31 +39,76 @@ struct GameView: View {
                         Text("Time is Up")
                             .font(.kr35b)
                             .foregroundStyle(Color.white)
+                        
+                        // 점수
+                        Text("Score: \($vm.score.wrappedValue)")
+                            .font(.kr30b)
+                            .foregroundStyle(Color.white)
+                            
+                        
+                        // 랭킹 기록
+                        SingleBoxTextField(
+                            placeholder: "Nickname", text: $nickname) { _ in
+                                
+                            }
+                        
+                        // 이름
+                        HStack(alignment: .center, spacing: 12, content: {
+                            Text("Cancel")
+                                .font(.kr16m)
+                                .foregroundStyle(Color.white)
+                                .frame(width: 100, height: 40, alignment: .center)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .foregroundStyle(Color.red)
+                                )
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    vm.reset()
+                                }
+                            
+                            Text("Register")
+                                .font(.kr16m)
+                                .foregroundStyle(Color.white)
+                                .frame(width: 100, height: 40, alignment: .center)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .foregroundStyle(Color.yellow)
+                                )
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    vm.reset()
+                                }
+
+                        })
+                        
+                        
                     }
                     
                     if $vm.status.wrappedValue == .clear {
                         Text("Cleared!")
                             .font(.kr35b)
                             .foregroundStyle(Color.white)
+                        
+                        HStack(alignment: .center, spacing: 12, content: {
+                            Text("Next")
+                                .font(.kr15m)
+                                .foregroundStyle(Color.black)
+                                .frame(width: 100, height: 40, alignment: .center)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .foregroundStyle(Color.yellow)
+                                )
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    vm.nextLevel()
+                                }
+                        })
                     }
                     
-                    HStack(alignment: .center, spacing: 12, content: {
-                        Text("Retry")
-                            .font(.kr15m)
-                            .foregroundStyle(Color.black)
-                            .frame(width: 100, height: 40, alignment: .center)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .foregroundStyle(Color.yellow)
-                            )
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                vm.reset()
-                            }
-                    })
                 })
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
-                .background(Color.black.opacity(0.75))
+                .background(Color.black.opacity(0.8))
                 .zIndex(1)
             }
             
@@ -81,7 +129,6 @@ struct GameView: View {
                                 .paddingTop(4)
                         }
                     }
-                    
                 })
                 .paddingHorizontal(20.0)
                 .paddingVertical(12)
