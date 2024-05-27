@@ -42,7 +42,7 @@ struct Topbar: View {
         ZStack(alignment: .center) {
             HStack(alignment: .center, spacing: 0) {
                 if type != .none {
-                    Image(type.rawValue)
+                    Image(systemName: type.rawValue)
                         .resizable()
                         .scaledToFit()
                         .frame(both: 30)

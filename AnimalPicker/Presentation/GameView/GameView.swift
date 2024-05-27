@@ -121,6 +121,9 @@ struct GameView: View {
             }
             
             VStack(alignment: .leading, spacing: 0) {
+                Topbar(vm.level.rawValue, type: .back) {
+                    self.coordinator.pop()
+                }
                 VStack(alignment: .leading, spacing: 0, content: {
                     HStack {
                         Text(vm.level.rawValue)
