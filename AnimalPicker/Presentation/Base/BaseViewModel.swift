@@ -30,6 +30,7 @@ class BaseViewModel: ObservableObject {
         }
     }}
     @Published var toastMessage: String = ""
+    @Published var iaPop: Bool = false
     
     init() {
         print("init \(type(of: self))")

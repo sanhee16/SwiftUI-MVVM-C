@@ -45,7 +45,7 @@ struct Topbar: View {
                     Image(systemName: type.rawValue)
                         .resizable()
                         .scaledToFit()
-                        .frame(both: 30)
+                        .frame(both: 16)
                         .padding(.leading, Self.PADDING)
                         .onTapGesture {
                             callback?()

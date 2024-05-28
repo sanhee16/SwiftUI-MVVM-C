@@ -34,9 +34,9 @@ struct GameView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            if $vm.status.wrappedValue == .timeOut || $vm.status.wrappedValue == .clear {
+            if $vm.status.wrappedValue == .timeOut || $vm.status.wrappedValue == .clear || $vm.status.wrappedValue == .enterRanking {
                 VStack(alignment: .center, spacing: 16, content: {
-                    if $vm.status.wrappedValue == .timeOut {
+                    if $vm.status.wrappedValue == .timeOut || $vm.status.wrappedValue == .enterRanking {
                         Text("Time is Up")
                             .font(.kr35b)
                             .foregroundStyle(Color.white)
@@ -48,7 +48,7 @@ struct GameView: View {
                         
                         
                         // 랭킹 기록
-                        if $vm.score.wrappedValue > 0 {
+                        if $vm.status.wrappedValue == .enterRanking {
                             SingleBoxTextField(placeholder: "Nickname", text: $nickname, lengthLimit: 10) { _ in
                                 
                             }
@@ -69,7 +69,7 @@ struct GameView: View {
                                     vm.reset()
                                 }
                             
-                            if $vm.score.wrappedValue > 0 {
+                            if $vm.status.wrappedValue == .enterRanking {
                                 Text("Register")
                                     .font(.kr16m)
                                     .foregroundStyle(Color.white)
@@ -177,6 +177,11 @@ struct GameView: View {
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
+        .onChange(of: $vm.iaPop.wrappedValue, perform: { newValue in
+            if newValue {
+                self.coordinator.pop()
+            }
+        })
         .onAppear {
             vm.onAppear()
         }

@@ -11,6 +11,7 @@ import Combine
 enum GameStatus {
     case ready
     case timeOut
+    case enterRanking
     case clear
     case onGaming
 }
@@ -29,6 +30,8 @@ class GameVM: BaseViewModel {
     @Published var status: GameStatus = .ready
     @Published var step: Int = 0 { didSet { self.score = self.step * 10 }}
     @Published var score: Int = 0
+
+    @Published var isUploadSuccess: Bool = false
     
     private var timer: Timer? = nil
     
@@ -72,6 +75,7 @@ class GameVM: BaseViewModel {
                 createdAt: Int(Date().timeIntervalSince1970)
             )
         )
+        self.status = .timeOut
     }
     
     private func loadRankings() {
@@ -174,7 +178,7 @@ class GameVM: BaseViewModel {
         }
         
         if let leftTime = self.leftTime, leftTime <= 0 {
-            self.status = .timeOut
+            self.status = self.score > 0 ? .enterRanking : .timeOut
             self.stopTimer()
         }
     }
