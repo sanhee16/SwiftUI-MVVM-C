@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RankingData {
+struct RankingData: Identifiable, Hashable {
     var id: UUID
     var nickname: String
     var score: Int

@@ -33,6 +33,7 @@ class RealRankingDBRespository: RankingDBRespository {
         }
     }
     
+    
     func loadRanking(id: UUID) -> Ranking? {
         do {
             let ranking = try self.coredataService.container.viewContext.fetch(Ranking.fetchRequest()).first(where: { $0.id == id })
