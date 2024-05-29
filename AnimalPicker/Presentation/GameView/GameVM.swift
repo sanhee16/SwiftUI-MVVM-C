@@ -28,7 +28,7 @@ class GameVM: BaseViewModel {
     @Published var isCorrect: Bool = false
     @Published var isGaming: Bool = true
     @Published var status: GameStatus = .ready
-    @Published var step: Int = 0 { didSet { self.score = self.step * 10 }}
+    @Published var step: Int = 0 { didSet { self.score = self.step * self.level.point }}
     @Published var score: Int = 0
 
     @Published var isUploadSuccess: Bool = false
@@ -160,12 +160,12 @@ class GameVM: BaseViewModel {
         guard n > 0, totalCount >= n else { return [] }
         
         var result: [Int] = []
-        var remainingCount = totalCount
+        var remainingCount = totalCount - self.types.count
         
         for _ in 1..<n {
             let maxPossibleValue = remainingCount - (n - result.count)
             let randomValue = Int.random(in: 1...maxPossibleValue)
-            result.append(randomValue)
+            result.append(randomValue + 1)
             remainingCount -= randomValue
         }
         

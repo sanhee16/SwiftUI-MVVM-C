@@ -64,6 +64,19 @@ enum Level: String {
     case hard = "Hard"
     case hell = "Hell"
     
+    var point: Int {
+        switch self {
+        case .easy:
+            return 3
+        case .normal:
+            return 9
+        case .hard:
+            return 15
+        case .hell:
+            return 23
+        }
+    }
+    
     var levelInt: Int {
         switch self {
         case .easy:
