@@ -89,7 +89,7 @@ struct SingleBoxTextField<Content>: View where Content: View {
                         } else {
                             if !text.isEmpty {
                                 Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.black.opacity(0.5))
                                     .frame(both: 26, aligment: .center)
                                     .contentShape(Rectangle())
                                     .onTapGesture {

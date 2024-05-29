@@ -32,6 +32,7 @@ class GameVM: BaseViewModel {
     @Published var score: Int = 0
 
     @Published var isUploadSuccess: Bool = false
+    @Published var rankings: [RankingData] = []
     
     private var timer: Timer? = nil
     
@@ -42,7 +43,6 @@ class GameVM: BaseViewModel {
     }
     
     func onAppear() {
-        self.loadRankings()
         self.loadImages(level: self.level)
     }
     
@@ -75,12 +75,8 @@ class GameVM: BaseViewModel {
                 createdAt: Int(Date().timeIntervalSince1970)
             )
         )
+        self.loadRankings()
         self.status = .timeOut
-    }
-    
-    private func loadRankings() {
-        let rankings = self.interactors.rankingInteractor.loadRankings()
-        print("ranking: \(rankings)")
     }
     
     func onSelectItem(item: GameItem) {
@@ -104,6 +100,11 @@ class GameVM: BaseViewModel {
             self.status = .onGaming
             self.startTimeCount()
         }
+    }
+    
+    func loadRankings() {
+        self.rankings.removeAll()
+        self.rankings = self.interactors.rankingInteractor.loadRankings(level: self.level)
     }
     
     private func loadImages(level: Level) {
@@ -170,7 +171,7 @@ class GameVM: BaseViewModel {
         }
         
         // 마지막 남은 수를 결과 배열에 추가하여 totalCount와 동일하게 만듦
-        result.append(remainingCount)
+        result.append(remainingCount + 1)
         
         return result
     }
@@ -188,6 +189,9 @@ class GameVM: BaseViewModel {
         
         if let leftTime = self.leftTime, leftTime <= 0 {
             self.status = self.score > 0 ? .enterRanking : .timeOut
+            if self.status == .timeOut {
+                self.loadRankings()
+            }
             self.stopTimer()
         }
     }
