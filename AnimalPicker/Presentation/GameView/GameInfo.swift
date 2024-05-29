@@ -114,6 +114,15 @@ struct GameItem: Equatable, Hashable {
     let type: ImageType
     let url: String
     var isSelected: Bool
+    var isLoaded: Bool
+    
+    init(id: Int, type: ImageType, url: String) {
+        self.id = id
+        self.type = type
+        self.url = url
+        self.isSelected = false
+        self.isLoaded = false
+    }
 }
 
 

@@ -95,6 +95,17 @@ class GameVM: BaseViewModel {
         }
     }
     
+    func onLoadSuccess(item: GameItem) {
+        if let idx = self.results.firstIndex(of: item) {
+            self.results[idx].isLoaded = true
+        }
+        
+        if self.results.filter({ !$0.isLoaded }).isEmpty {
+            self.status = .onGaming
+            self.startTimeCount()
+        }
+    }
+    
     private func loadImages(level: Level) {
         self.results.removeAll()
         self.countWithType.removeAll()
@@ -121,27 +132,25 @@ class GameVM: BaseViewModel {
             self.results.removeAll()
             
             dogs.forEach {
-                self.results.append(GameItem(id: idx, type: .dog, url: $0.imageUrl, isSelected: false))
+                self.results.append(GameItem(id: idx, type: .dog, url: $0.imageUrl))
                 idx += 1
             }
             foxes.forEach {
-                self.results.append(GameItem(id: idx, type: .fox, url: $0.imageUrl, isSelected: false))
+                self.results.append(GameItem(id: idx, type: .fox, url: $0.imageUrl))
                 idx += 1
             }
             ducks.forEach {
-                self.results.append(GameItem(id: idx, type: .duck, url: $0.imageUrl, isSelected: false))
+                self.results.append(GameItem(id: idx, type: .duck, url: $0.imageUrl))
                 idx += 1
             }
             lizards.forEach {
-                self.results.append(GameItem(id: idx, type: .lizard, url: $0.imageUrl, isSelected: false))
+                self.results.append(GameItem(id: idx, type: .lizard, url: $0.imageUrl))
                 idx += 1
             }
             
             self.results.shuffle()
             self.objectWillChange.send()
             self.leftTime = level.timer
-            self.status = .onGaming
-            self.startTimeCount()
             self.answer = self.types.randomElement()
             print("self.results: \(self.results)")
         }

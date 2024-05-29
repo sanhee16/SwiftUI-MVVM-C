@@ -39,6 +39,7 @@
 		585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5432BFC764A007CCD51 /* DogImageRepository.swift */; };
 		585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */; };
 		585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */; };
+		5870E7482C06F71800416F08 /* SDGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870E7472C06F71800416F08 /* SDGrid.swift */; };
 		5878B4742C00130800A7329B /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4732C00130800A7329B /* RankingView.swift */; };
 		5878B4762C00130D00A7329B /* RankingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4752C00130D00A7329B /* RankingVM.swift */; };
 		5878B4782C00188600A7329B /* RankingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4772C00188600A7329B /* RankingInteractor.swift */; };
@@ -108,6 +109,7 @@
 		585BB5432BFC764A007CCD51 /* DogImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImageRepository.swift; sourceTree = "<group>"; };
 		585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalImageInteractor.swift; sourceTree = "<group>"; };
 		585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
+		5870E7472C06F71800416F08 /* SDGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDGrid.swift; sourceTree = "<group>"; };
 		5878B4732C00130800A7329B /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		5878B4752C00130D00A7329B /* RankingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingVM.swift; sourceTree = "<group>"; };
 		5878B4772C00188600A7329B /* RankingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingInteractor.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				585BB53A2BFC7137007CCD51 /* GameInfo.swift */,
 				585BB5362BFC7029007CCD51 /* GameView.swift */,
 				585BB5382BFC702E007CCD51 /* GameVM.swift */,
+				5870E7472C06F71800416F08 /* SDGrid.swift */,
 			);
 			path = GameView;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				58C50D282C04150000C4E0F1 /* CoreDataService.swift in Sources */,
 				585BB51A2BFC6866007CCD51 /* Constants.swift in Sources */,
 				585BB5072BFC67B8007CCD51 /* AppDelegate.swift in Sources */,
+				5870E7482C06F71800416F08 /* SDGrid.swift in Sources */,
 				585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */,
 				585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */,
 				585BB5312BFC69F1007CCD51 /* Font+Extension.swift in Sources */,

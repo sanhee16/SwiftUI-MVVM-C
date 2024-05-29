@@ -149,29 +149,30 @@ struct GameView: View {
                 .paddingVertical(12)
                 
                 ScrollView(.vertical, showsIndicators: false) {
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: vm.level.cell.row), spacing: self.spacing, content: {
-                        ForEach(vm.results, id: \.self) { item in
-                            if let url = URL(string: item.url) {
-                                KFImage(url)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(both: self.size, aligment: .center)
-                                    .overlay {
-                                        if item.isSelected {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .foregroundStyle(Color.black.opacity(0.7))
-                                        }
+                    SDGrid(columnCount: vm.level.cell.row, spacing: self.spacing, data: vm.results) { item in
+                        if let url = URL(string: item.url) {
+                            KFImage(url)
+                                .onSuccess({ _ in
+                                    vm.onLoadSuccess(item: item)
+                                })
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(both: self.size, aligment: .center)
+                                .overlay {
+                                    if item.isSelected {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .foregroundStyle(Color.black.opacity(0.7))
                                     }
-                                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                                    .clipped()
-                                    .shadow(color: .black.opacity(0.3), radius: 2, x: 2, y: 2)
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        vm.onSelectItem(item: item)
-                                    }
-                            }
+                                }
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .clipped()
+                                .shadow(color: .black.opacity(0.3), radius: 2, x: 2, y: 2)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    vm.onSelectItem(item: item)
+                                }
                         }
-                    })
+                    }
                     .paddingHorizontal(20.0)
                 }
             }
@@ -190,4 +191,3 @@ struct GameView: View {
         }
     }
 }
-
