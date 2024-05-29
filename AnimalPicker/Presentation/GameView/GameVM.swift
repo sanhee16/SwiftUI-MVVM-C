@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 enum GameStatus {
-    case ready
+    case loading
     case timeOut
     case enterRanking
     case clear
@@ -27,7 +27,7 @@ class GameVM: BaseViewModel {
     @Published var leftTime: Int? = nil
     @Published var isCorrect: Bool = false
     @Published var isGaming: Bool = true
-    @Published var status: GameStatus = .ready
+    @Published var status: GameStatus = .loading
     @Published var step: Int = 0 { didSet { self.score = self.step * self.level.point }}
     @Published var score: Int = 0
 
@@ -109,7 +109,7 @@ class GameVM: BaseViewModel {
     private func loadImages(level: Level) {
         self.results.removeAll()
         self.countWithType.removeAll()
-        self.status = .ready
+        self.status = .loading
         self.answer = nil
         
         let totalCount = level.cell.row * level.cell.column

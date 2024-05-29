@@ -34,9 +34,10 @@ struct GameView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            if $vm.status.wrappedValue == .timeOut || $vm.status.wrappedValue == .clear || $vm.status.wrappedValue == .enterRanking {
+            if $vm.status.wrappedValue != .onGaming {
                 VStack(alignment: .center, spacing: 16, content: {
-                    if $vm.status.wrappedValue == .timeOut || $vm.status.wrappedValue == .enterRanking {
+                    switch $vm.status.wrappedValue {
+                    case .timeOut, .enterRanking:
                         Text("Time is Up")
                             .font(.kr35b)
                             .foregroundStyle(Color.white)
@@ -88,12 +89,7 @@ struct GameView: View {
                         })
                         .paddingTop(20)
                         
-                        
-                        
-                        
-                    }
-                    
-                    if $vm.status.wrappedValue == .clear {
+                    case .clear:
                         Text("Cleared!")
                             .font(.kr35b)
                             .foregroundStyle(Color.white)
@@ -112,6 +108,12 @@ struct GameView: View {
                                     vm.nextLevel()
                                 }
                         })
+                    case .loading:
+                        Text("Loading...")
+                            .font(.kr35b)
+                            .foregroundStyle(Color.white)
+                    default:
+                        EmptyView()
                     }
                     
                 })
