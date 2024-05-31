@@ -147,6 +147,7 @@ struct GameView: View {
                                         vm.onUploadRanking($nickname.wrappedValue)
                                     }
                                 }
+                                .paddingBottom(10)
                         }
                     }
                 })
@@ -154,15 +155,22 @@ struct GameView: View {
                 .paddingTop(10)
                 
                 // 랭킹 기록
-                Text("[Rankings]")
-                    .font(.kr24b)
-                    .foregroundStyle(Color.white)
-                    .paddingTop(10)
                 VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .center, spacing: 0, content: {
+                        Spacer()
+                        Text("Rankings")
+                            .font(.kr24b)
+                            .foregroundStyle(Color.black.opacity(0.85))
+                        Spacer()
+                    })
+                    .paddingTop(10)
+                    
                     if $vm.rankings.wrappedValue.isEmpty {
+                        Spacer()
                         Text("No Ranking")
                             .font(.kr16m)
                             .foregroundStyle(Color.black.opacity(0.8))
+                        Spacer()
                     } else {
                         ScrollView(.vertical, showsIndicators: false, content: {
                             VStack(alignment: .leading, spacing: 0) {
