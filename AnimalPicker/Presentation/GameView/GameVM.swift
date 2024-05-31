@@ -102,7 +102,6 @@ class GameVM: BaseViewModel {
     }
     
     func loadRankings() {
-        self.rankings.removeAll()
         self.interactors.rankingInteractor.loadRemoteRankings(level: self.level)
             .run(in: &self.subscription) {[weak self] response in
                 guard let self = self else { return }
@@ -110,6 +109,7 @@ class GameVM: BaseViewModel {
                 print("loadRankings: \(self.rankings)")
             } err: {[weak self] err in
                 guard let self = self else { return }
+                self.rankings.removeAll()
                 print(err)
             } complete: {
                 

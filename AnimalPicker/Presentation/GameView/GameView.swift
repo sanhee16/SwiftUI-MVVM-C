@@ -167,9 +167,13 @@ struct GameView: View {
                     
                     if $vm.rankings.wrappedValue.isEmpty {
                         Spacer()
-                        Text("No Ranking")
-                            .font(.kr16m)
-                            .foregroundStyle(Color.black.opacity(0.8))
+                        HStack(alignment: .center, spacing: 0, content: {
+                            Spacer()
+                            Text("No Ranking")
+                                .font(.kr16m)
+                                .foregroundStyle(Color.black.opacity(0.8))
+                            Spacer()
+                        })
                         Spacer()
                     } else {
                         ScrollView(.vertical, showsIndicators: false, content: {

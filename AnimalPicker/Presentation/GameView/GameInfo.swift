@@ -65,16 +65,7 @@ enum Level: String, Codable {
     case hell = "Hell"
     
     var point: Int {
-        switch self {
-        case .easy:
-            return 3
-        case .normal:
-            return 9
-        case .hard:
-            return 15
-        case .hell:
-            return 23
-        }
+        return 10
     }
     
     var levelInt: Int {
@@ -106,11 +97,11 @@ enum Level: String, Codable {
     var timer: Int {
         switch self {
         case .easy:
-            return 10
-        case .normal:
-            return 10
-        case .hard:
             return 9
+        case .normal:
+            return 8
+        case .hard:
+            return 8
         case .hell:
             return 7
         }
