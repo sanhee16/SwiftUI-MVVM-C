@@ -128,6 +128,9 @@ struct GameView: View {
                         SingleBoxTextField(placeholder: "Nickname", text: $nickname, lengthLimit: 10) { _ in
                             
                         }
+                        .onAppear {
+                            nickname.removeAll()
+                        }
                         
                         if $vm.status.wrappedValue == .enterRanking {
                             Text("Register")
@@ -165,6 +168,12 @@ struct GameView: View {
                             VStack(alignment: .leading, spacing: 0) {
                                 ForEach($vm.rankings.wrappedValue.indices, id: \.self) { idx in
                                     rankingItem(rankingData: $vm.rankings.wrappedValue[idx], idx: idx)
+                                    if idx < $vm.rankings.wrappedValue.count - 1 {
+                                        Rectangle()
+                                            .frame(height: 1, alignment: .center)
+                                            .foregroundStyle(Color.black.opacity(0.15))
+                                            .paddingHorizontal(12)
+                                    }
                                 }
                             }
                             .paddingVertical(12)
@@ -239,6 +248,6 @@ struct GameView: View {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundColor(Color.white)
         )
-        .padding(top: 5, leading: 12, bottom: 5, trailing: 12)
+        .padding(top: 4, leading: 12, bottom: 4, trailing: 12)
     }
 }
