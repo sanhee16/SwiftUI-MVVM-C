@@ -28,7 +28,16 @@ class RankingVM: BaseViewModel {
     
     func loadRankings(level: Level) {
         self.rankings.removeAll()
-        self.rankings = self.interactors.rankingInteractor.loadRankings(level: level)
-        print("loadRankings: \(self.rankings)")
+        self.interactors.rankingInteractor.loadRemoteRankings(level: level)
+            .run(in: &self.subscription) {[weak self] response in
+                guard let self = self else { return }
+                self.rankings = response
+                print("loadRankings: \(self.rankings)")
+            } err: {[weak self] err in
+                guard let self = self else { return }
+                print(err)
+            } complete: {
+                
+            }
     }
 }

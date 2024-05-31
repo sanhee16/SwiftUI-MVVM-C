@@ -68,10 +68,8 @@ struct RankingView: View {
                 .background(Color.white)
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    withAnimation {
-                        self.currentLevel = item
-                        vm.loadRankings(level: self.currentLevel)
-                    }
+                    self.currentLevel = item
+                    vm.loadRankings(level: self.currentLevel)
                 }
             }
         })

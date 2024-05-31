@@ -1,20 +1,21 @@
 //
-//  RankingDBRespository.swift
+//  RankingDBRepository.swift
 //  AnimalPicker
 //
 //  Created by Sandy on 5/24/24.
 //
 
 import Foundation
+import Combine
 import CoreData
 
-protocol RankingDBRespository {
+protocol RankingDBRepository {
     func loadRankings() -> [Ranking]
-    func loadRanking(id: UUID) -> Ranking?
+    func loadRanking(id: String) -> Ranking?
     func saveRanking(rankingData: RankingData)
 }
 
-class RealRankingDBRespository: RankingDBRespository {
+class RealRankingDBRepository: RankingDBRepository {
     var userDefaultsService: UserDefaultsService
     var coredataService: CoreDataService
     
@@ -25,7 +26,7 @@ class RealRankingDBRespository: RankingDBRespository {
     
     func loadRankings() -> [Ranking] {
         do {
-            let rankings = try self.coredataService.container.viewContext.fetch(Ranking.fetchRequest()) as! [Ranking]
+            let rankings = try self.coredataService.container.viewContext.fetch(Ranking.fetchRequest())
             return rankings
         } catch {
             print(error.localizedDescription)
@@ -33,8 +34,7 @@ class RealRankingDBRespository: RankingDBRespository {
         }
     }
     
-    
-    func loadRanking(id: UUID) -> Ranking? {
+    func loadRanking(id: String) -> Ranking? {
         do {
             let ranking = try self.coredataService.container.viewContext.fetch(Ranking.fetchRequest()).first(where: { $0.id == id })
             return ranking
@@ -43,7 +43,7 @@ class RealRankingDBRespository: RankingDBRespository {
             return nil
         }
     }
-    
+
     func saveRanking(rankingData: RankingData) {
         let context = self.coredataService.container.viewContext
 
@@ -61,18 +61,6 @@ class RealRankingDBRespository: RankingDBRespository {
             } catch {
                 print(error.localizedDescription)
             }
-        }
-    }
-}
-
-extension Int16 {
-    var getLevel: Level {
-        switch self {
-        case 0: return .easy
-        case 1: return .normal
-        case 2: return .hard
-        case 3: return .hell
-        default: return .easy
         }
     }
 }

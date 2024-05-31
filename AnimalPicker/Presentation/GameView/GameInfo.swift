@@ -58,7 +58,7 @@ enum CellType {
     }
 }
 
-enum Level: String {
+enum Level: String, Codable {
     case easy = "Easy"
     case normal = "Normal"
     case hard = "Hard"

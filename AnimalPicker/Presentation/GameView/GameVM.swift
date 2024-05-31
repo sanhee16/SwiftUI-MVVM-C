@@ -66,9 +66,8 @@ class GameVM: BaseViewModel {
         if score <= 0 {
              return
         }
-        self.interactors.rankingInteractor.saveRanking(
+        self.interactors.rankingInteractor.saveRemoteRanking(
             rankingData: RankingData(
-                id: UUID(),
                 nickname: nickname,
                 score: self.score,
                 level: self.level,
@@ -104,7 +103,17 @@ class GameVM: BaseViewModel {
     
     func loadRankings() {
         self.rankings.removeAll()
-        self.rankings = self.interactors.rankingInteractor.loadRankings(level: self.level)
+        self.interactors.rankingInteractor.loadRemoteRankings(level: self.level)
+            .run(in: &self.subscription) {[weak self] response in
+                guard let self = self else { return }
+                self.rankings = response
+                print("loadRankings: \(self.rankings)")
+            } err: {[weak self] err in
+                guard let self = self else { return }
+                print(err)
+            } complete: {
+                
+            }
     }
     
     private func loadImages(level: Level) {
@@ -189,9 +198,7 @@ class GameVM: BaseViewModel {
         
         if let leftTime = self.leftTime, leftTime <= 0 {
             self.status = self.score > 0 ? .enterRanking : .timeOut
-            if self.status == .timeOut {
-                self.loadRankings()
-            }
+            self.loadRankings()
             self.stopTimer()
         }
     }

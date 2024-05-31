@@ -7,6 +7,10 @@
 
 import UIKit
 import CoreData
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // 키보드가 사라질 때의 처리 코드
             print("Keyboard will hide.")
         }
+        
+        FirebaseApp.configure()
         return true
     }
     
