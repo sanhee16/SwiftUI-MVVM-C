@@ -33,6 +33,8 @@ class GameVM: BaseViewModel {
 
     @Published var isUploadSuccess: Bool = false
     @Published var rankings: [RankingData] = []
+    @Published var myRankingId: String? = nil
+    
     
     private var timer: Timer? = nil
     
@@ -51,12 +53,14 @@ class GameVM: BaseViewModel {
     }
     
     func nextLevel() {
+        self.myRankingId = nil
         self.stopTimer()
         self.step += 1
         self.loadImages(level: self.level)
     }
     
     func reset() {
+        self.myRankingId = nil
         self.stopTimer()
         self.step = 0
         self.loadImages(level: self.level)
@@ -74,6 +78,16 @@ class GameVM: BaseViewModel {
                 createdAt: Int(Date().timeIntervalSince1970)
             )
         )
+        .run(in: &self.subscription) {[weak self] response in
+            guard let self = self else { return }
+            self.myRankingId = response
+        } err: {[weak self] err in
+            guard let self = self else { return }
+            print(err)
+        } complete: {
+            
+        }
+
         self.loadRankings()
         self.status = .timeOut
     }

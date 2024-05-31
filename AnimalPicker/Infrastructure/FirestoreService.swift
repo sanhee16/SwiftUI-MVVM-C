@@ -12,6 +12,7 @@ import Combine
 
 enum FirestoreError: Error {
     case noData
+    case parsingError
 }
 
 enum FirestoreTable: String {
@@ -26,11 +27,27 @@ class FirestoreService {
         self.db = Firestore.firestore()
     }
     
-    func save(table: FirestoreTable, value: [String : Any]) {
+    func save(table: FirestoreTable, value: [String : Any]) -> AnyPublisher<String, Error> {
         let path = self.db.collection(table.rawValue).document()
         var saveValue = value
-        saveValue["id"] = path.documentID
-        path.setData(saveValue)
+        let documentID = path.documentID
+        saveValue["id"] = documentID
+        let future: (() -> Deferred) = { () -> Deferred<Future<String, Error>> in
+            return Deferred {
+                Future<String, Error> { promise in
+                    path.setData(saveValue) { err in
+                        if let err = err {
+                            promise(.failure(err))
+                            return
+                        } else {
+                            promise(.success(documentID))
+                            return
+                        }
+                    }
+                }
+            }
+        }
+        return future().eraseToAnyPublisher()
     }
     
     func load(table: FirestoreTable) -> AnyPublisher<[[String : Any]], Error> {

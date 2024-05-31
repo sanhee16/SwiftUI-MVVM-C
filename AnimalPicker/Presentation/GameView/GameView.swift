@@ -113,7 +113,7 @@ struct GameView: View {
         VStack(alignment: .center, spacing: 8, content: {
             switch $vm.status.wrappedValue {
             case .timeOut, .enterRanking:
-                Text("Time is Up")
+                Text("Time's Up")
                     .font(.kr32b)
                     .foregroundStyle(Color.red.opacity(0.9))
                 
@@ -258,7 +258,7 @@ struct GameView: View {
         .padding(top: 10, leading: 12, bottom: 10, trailing: 12)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(Color.white)
+                .foregroundColor($vm.myRankingId.wrappedValue == rankingData.id ? Color.yellow.opacity(0.15) : Color.white)
         )
         .padding(top: 4, leading: 12, bottom: 4, trailing: 12)
     }

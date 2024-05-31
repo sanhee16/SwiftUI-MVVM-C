@@ -13,7 +13,7 @@ protocol RankingInteractor {
     func loadRemoteRankings() -> AnyPublisher<[RankingData], Error>
     func loadRemoteRankings(level: Level) -> AnyPublisher<[RankingData], Error>
     func loadRemoteRanking(id: String) -> AnyPublisher<RankingData?, Error>
-    func saveRemoteRanking(rankingData: RankingData)
+    func saveRemoteRanking(rankingData: RankingData) -> AnyPublisher<String, Error>
     
     // Local
     func loadLocalRankings() -> [RankingData]
@@ -130,9 +130,11 @@ class RealRankingInteractor: RankingInteractor {
         return future().eraseToAnyPublisher()
     }
     
-    func saveRemoteRanking(rankingData: RankingData) {
-        guard let value = rankingData.toDictionary() else { return }
-        self.rankingWebRepository.save(value: value)
+    func saveRemoteRanking(rankingData: RankingData) -> AnyPublisher<String, Error> {
+        guard let value = rankingData.toDictionary() else { 
+            return Fail(error: FirestoreError.parsingError).eraseToAnyPublisher()
+        }
+        return self.rankingWebRepository.save(value: value)
     }
     
     

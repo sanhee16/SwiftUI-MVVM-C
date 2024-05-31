@@ -12,7 +12,7 @@ import CoreData
 protocol RankingWebRepository {
     func loadRankings() -> AnyPublisher<[[String : Any]], Error>
     func loadRanking(id: String) -> AnyPublisher<[String : Any], Error>
-    func save(value: [String : Any]) 
+    func save(value: [String : Any]) -> AnyPublisher<String, Error> 
 }
 
 class RealRankingWebRepository: RankingWebRepository {
@@ -30,7 +30,7 @@ class RealRankingWebRepository: RankingWebRepository {
         return self.firestoreServcice.load(table: .ranking, id: id)
     }
     
-    func save(value: [String : Any]) {
+    func save(value: [String : Any]) -> AnyPublisher<String, Error> {
         self.firestoreServcice.save(table: .ranking, value: value)
     }
 }

@@ -38,7 +38,6 @@
 		585BB5392BFC702E007CCD51 /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5382BFC702E007CCD51 /* GameVM.swift */; };
 		585BB53B2BFC7137007CCD51 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB53A2BFC7137007CCD51 /* GameInfo.swift */; };
 		585BB53D2BFC745B007CCD51 /* FoxImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */; };
-		585BB53F2BFC74CE007CCD51 /* ApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB53E2BFC74CE007CCD51 /* ApiRepository.swift */; };
 		585BB5422BFC7516007CCD51 /* BaseNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5412BFC7516007CCD51 /* BaseNetwork.swift */; };
 		585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5432BFC764A007CCD51 /* DogImageRepository.swift */; };
 		585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */; };
@@ -122,7 +121,6 @@
 		585BB5382BFC702E007CCD51 /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
 		585BB53A2BFC7137007CCD51 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoxImageRepository.swift; sourceTree = "<group>"; };
-		585BB53E2BFC74CE007CCD51 /* ApiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRepository.swift; sourceTree = "<group>"; };
 		585BB5412BFC7516007CCD51 /* BaseNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetwork.swift; sourceTree = "<group>"; };
 		585BB5432BFC764A007CCD51 /* DogImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImageRepository.swift; sourceTree = "<group>"; };
 		585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalImageInteractor.swift; sourceTree = "<group>"; };
@@ -345,7 +343,6 @@
 		585BB5342BFC6D49007CCD51 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				585BB53E2BFC74CE007CCD51 /* ApiRepository.swift */,
 				585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */,
 				585BB5432BFC764A007CCD51 /* DogImageRepository.swift */,
 				5892AE152BFEC961009663C1 /* DuckImageRepository.swift */,
@@ -604,7 +601,6 @@
 				585BB5372BFC7029007CCD51 /* GameView.swift in Sources */,
 				5878B4892C007DCF00A7329B /* SingleBoxTextField.swift in Sources */,
 				58585C4C2C086117005B65FE /* Int16+Extension.swift in Sources */,
-				585BB53F2BFC74CE007CCD51 /* ApiRepository.swift in Sources */,
 				585BB5272BFC6949007CCD51 /* MainView.swift in Sources */,
 				585BB53D2BFC745B007CCD51 /* FoxImageRepository.swift in Sources */,
 				585BB5182BFC683E007CCD51 /* InteractorsContainer.swift in Sources */,
