@@ -17,11 +17,9 @@ struct DuckImageResponse: Codable {
     }
 }
 
-protocol DuckImageRepository {
-    func getImage() -> AnyPublisher<DuckImageResponse, Error>
-}
-
-class RealDuckImageRepository: DuckImageRepository {
+class RealDuckImageRepository: ImageRepository {
+    typealias ImageResponsePublisher = AnyPublisher<DuckImageResponse, Error>
+    
     var network: BaseNetwork
     var baseUrl: String
     
@@ -30,7 +28,11 @@ class RealDuckImageRepository: DuckImageRepository {
         self.baseUrl = baseUrl
     }
     
-    func getImage() -> AnyPublisher<DuckImageResponse, Error> {
+    func getImage() -> AnyPublisher<DuckImageResponse, any Error> {
         return self.network.get("/random?type=png", host: baseUrl)
     }
+    
+//    func getImage() -> AnyPublisher<DuckImageResponse, Error> {
+//        return self.network.get("/random?type=png", host: baseUrl)
+//    }
 }

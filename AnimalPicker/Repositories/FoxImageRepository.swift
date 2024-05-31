@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import Combine
 
-struct FoxImageResponse: Codable {
+struct FoxImageResponse: ImageResponse {
     var imageUrl: String
     
     enum CodingKeys: String, CodingKey {
@@ -17,11 +17,9 @@ struct FoxImageResponse: Codable {
     }
 }
 
-protocol FoxImageRepository {
-    func getImage() -> AnyPublisher<FoxImageResponse, Error>
-}
-
-class RealFoxImageRepository: FoxImageRepository {
+class RealFoxImageRepository: ImageRepository {
+    typealias T = FoxImageResponse
+    
     var network: BaseNetwork
     var baseUrl: String
     
@@ -30,7 +28,7 @@ class RealFoxImageRepository: FoxImageRepository {
         self.baseUrl = baseUrl
     }
     
-    func getImage() -> AnyPublisher<FoxImageResponse, Error> {
+    func getImage() -> AnyPublisher<T, Error> {
         return self.network.get("/floof", host: baseUrl)
     }
 }

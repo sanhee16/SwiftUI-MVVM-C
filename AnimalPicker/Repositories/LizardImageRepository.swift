@@ -17,11 +17,9 @@ struct LizardImageResponse: Codable {
     }
 }
 
-protocol LizardImageRepository {
-    func getImage() -> AnyPublisher<LizardImageResponse, Error>
-}
-
-class RealLizardImageRepository: LizardImageRepository {
+class RealLizardImageRepository: ImageRepository {
+    typealias ImageResponsePublisher = AnyPublisher<LizardImageResponse, Error>
+    
     var network: BaseNetwork
     var baseUrl: String
     

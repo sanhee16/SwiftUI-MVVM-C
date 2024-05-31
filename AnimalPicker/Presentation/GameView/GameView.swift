@@ -257,7 +257,7 @@ struct GameView: View {
         })
         .padding(top: 10, leading: 12, bottom: 10, trailing: 12)
         .background(
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 4)
                 .foregroundColor($vm.myRankingId.wrappedValue == rankingData.id ? Color.yellow.opacity(0.15) : Color.white)
         )
         .padding(top: 4, leading: 12, bottom: 4, trailing: 12)

@@ -67,6 +67,7 @@
 		58C50D282C04150000C4E0F1 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D272C04150000C4E0F1 /* CoreDataService.swift */; };
 		58C50D2F2C041A1D00C4E0F1 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */; };
 		58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D302C047E5400C4E0F1 /* Topbar.swift */; };
+		58FD231F2C09B2D40047E2FB /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD231E2C09B2D40047E2FB /* ImageRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		58C50D272C04150000C4E0F1 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
 		58C50D302C047E5400C4E0F1 /* Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topbar.swift; sourceTree = "<group>"; };
+		58FD231E2C09B2D40047E2FB /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +345,7 @@
 		585BB5342BFC6D49007CCD51 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				58FD231E2C09B2D40047E2FB /* ImageRepository.swift */,
 				585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */,
 				585BB5432BFC764A007CCD51 /* DogImageRepository.swift */,
 				5892AE152BFEC961009663C1 /* DuckImageRepository.swift */,
@@ -571,6 +574,7 @@
 				585BB52C2BFC698B007CCD51 /* Util.swift in Sources */,
 				585BB5292BFC6954007CCD51 /* MainVM.swift in Sources */,
 				585BB52F2BFC69C6007CCD51 /* View+Extension.swift in Sources */,
+				58FD231F2C09B2D40047E2FB /* ImageRepository.swift in Sources */,
 				5878B4832C002A5800A7329B /* SingleTextField.swift in Sources */,
 				585BB53B2BFC7137007CCD51 /* GameInfo.swift in Sources */,
 				5878B4782C00188600A7329B /* RankingInteractor.swift in Sources */,
