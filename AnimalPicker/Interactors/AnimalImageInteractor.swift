@@ -18,10 +18,10 @@ protocol AnimalImageInteractor {
 }
 
 struct RealAnimalImageInteractor: AnimalImageInteractor {
-    let foxImageRepository: any ImageRepository
-    let dogImageRepository: any ImageRepository
-    let duckImageRepository: any ImageRepository
-    let lizardIamgeRepository: any ImageRepository
+    let foxImageRepository: ImageRepository
+    let dogImageRepository: ImageRepository
+    let duckImageRepository: ImageRepository
+    let lizardIamgeRepository: ImageRepository
     
     func getFoxImages(_ num: Int?) -> AnyPublisher<[String], any Error> {
         guard let num = num else {
