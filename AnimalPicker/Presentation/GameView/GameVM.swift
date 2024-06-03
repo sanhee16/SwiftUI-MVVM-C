@@ -35,6 +35,8 @@ class GameVM: BaseViewModel {
     @Published var rankings: [RankingData] = []
     @Published var myRankingId: String? = nil
     
+    @Published var bonusCnt: Int = 0
+    @Published var bonusScore: Int = 0
     
     private var timer: Timer? = nil
     
@@ -63,6 +65,8 @@ class GameVM: BaseViewModel {
         self.myRankingId = nil
         self.stopTimer()
         self.step = 0
+        self.bonusScore = 0
+        self.bonusCnt = 0
         self.loadImages(level: self.level)
     }
     
@@ -73,7 +77,7 @@ class GameVM: BaseViewModel {
         self.interactors.rankingInteractor.saveRemoteRanking(
             rankingData: RankingData(
                 nickname: nickname,
-                score: self.score,
+                score: self.score + self.bonusScore,
                 level: self.level,
                 createdAt: Int(Date().timeIntervalSince1970)
             )
@@ -96,6 +100,11 @@ class GameVM: BaseViewModel {
         if isCorrect { return }
         guard let _ = self.answer, let idx = self.results.firstIndex(where: { $0.id == item.id }) else { return }
         self.results[idx].isSelected.toggle()
+        self.bonusCnt = self.results[idx].isSelected ? self.bonusCnt + 1 : 0
+        if self.bonusCnt == 5 {
+            self.bonusScore += self.level.point
+            self.bonusCnt = 0
+        }
         self.objectWillChange.send()
         
         if self.results.filter({ $0.type == self.answer && !$0.isSelected}).isEmpty && self.results.filter({ $0.type != self.answer && $0.isSelected}).isEmpty {

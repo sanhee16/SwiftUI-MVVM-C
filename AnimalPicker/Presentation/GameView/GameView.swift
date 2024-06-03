@@ -43,12 +43,18 @@ struct GameView: View {
                     self.coordinator.pop()
                 }
                 VStack(alignment: .leading, spacing: 0, content: {
-                    HStack {
+                    HStack(spacing: 0) {
                         Text(vm.level.rawValue)
                             .font(.kr24b)
                         Spacer()
                         Text("score: \($vm.score.wrappedValue)")
                             .font(.kr16m)
+                        if $vm.bonusScore.wrappedValue > 0 {
+                            Text("(Bonus: \($vm.bonusScore.wrappedValue))")
+                                .font(.kr16m)
+                                .foregroundStyle(Color.red.opacity(0.8))
+                                .paddingLeading(4)
+                        }
                     }
                     
                     if let answer = $vm.answer.wrappedValue {
@@ -118,7 +124,7 @@ struct GameView: View {
                     .foregroundStyle(Color.red.opacity(0.9))
                 
                 // 점수
-                Text("Score: \($vm.score.wrappedValue)")
+                Text("Score: \($vm.score.wrappedValue + $vm.bonusScore.wrappedValue)")
                     .font(.kr28b)
                     .foregroundStyle(Color.white)
                 
