@@ -18,8 +18,6 @@ struct FoxImageResponse: ImageResponse {
 }
 
 class RealFoxImageRepository: ImageRepository {
-    typealias T = FoxImageResponse
-    
     var network: BaseNetwork
     var baseUrl: String
     
@@ -28,7 +26,7 @@ class RealFoxImageRepository: ImageRepository {
         self.baseUrl = baseUrl
     }
     
-    func getImage() -> AnyPublisher<T, Error> {
+    func getImage() -> AnyPublisher<FoxImageResponse, Error> {
         return self.network.get("/floof", host: baseUrl)
     }
 }

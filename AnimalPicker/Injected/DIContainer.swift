@@ -19,16 +19,11 @@ struct DIContainer {
 
 
 extension DIContainer {
-    struct ApiRepositories<
-        FoxRepo: ImageRepository,
-        DogRepo: ImageRepository,
-        DuckRepo: ImageRepository,
-        LizardRepo: ImageRepository
-    >{
-        let foxImageRepository: FoxRepo
-        let dogImageRepository: DogRepo
-        let duckImageRepository: DuckRepo
-        let lizardIamgeRepository: LizardRepo
+    struct ApiRepositories{
+        let foxImageRepository: any ImageRepository
+        let dogImageRepository: any ImageRepository
+        let duckImageRepository: any ImageRepository
+        let lizardIamgeRepository: any ImageRepository
     }
     
     struct DBRepositories {

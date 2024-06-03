@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import Combine
 
-struct DuckImageResponse: Codable {
+struct DuckImageResponse: ImageResponse {
     var imageUrl: String
     
     enum CodingKeys: String, CodingKey {
@@ -17,9 +17,7 @@ struct DuckImageResponse: Codable {
     }
 }
 
-class RealDuckImageRepository: ImageRepository {
-    typealias ImageResponsePublisher = AnyPublisher<DuckImageResponse, Error>
-    
+class RealDuckImageRepository: ImageRepository {    
     var network: BaseNetwork
     var baseUrl: String
     

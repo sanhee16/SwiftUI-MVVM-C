@@ -63,11 +63,11 @@
 		5878B48D2C008AD100A7329B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5878B48C2C008AD100A7329B /* Kingfisher */; };
 		5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
 		5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */; };
-		58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */; };
 		58C50D282C04150000C4E0F1 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D272C04150000C4E0F1 /* CoreDataService.swift */; };
 		58C50D2F2C041A1D00C4E0F1 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */; };
 		58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D302C047E5400C4E0F1 /* Topbar.swift */; };
 		58FD231F2C09B2D40047E2FB /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD231E2C09B2D40047E2FB /* ImageRepository.swift */; };
+		E1AAFD842C0D9520001174D2 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1AAFD822C0D9520001174D2 /* animal_picker_db.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,11 +138,11 @@
 		5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBoxTextField.swift; sourceTree = "<group>"; };
 		5892AE152BFEC961009663C1 /* DuckImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuckImageRepository.swift; sourceTree = "<group>"; };
 		5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LizardImageRepository.swift; sourceTree = "<group>"; };
-		58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
 		58C50D272C04150000C4E0F1 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
 		58C50D302C047E5400C4E0F1 /* Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topbar.swift; sourceTree = "<group>"; };
 		58FD231E2C09B2D40047E2FB /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
+		E1AAFD832C0D9520001174D2 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,7 +398,7 @@
 		5878B47F2C001B2900A7329B /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */,
+				E1AAFD822C0D9520001174D2 /* animal_picker_db.xcdatamodeld */,
 				5878B4802C001B3A00A7329B /* UserDefaultsService.swift */,
 				58C50D272C04150000C4E0F1 /* CoreDataService.swift */,
 			);
@@ -567,7 +567,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */,
 				5878B4762C00130D00A7329B /* RankingVM.swift in Sources */,
 				585BB5112BFC6816007CCD51 /* DIContainer.swift in Sources */,
 				5870E7572C071EDE00416F08 /* FirestoreService.swift in Sources */,
@@ -582,6 +581,7 @@
 				585BB51A2BFC6866007CCD51 /* Constants.swift in Sources */,
 				585BB5072BFC67B8007CCD51 /* AppDelegate.swift in Sources */,
 				5870E7482C06F71800416F08 /* SDGrid.swift in Sources */,
+				E1AAFD842C0D9520001174D2 /* animal_picker_db.xcdatamodeld in Sources */,
 				585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */,
 				585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */,
 				585BB5312BFC69F1007CCD51 /* Font+Extension.swift in Sources */,
@@ -1005,14 +1005,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */ = {
+		E1AAFD822C0D9520001174D2 /* animal_picker_db.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */,
+				E1AAFD832C0D9520001174D2 /* animal_picker_db.xcdatamodel */,
 			);
-			currentVersion = 58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */;
+			currentVersion = E1AAFD832C0D9520001174D2 /* animal_picker_db.xcdatamodel */;
 			name = animal_picker_db.xcdatamodeld;
-			path = /Users/hessegg_pollberry/dev/AnimalPicker/AnimalPicker/Persistence/animal_picker_db.xcdatamodeld;
+			path = "/Users/robert/Desktop/dev/ios/SwiftUI-MVVM-C/AnimalPicker/Persistence/animal_picker_db.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -13,7 +13,7 @@ protocol ImageResponse: Codable {
 }
 
 protocol ImageRepository {
-    associatedtype T
+    associatedtype T: ImageResponse
     
     func getImage() -> AnyPublisher<T, Error>
 }

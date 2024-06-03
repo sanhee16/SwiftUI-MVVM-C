@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import Combine
 
-struct LizardImageResponse: Codable {
+struct LizardImageResponse: ImageResponse {
     var imageUrl: String
     
     enum CodingKeys: String, CodingKey {
@@ -18,8 +18,6 @@ struct LizardImageResponse: Codable {
 }
 
 class RealLizardImageRepository: ImageRepository {
-    typealias ImageResponsePublisher = AnyPublisher<LizardImageResponse, Error>
-    
     var network: BaseNetwork
     var baseUrl: String
     

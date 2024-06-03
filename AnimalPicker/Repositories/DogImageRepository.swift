@@ -17,9 +17,7 @@ struct DogImageResponse: ImageResponse {
     }
 }
 
-class RealDogImageRepository: ImageRepository {
-    typealias ImageResponsePublisher = AnyPublisher<DogImageResponse, Error>
-    
+class RealDogImageRepository: ImageRepository {    
     var network: BaseNetwork
     var baseUrl: String
     
