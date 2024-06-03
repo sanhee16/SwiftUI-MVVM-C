@@ -20,17 +20,41 @@ extension AppEnvironment {
             dbRepositories: dbRepositories,
             apiRepositories: apiRepositories
         )
-
+        
         let diContainer = DIContainer(interactors: interactors)
-
+        
         return AppEnvironment(container: diContainer)
     }
     
     private static func configuredApiRepositories() -> DIContainer.ApiRepositories {
-        let foxImageRepository = RealFoxImageRepository(network: BaseNetwork(), baseUrl: "https://randomfox.ca")
-        let dogImageRepository = RealDogImageRepository(network: BaseNetwork(), baseUrl: "https://dog.ceo/api")
-        let duckImageRepository = RealDuckImageRepository(network: BaseNetwork(), baseUrl: "https://random-d.uk/api/v2")
-        let lizardIamgeRepository = RealLizardImageRepository(network: BaseNetwork(), baseUrl: "https://nekos.life/api/v2")
+        let foxImageRepository = ImageRepositoryImpl(
+            network: BaseNetwork(),
+            networkUrl: NetworkUrl(
+                baseUrl: "https://randomfox.ca",
+                imagePath: "/floof"
+            )
+        )
+        let dogImageRepository = ImageRepositoryImpl(
+            network: BaseNetwork(),
+            networkUrl: NetworkUrl(
+                baseUrl: "https://dog.ceo/api",
+                imagePath: "/breeds/image/random"
+            )
+        )
+        let duckImageRepository = ImageRepositoryImpl(
+            network: BaseNetwork(),
+            networkUrl: NetworkUrl(
+                baseUrl: "https://random-d.uk/api/v2",
+                imagePath: "/random?type=png"
+            )
+        )
+        let lizardIamgeRepository = ImageRepositoryImpl(
+            network: BaseNetwork(),
+            networkUrl: NetworkUrl(
+                baseUrl: "https://nekos.life/api/v2",
+                imagePath: "/img/lizard"
+            )
+        )
         return .init(
             foxImageRepository: foxImageRepository,
             dogImageRepository: dogImageRepository,

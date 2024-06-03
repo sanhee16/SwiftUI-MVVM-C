@@ -37,9 +37,7 @@
 		585BB5372BFC7029007CCD51 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5362BFC7029007CCD51 /* GameView.swift */; };
 		585BB5392BFC702E007CCD51 /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5382BFC702E007CCD51 /* GameVM.swift */; };
 		585BB53B2BFC7137007CCD51 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB53A2BFC7137007CCD51 /* GameInfo.swift */; };
-		585BB53D2BFC745B007CCD51 /* FoxImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */; };
 		585BB5422BFC7516007CCD51 /* BaseNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5412BFC7516007CCD51 /* BaseNetwork.swift */; };
-		585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5432BFC764A007CCD51 /* DogImageRepository.swift */; };
 		585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */; };
 		585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */; };
 		5870E7482C06F71800416F08 /* SDGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870E7472C06F71800416F08 /* SDGrid.swift */; };
@@ -59,12 +57,11 @@
 		5878B4892C007DCF00A7329B /* SingleBoxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */; };
 		5878B48D2C008AD100A7329B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5878B48C2C008AD100A7329B /* Kingfisher */; };
 		587ED91A2C0D708800FEFA96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 587ED9192C0D708800FEFA96 /* GoogleService-Info.plist */; };
-		5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
-		5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */; };
-		58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */; };
 		58C50D282C04150000C4E0F1 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D272C04150000C4E0F1 /* CoreDataService.swift */; };
 		58C50D2F2C041A1D00C4E0F1 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */; };
 		58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D302C047E5400C4E0F1 /* Topbar.swift */; };
+		E1AAFD742C0D79F7001174D2 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1AAFD722C0D79F7001174D2 /* animal_picker_db.xcdatamodeld */; };
+		E1AAFD762C0D7A48001174D2 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAFD752C0D7A48001174D2 /* ImageRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,9 +115,7 @@
 		585BB5362BFC7029007CCD51 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		585BB5382BFC702E007CCD51 /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
 		585BB53A2BFC7137007CCD51 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
-		585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoxImageRepository.swift; sourceTree = "<group>"; };
 		585BB5412BFC7516007CCD51 /* BaseNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetwork.swift; sourceTree = "<group>"; };
-		585BB5432BFC764A007CCD51 /* DogImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImageRepository.swift; sourceTree = "<group>"; };
 		585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalImageInteractor.swift; sourceTree = "<group>"; };
 		585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
 		5870E7472C06F71800416F08 /* SDGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDGrid.swift; sourceTree = "<group>"; };
@@ -133,12 +128,11 @@
 		5878B4822C002A5800A7329B /* SingleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextField.swift; sourceTree = "<group>"; };
 		5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBoxTextField.swift; sourceTree = "<group>"; };
 		587ED9192C0D708800FEFA96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5892AE152BFEC961009663C1 /* DuckImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuckImageRepository.swift; sourceTree = "<group>"; };
-		5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LizardImageRepository.swift; sourceTree = "<group>"; };
-		58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
 		58C50D272C04150000C4E0F1 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
 		58C50D302C047E5400C4E0F1 /* Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topbar.swift; sourceTree = "<group>"; };
+		E1AAFD732C0D79F7001174D2 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
+		E1AAFD752C0D7A48001174D2 /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,12 +335,9 @@
 		585BB5342BFC6D49007CCD51 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */,
-				585BB5432BFC764A007CCD51 /* DogImageRepository.swift */,
-				5892AE152BFEC961009663C1 /* DuckImageRepository.swift */,
-				5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */,
 				5878B47D2C00193300A7329B /* RankingDBRepository.swift */,
 				58585C452C085E62005B65FE /* RankingWebRepository.swift */,
+				E1AAFD752C0D7A48001174D2 /* ImageRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -393,7 +384,7 @@
 		5878B47F2C001B2900A7329B /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */,
+				E1AAFD722C0D79F7001174D2 /* animal_picker_db.xcdatamodeld */,
 				5878B4802C001B3A00A7329B /* UserDefaultsService.swift */,
 				58C50D272C04150000C4E0F1 /* CoreDataService.swift */,
 			);
@@ -560,7 +551,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */,
 				5878B4762C00130D00A7329B /* RankingVM.swift in Sources */,
 				585BB5112BFC6816007CCD51 /* DIContainer.swift in Sources */,
 				5870E7572C071EDE00416F08 /* FirestoreService.swift in Sources */,
@@ -568,6 +558,7 @@
 				585BB5292BFC6954007CCD51 /* MainVM.swift in Sources */,
 				585BB52F2BFC69C6007CCD51 /* View+Extension.swift in Sources */,
 				5878B4832C002A5800A7329B /* SingleTextField.swift in Sources */,
+				E1AAFD762C0D7A48001174D2 /* ImageRepository.swift in Sources */,
 				585BB53B2BFC7137007CCD51 /* GameInfo.swift in Sources */,
 				5878B4782C00188600A7329B /* RankingInteractor.swift in Sources */,
 				58C50D282C04150000C4E0F1 /* CoreDataService.swift in Sources */,
@@ -575,13 +566,11 @@
 				585BB5072BFC67B8007CCD51 /* AppDelegate.swift in Sources */,
 				5870E7482C06F71800416F08 /* SDGrid.swift in Sources */,
 				585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */,
-				585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */,
 				585BB5312BFC69F1007CCD51 /* Font+Extension.swift in Sources */,
 				5878B4812C001B3A00A7329B /* UserDefaultsService.swift in Sources */,
 				58C50D2F2C041A1D00C4E0F1 /* RankingData.swift in Sources */,
 				585BB50E2BFC67FB007CCD51 /* BaseCoordinator.swift in Sources */,
 				585BB5422BFC7516007CCD51 /* BaseNetwork.swift in Sources */,
-				5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */,
 				585BB5392BFC702E007CCD51 /* GameVM.swift in Sources */,
 				585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */,
 				58585C482C085FAF005B65FE /* Encodable+Extension.swift in Sources */,
@@ -591,6 +580,7 @@
 				585BB51F2BFC68D8007CCD51 /* SplashView.swift in Sources */,
 				58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */,
 				585BB50C2BFC67F5007CCD51 /* AppCoordinator.swift in Sources */,
+				E1AAFD742C0D79F7001174D2 /* animal_picker_db.xcdatamodeld in Sources */,
 				5878B4742C00130800A7329B /* RankingView.swift in Sources */,
 				585BB5132BFC681C007CCD51 /* AppEnvironment.swift in Sources */,
 				58585C462C085E62005B65FE /* RankingWebRepository.swift in Sources */,
@@ -598,9 +588,7 @@
 				5878B4892C007DCF00A7329B /* SingleBoxTextField.swift in Sources */,
 				58585C4C2C086117005B65FE /* Int16+Extension.swift in Sources */,
 				585BB5272BFC6949007CCD51 /* MainView.swift in Sources */,
-				585BB53D2BFC745B007CCD51 /* FoxImageRepository.swift in Sources */,
 				585BB5182BFC683E007CCD51 /* InteractorsContainer.swift in Sources */,
-				5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */,
 				5878B47E2C00193300A7329B /* RankingDBRepository.swift in Sources */,
 				585BB5212BFC68DF007CCD51 /* SplashVM.swift in Sources */,
 				585BB5232BFC6902007CCD51 /* BaseViewModel.swift in Sources */,
@@ -997,14 +985,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */ = {
+		E1AAFD722C0D79F7001174D2 /* animal_picker_db.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */,
+				E1AAFD732C0D79F7001174D2 /* animal_picker_db.xcdatamodel */,
 			);
-			currentVersion = 58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */;
+			currentVersion = E1AAFD732C0D79F7001174D2 /* animal_picker_db.xcdatamodel */;
 			name = animal_picker_db.xcdatamodeld;
-			path = /Users/hessegg_pollberry/dev/AnimalPicker/AnimalPicker/Persistence/animal_picker_db.xcdatamodeld;
+			path = "/Users/robert/Desktop/dev/ios/SwiftUI-MVVM-C/AnimalPicker/Persistence/animal_picker_db.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
