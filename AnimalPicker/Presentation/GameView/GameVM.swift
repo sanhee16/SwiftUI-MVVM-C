@@ -156,19 +156,19 @@ class GameVM: BaseViewModel {
             self.results.removeAll()
             
             dogs.forEach {
-                self.results.append(GameItem(id: idx, type: .dog, url: $0.imageUrl))
+                self.results.append(GameItem(id: idx, type: .dog, url: $0))
                 idx += 1
             }
             foxes.forEach {
-                self.results.append(GameItem(id: idx, type: .fox, url: $0.imageUrl))
+                self.results.append(GameItem(id: idx, type: .fox, url: $0))
                 idx += 1
             }
             ducks.forEach {
-                self.results.append(GameItem(id: idx, type: .duck, url: $0.imageUrl))
+                self.results.append(GameItem(id: idx, type: .duck, url: $0))
                 idx += 1
             }
             lizards.forEach {
-                self.results.append(GameItem(id: idx, type: .lizard, url: $0.imageUrl))
+                self.results.append(GameItem(id: idx, type: .lizard, url: $0))
                 idx += 1
             }
             

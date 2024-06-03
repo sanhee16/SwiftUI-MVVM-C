@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import Combine
 
-struct DogImageResponse: Codable {
+struct DogImageResponse: ImageResponse {
     var imageUrl: String
     
     enum CodingKeys: String, CodingKey {
@@ -17,11 +17,7 @@ struct DogImageResponse: Codable {
     }
 }
 
-protocol DogImageRepository {
-    func getImage() -> AnyPublisher<DogImageResponse, Error>
-}
-
-class RealDogImageRepository: DogImageRepository {
+class DogImageRepository: ImageRepository {
     var network: BaseNetwork
     var baseUrl: String
     
@@ -30,7 +26,9 @@ class RealDogImageRepository: DogImageRepository {
         self.baseUrl = baseUrl
     }
     
-    func getImage() -> AnyPublisher<DogImageResponse, Error> {
+    func getImage() -> AnyPublisher<String, Error> {
         return self.network.get("/breeds/image/random", host: baseUrl)
+            .map { (response: DogImageResponse) in response.imageUrl }
+            .eraseToAnyPublisher()
     }
 }

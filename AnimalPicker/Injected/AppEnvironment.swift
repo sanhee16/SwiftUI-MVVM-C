@@ -27,10 +27,10 @@ extension AppEnvironment {
     }
     
     private static func configuredApiRepositories() -> DIContainer.ApiRepositories {
-        let foxImageRepository = RealFoxImageRepository(network: BaseNetwork(), baseUrl: "https://randomfox.ca")
-        let dogImageRepository = RealDogImageRepository(network: BaseNetwork(), baseUrl: "https://dog.ceo/api")
-        let duckImageRepository = RealDuckImageRepository(network: BaseNetwork(), baseUrl: "https://random-d.uk/api/v2")
-        let lizardIamgeRepository = RealLizardImageRepository(network: BaseNetwork(), baseUrl: "https://nekos.life/api/v2")
+        let foxImageRepository = FoxImageRepository(network: BaseNetwork(), baseUrl: "https://randomfox.ca")
+        let dogImageRepository = DogImageRepository(network: BaseNetwork(), baseUrl: "https://dog.ceo/api")
+        let duckImageRepository = DuckImageRepository(network: BaseNetwork(), baseUrl: "https://random-d.uk/api/v2")
+        let lizardIamgeRepository = LizardImageRepository(network: BaseNetwork(), baseUrl: "https://nekos.life/api/v2")
         return .init(
             foxImageRepository: foxImageRepository,
             dogImageRepository: dogImageRepository,
