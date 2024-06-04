@@ -12,5 +12,6 @@ struct RoomData: Codable, Identifiable, Hashable {
     var name: String
     var password: Int?
     var status: String
-//    var items: NSArray
+    var managerDeviceId: String
+    var items: [String]?
 }

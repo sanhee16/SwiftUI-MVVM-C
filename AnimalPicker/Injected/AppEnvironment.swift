@@ -42,8 +42,9 @@ extension AppEnvironment {
     }
     private static func configuredServices() -> DIContainer.Services {
         let realtimeRoomDBService = RealtimeRoomDBService()
+        let keychainService = KeychainService()
         
-        return .init(realtimeRoomDBService: realtimeRoomDBService)
+        return .init(realtimeRoomDBService: realtimeRoomDBService, keychainService: keychainService)
     }
     
     private static func configuredDBRepositories() -> DIContainer.DBRepositories {

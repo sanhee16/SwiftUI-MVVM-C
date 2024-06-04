@@ -38,7 +38,7 @@ struct MultiGameView: View {
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
-        .onChange(of: $vm.iaPop.wrappedValue, perform: { newValue in
+        .onChange(of: $vm.isPop.wrappedValue, perform: { newValue in
             if newValue {
                 self.coordinator.pop()
             }

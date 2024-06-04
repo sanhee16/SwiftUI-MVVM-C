@@ -60,4 +60,9 @@ class AppCoordinator: BaseCoordinator, ObservableObject {
         let vc = GameRoomListView.vc(self, interactors: self.container.interactors, services: self.container.services)
         self.push(vc, animated: false)
     }
+    
+    func presentCreateRoomView() {
+        let vc = CreateRoomView.vc(self, interactors: self.container.interactors, services: self.container.services)
+        self.present(vc, animated: false)
+    }
 }

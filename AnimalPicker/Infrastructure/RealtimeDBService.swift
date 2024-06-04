@@ -25,17 +25,17 @@ class RealtimeRoomDBService {
         self.start()
     }
     
-    func addRoom(name: String, password: Int?, memberName: String) {
+    func addRoom(name: String, password: Int?, managerDeviceId: String, memberName: String) {
         let roomId = UUID().uuidString
         let memberId = UUID().uuidString
-        var room = RoomData(id: roomId, name: name, status: "ready").toDictionary()!
+        var room = RoomData(id: roomId, name: name, status: MultiGameStatus.ready.rawValue, managerDeviceId: managerDeviceId, items: []).toDictionary()!
         
         
         if let password = password {
             room["password"] = password
         }
 
-        let member = MultiGameMemberData(id: memberId, isManager: true, name: memberName).toDictionary()
+        let member = MultiGameMemberData(id: memberId, name: memberName).toDictionary()
         self.databasePath.child("\(roomId)").setValue(room)
         self.databasePath.child("\(roomId)/members/\(memberId)").setValue(member)
     }
@@ -48,7 +48,6 @@ class RealtimeRoomDBService {
         let memberId = UUID().uuidString
         let member = MultiGameMemberData(
             id: memberId,
-            isManager: false,
             name: memberName
         ).toDictionary()
         

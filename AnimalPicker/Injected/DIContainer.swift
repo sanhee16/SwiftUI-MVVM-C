@@ -23,6 +23,7 @@ struct DIContainer {
 extension DIContainer {
     struct Services {
         let realtimeRoomDBService: RealtimeRoomDBService
+        let keychainService: KeychainService
     }
     
     struct ApiRepositories {

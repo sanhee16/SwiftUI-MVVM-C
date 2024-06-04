@@ -8,14 +8,13 @@
 import Foundation
 import Combine
 
-enum MultiGameStatus {
-    case ready
-    case loading
-    case onGaming
-    case clear
-    case finish
+enum MultiGameStatus: String {
+    case ready = "ready"
+    case loading = "loading"
+    case onGaming = "onGaming"
+    case clear = "clear"
+    case finish = "finish"
 }
-
 
 class MultiGameVM: BaseViewModel {
     private let interactors: DIContainer.Interactors

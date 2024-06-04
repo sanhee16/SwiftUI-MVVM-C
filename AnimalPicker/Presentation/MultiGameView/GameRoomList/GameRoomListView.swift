@@ -28,13 +28,31 @@ struct GameRoomListView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
-                Text("Add Room")
-                    .font(.kr20b)
-                    .padding(top: 10, leading: 20, bottom: 10, trailing: 20)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        vm.onClickAddRoom()
-                    }
+                if let myRoom = $vm.myRoom.wrappedValue {
+                    Text("My Room")
+                        .font(.kr20b)
+                        .padding(top: 10, leading: 20, bottom: 10, trailing: 20)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundStyle(Color.green)
+                        )
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            
+                        }
+                } else {
+                    Text("Create Room")
+                        .font(.kr20b)
+                        .padding(top: 10, leading: 20, bottom: 10, trailing: 20)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundStyle(Color.yellow)
+                        )
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            self.coordinator.presentCreateRoomView()
+                        }
+                }
                 
                 ScrollView(.vertical, showsIndicators: false, content: {
                     ForEach($vm.list.wrappedValue, id: \.self) { item in

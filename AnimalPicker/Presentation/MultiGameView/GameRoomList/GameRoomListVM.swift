@@ -11,21 +11,20 @@ import Combine
 class GameRoomListVM: BaseViewModel {
     private let interactors: DIContainer.Interactors
     private let services: DIContainer.Services
-    private var name: String = ""
+
     @Published var list: [RoomData] = []
-    
+    @Published var myRoom: RoomData? = nil
+    let deviceId: String?
     
     init(_ interactors: DIContainer.Interactors, services: DIContainer.Services) {
         self.interactors = interactors
         self.services = services
+        self.deviceId = self.services.keychainService.loadDeviceId()
         super.init()
     }
     
     deinit {
-        if let joinedRoomId = Constants.joinedRoomId {
-            Constants.joinedRoomId = nil
-            self.services.realtimeRoomDBService.deleteRoom(roomId: joinedRoomId)
-        }
+        
     }
     
     func onAppear() {
@@ -36,9 +35,12 @@ class GameRoomListVM: BaseViewModel {
         
     }
     
-    func onClickAddRoom() {
-        self.name = "Sample \(UUID().uuidString)"
-        self.services.realtimeRoomDBService.addRoom(name: self.name, password: 1234, memberName: "sandy")
+    private func removeRoom() {
+        if let joinedRoomId = Constants.joinedRoomId {
+            self.services.realtimeRoomDBService.deleteRoom(roomId: joinedRoomId)
+            Constants.joinedRoomId = nil
+            self.myRoom = nil
+        }
     }
     
     func observeList() {
@@ -48,8 +50,9 @@ class GameRoomListVM: BaseViewModel {
                 print("list update: \(response)")
                 self.list = response
                 response.forEach { item in
-                    if item.name == self.name, !self.name.isEmpty {
+                    if let deviceId = self.deviceId {
                         Constants.joinedRoomId = item.id
+                        self.myRoom = item
                     }
                 }
             } err: {[weak self] err in

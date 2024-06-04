@@ -9,7 +9,6 @@ import Foundation
 
 struct MultiGameMemberData: Codable, Identifiable, Hashable {
     var id: String
-    var isManager: Bool
     var name: String
     var time: Float?
 }

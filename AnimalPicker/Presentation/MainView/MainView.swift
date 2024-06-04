@@ -28,7 +28,9 @@ struct MainView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
-                Topbar("Animal Picker")
+                Text("Animal Picker")
+                    .font(.kr20b)
+                    .foregroundColor(.black)
                 
                 Text("MultiGame")
                     .font(.kr14r)
