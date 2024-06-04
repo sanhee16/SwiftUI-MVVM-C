@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-enum GameStatus {
+enum SingleGameStatus {
     case loading
     case timeOut
     case enterRanking
@@ -16,18 +16,18 @@ enum GameStatus {
     case onGaming
 }
 
-class GameVM: BaseViewModel {
+class SingleGameVM: BaseViewModel {
     private let interactors: DIContainer.Interactors
     let level: Level
     let types: [ImageType] = [.dog, .fox, .duck, .lizard]
     var countWithType: [ImageType: Int] = [:]
-    var results: [GameItem] = []
+    var items: [GameItem] = []
     var answer: ImageType? = nil
     
     @Published var leftTime: Int? = nil
     @Published var isCorrect: Bool = false
     @Published var isGaming: Bool = true
-    @Published var status: GameStatus = .loading
+    @Published var status: SingleGameStatus = .loading
     @Published var step: Int = 0 { didSet { self.score = self.step * self.level.point }}
     @Published var score: Int = 0
 
@@ -98,27 +98,27 @@ class GameVM: BaseViewModel {
     
     func onSelectItem(item: GameItem) {
         if isCorrect { return }
-        guard let _ = self.answer, let idx = self.results.firstIndex(where: { $0.id == item.id }) else { return }
-        self.results[idx].isSelected.toggle()
-        self.bonusCnt = self.results[idx].isSelected ? self.bonusCnt + 1 : 0
+        guard let _ = self.answer, let idx = self.items.firstIndex(where: { $0.id == item.id }) else { return }
+        self.items[idx].isSelected.toggle()
+        self.bonusCnt = self.items[idx].isSelected ? self.bonusCnt + 1 : 0
         if self.bonusCnt == 5 {
             self.bonusScore += self.level.point
             self.bonusCnt = 0
         }
         self.objectWillChange.send()
         
-        if self.results.filter({ $0.type == self.answer && !$0.isSelected}).isEmpty && self.results.filter({ $0.type != self.answer && $0.isSelected}).isEmpty {
+        if self.items.filter({ $0.type == self.answer && !$0.isSelected}).isEmpty && self.items.filter({ $0.type != self.answer && $0.isSelected}).isEmpty {
             self.stopTimer()
             self.status = .clear
         }
     }
     
     func onLoadSuccess(item: GameItem) {
-        if let idx = self.results.firstIndex(of: item) {
-            self.results[idx].isLoaded = true
+        if let idx = self.items.firstIndex(of: item) {
+            self.items[idx].isLoaded = true
         }
         
-        if self.results.filter({ !$0.isLoaded }).isEmpty {
+        if self.items.filter({ !$0.isLoaded }).isEmpty {
             self.status = .onGaming
             self.startTimeCount()
         }
@@ -140,7 +140,7 @@ class GameVM: BaseViewModel {
     }
     
     private func loadImages(level: Level) {
-        self.results.removeAll()
+        self.items.removeAll()
         self.countWithType.removeAll()
         self.status = .loading
         self.answer = nil
@@ -162,30 +162,30 @@ class GameVM: BaseViewModel {
         .run(in: &self.subscription) {[weak self] (dogs, foxes, ducks, lizards) in
             guard let self = self else { return }
             var idx: Int = 0
-            self.results.removeAll()
+            self.items.removeAll()
             
             dogs.forEach {
-                self.results.append(GameItem(id: idx, type: .dog, url: $0.imageUrl))
+                self.items.append(GameItem(id: idx, type: .dog, url: $0.imageUrl))
                 idx += 1
             }
             foxes.forEach {
-                self.results.append(GameItem(id: idx, type: .fox, url: $0.imageUrl))
+                self.items.append(GameItem(id: idx, type: .fox, url: $0.imageUrl))
                 idx += 1
             }
             ducks.forEach {
-                self.results.append(GameItem(id: idx, type: .duck, url: $0.imageUrl))
+                self.items.append(GameItem(id: idx, type: .duck, url: $0.imageUrl))
                 idx += 1
             }
             lizards.forEach {
-                self.results.append(GameItem(id: idx, type: .lizard, url: $0.imageUrl))
+                self.items.append(GameItem(id: idx, type: .lizard, url: $0.imageUrl))
                 idx += 1
             }
             
-            self.results.shuffle()
+            self.items.shuffle()
             self.objectWillChange.send()
             self.leftTime = level.timer
             self.answer = self.types.randomElement()
-            print("self.results: \(self.results)")
+            print("self.items: \(self.items)")
         }
     }
     

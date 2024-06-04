@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum ImageType: String {
+enum ImageType: String, Codable {
     case dog
     case duck
     case fox
@@ -39,9 +39,10 @@ enum CellType {
     case c15 // 3x5
     case c24 // 3x8
     case c30 // 3x10
+    case c100 // 4x25
     
     var row: Int {
-        return 3
+        return 4
     }
     
     var column: Int {
@@ -54,6 +55,8 @@ enum CellType {
             return 8
         case .c30:
             return 10
+        case .c100:
+            return 25
         }
     }
 }
@@ -63,6 +66,7 @@ enum Level: String, Codable {
     case normal = "Normal"
     case hard = "Hard"
     case hell = "Hell"
+    case multi = "Multi"
     
     var point: Int {
         return 10
@@ -78,6 +82,8 @@ enum Level: String, Codable {
             return 2
         case .hell:
             return 3
+        case .multi:
+            return 4
         }
     }
     
@@ -91,6 +97,8 @@ enum Level: String, Codable {
             return .c24
         case .hell:
             return .c30
+        case .multi:
+            return .c100
         }
     }
     
@@ -104,12 +112,14 @@ enum Level: String, Codable {
             return 8
         case .hell:
             return 7
+        case .multi:
+            return -1
         }
     }
 }
 
 
-struct GameItem: Equatable, Hashable {
+struct GameItem: Codable, Equatable, Hashable {
     static func == (lhs: GameItem, rhs: GameItem) -> Bool {
         return lhs.id == rhs.id && lhs.url == rhs.url && lhs.isSelected == rhs.isSelected
     }

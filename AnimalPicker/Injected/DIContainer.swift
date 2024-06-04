@@ -10,15 +10,21 @@ import Combine
 
 // MARK: - DIContainer
 struct DIContainer {
+    let services: Services
     let interactors: Interactors
     
-    init(interactors: Interactors) {
+    init(services: Services, interactors: Interactors) {
+        self.services = services
         self.interactors = interactors
     }
 }
 
 
 extension DIContainer {
+    struct Services {
+        let realtimeRoomDBService: RealtimeRoomDBService
+    }
+    
     struct ApiRepositories {
         let foxImageRepository: FoxImageRepository
         let dogImageRepository: DogImageRepository
@@ -29,5 +35,10 @@ extension DIContainer {
     struct DBRepositories {
         let rankingDBRepository: RankingDBRepository
         let rankingWebRepository: RankingWebRepository
+    }
+
+    struct Interactors {
+        let animalImageInteractor: AnimalImageInteractor
+        let rankingInteractor: RankingInteractor
     }
 }

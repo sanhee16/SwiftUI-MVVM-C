@@ -28,9 +28,22 @@ struct MainView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
-                Text("Animal Picker")
-                    .font(.kr20b)
-                    .foregroundStyle(.black)
+                Topbar("Animal Picker")
+                
+                Text("MultiGame")
+                    .font(.kr14r)
+                    .paddingVertical(15)
+                    .frame(width: UIScreen.main.bounds.size.width - 40, alignment: .center)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundStyle(Color.green.opacity(0.8))
+                    )
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        self.coordinator.pushGameRoomListView()
+                    }
+                    .paddingVertical(14)
+                
                 Text("Ranking")
                     .font(.kr14r)
                     .paddingVertical(15)
@@ -58,7 +71,7 @@ struct MainView: View {
                         )
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            self.coordinator.pushGameView(level: level)
+                            self.coordinator.pushSingleGameView(level: level)
                         }
                         .paddingBottom(20)
                 }
