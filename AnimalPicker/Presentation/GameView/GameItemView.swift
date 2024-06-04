@@ -11,7 +11,7 @@ import SwiftUI
 
 
 struct GameItemView: View {
-    private let size: CGFloat = (UIScreen.main.bounds.width - (20*2 + 16*2)) / 3
+    private let size: CGFloat
     private let spacing: CGFloat = 16.0
     private let level: Level
 
@@ -25,6 +25,7 @@ struct GameItemView: View {
         self.level = level
         self.onLoadSuccess = onLoadSuccess
         self.onSelectItem = onSelectItem
+        self.size = (UIScreen.main.bounds.width - (20 * 2 + self.spacing * CGFloat(level.cell.row - 1))) / CGFloat(level.cell.row)
     }
     
     var body: some View {
