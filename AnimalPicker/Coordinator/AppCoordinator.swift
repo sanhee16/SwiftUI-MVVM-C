@@ -65,4 +65,9 @@ class AppCoordinator: BaseCoordinator, ObservableObject {
         let vc = CreateRoomView.vc(self, interactors: self.container.interactors, services: self.container.services)
         self.present(vc, animated: false)
     }
+    
+    func presentEnterPasswordView(roomId: String, correctPassword: String) {
+        let vc = EnterPasswordView.vc(self, roomId: roomId, correctPassword: correctPassword)
+        self.present(vc, animated: false)
+    }
 }

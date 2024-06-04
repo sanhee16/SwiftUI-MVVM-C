@@ -28,38 +28,41 @@ struct GameRoomListView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
-                if let myRoom = $vm.myRoom.wrappedValue {
-                    Text("My Room")
-                        .font(.kr20b)
-                        .padding(top: 10, leading: 20, bottom: 10, trailing: 20)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundStyle(Color.green)
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            
-                        }
-                } else {
-                    Text("Create Room")
-                        .font(.kr20b)
-                        .padding(top: 10, leading: 20, bottom: 10, trailing: 20)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundStyle(Color.yellow)
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            self.coordinator.presentCreateRoomView()
-                        }
-                }
+                
+                HStack(alignment: .center, spacing: 0, content: {
+                    Spacer()
+                    if let myRoom = $vm.myRoom.wrappedValue {
+                        Text("My Room")
+                            .font(.kr20b)
+                            .frame(width: 130, height: 50, alignment: .center)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundStyle(Color.green)
+                            )
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                
+                            }
+                            .paddingHorizontal(8)
+                    } else {
+                        Text("Create Room")
+                            .font(.kr20b)
+                            .frame(width: 130, height: 50, alignment: .center)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundStyle(Color.yellow)
+                            )
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                self.coordinator.presentCreateRoomView()
+                            }
+                            .paddingHorizontal(8)
+                    }
+                })
                 
                 ScrollView(.vertical, showsIndicators: false, content: {
                     ForEach($vm.list.wrappedValue, id: \.self) { item in
-                        Text(item.name)
-                            .font(.kr16b)
-                            .padding(top: 10, leading: 20, bottom: 10, trailing: 20)
-                            .contentShape(Rectangle())
+                        drawRoom(room: item)
                     }
                 })
                 .paddingTop(30)
@@ -72,6 +75,35 @@ struct GameRoomListView: View {
         .onAppear {
             vm.onDisappear()
         }
+    }
+    
+    private func drawRoom(room: RoomData) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(room.name)
+                .font(.kr16b)
+                .foregroundStyle(.black)
+            
+            HStack(alignment: .center, spacing: 0, content: {
+                if let password = room.password {
+                    Image(systemName: "lock.fill")
+                        .resizable()
+                        .frame(width: 12.0, height: 16.0)
+                }
+                Spacer()
+            })
+        }
+        .padding(top: 20, leading: 16, bottom: 20, trailing: 16)
+        .contentShape(Rectangle())
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundStyle(Color.green.opacity(0.9))
+        )
+        .onTapGesture {
+            if let password = room.password {
+                self.coordinator.presentEnterPasswordView(roomId: room.id, correctPassword: String(password))
+            }
+        }
+        .padding(top: 4, leading: 10, bottom: 12, trailing: 10)
     }
 }
 

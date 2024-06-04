@@ -10,6 +10,7 @@
 		580C10FF2C0EE7C900BFBBC4 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C10FE2C0EE7C900BFBBC4 /* KeychainService.swift */; };
 		580C11012C0EF6C000BFBBC4 /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11002C0EF6C000BFBBC4 /* CreateRoomView.swift */; };
 		580C11042C0EF70200BFBBC4 /* CreateRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11032C0EF70200BFBBC4 /* CreateRoomVM.swift */; };
+		580C11072C0F086C00BFBBC4 /* EnterPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11062C0F086C00BFBBC4 /* EnterPasswordView.swift */; };
 		58585C462C085E62005B65FE /* RankingWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C452C085E62005B65FE /* RankingWebRepository.swift */; };
 		58585C482C085FAF005B65FE /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C472C085FAF005B65FE /* Encodable+Extension.swift */; };
 		58585C4A2C08607B005B65FE /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C492C08607B005B65FE /* Dictionary+Extension.swift */; };
@@ -102,6 +103,7 @@
 		580C10FE2C0EE7C900BFBBC4 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		580C11002C0EF6C000BFBBC4 /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		580C11032C0EF70200BFBBC4 /* CreateRoomVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomVM.swift; sourceTree = "<group>"; };
+		580C11062C0F086C00BFBBC4 /* EnterPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordView.swift; sourceTree = "<group>"; };
 		58585C452C085E62005B65FE /* RankingWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingWebRepository.swift; sourceTree = "<group>"; };
 		58585C472C085FAF005B65FE /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		58585C492C08607B005B65FE /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
@@ -203,6 +205,14 @@
 				580C11032C0EF70200BFBBC4 /* CreateRoomVM.swift */,
 			);
 			path = CreateRoomView;
+			sourceTree = "<group>";
+		};
+		580C11052C0F085500BFBBC4 /* EnterPasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				580C11062C0F086C00BFBBC4 /* EnterPasswordView.swift */,
+			);
+			path = EnterPasswordView;
 			sourceTree = "<group>";
 		};
 		585BB4C72BFC654C007CCD51 = {
@@ -439,6 +449,7 @@
 		587ED91B2C0D70E400FEFA96 /* MultiGameView */ = {
 			isa = PBXGroup;
 			children = (
+				580C11052C0F085500BFBBC4 /* EnterPasswordView */,
 				580C11022C0EF6F900BFBBC4 /* CreateRoomView */,
 				587ED9332C0D848800FEFA96 /* GameRoomList */,
 				587ED91F2C0D72F500FEFA96 /* MultiGameView.swift */,
@@ -677,6 +688,7 @@
 				585BB53D2BFC745B007CCD51 /* FoxImageRepository.swift in Sources */,
 				587ED93F2C0D976200FEFA96 /* MultiGameMemberData.swift in Sources */,
 				5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */,
+				580C11072C0F086C00BFBBC4 /* EnterPasswordView.swift in Sources */,
 				5878B47E2C00193300A7329B /* RankingDBRepository.swift in Sources */,
 				585BB5212BFC68DF007CCD51 /* SplashVM.swift in Sources */,
 				585BB5232BFC6902007CCD51 /* BaseViewModel.swift in Sources */,

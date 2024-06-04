@@ -47,7 +47,7 @@ class GameRoomListVM: BaseViewModel {
         self.services.realtimeRoomDBService.roomChangedSubject
             .run(in: &self.subscription) {[weak self] response in
                 guard let self = self else { return }
-                print("list update: \(response)")
+
                 self.list = response
                 response.forEach { item in
                     if let deviceId = self.deviceId {
