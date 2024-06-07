@@ -13,7 +13,7 @@ class GameRoomListVM: BaseViewModel {
     private let services: DIContainer.Services
 
     @Published var list: [RoomData] = []
-    @Published var myRoom: RoomData? = nil
+    @Published var participatingRoom: RoomData? = nil
     let deviceId: String?
     
     init(_ interactors: DIContainer.Interactors, services: DIContainer.Services) {
@@ -21,6 +21,7 @@ class GameRoomListVM: BaseViewModel {
         self.services = services
         self.deviceId = self.services.keychainService.loadDeviceId()
         super.init()
+        self.observeList()
     }
     
     deinit {
@@ -28,31 +29,34 @@ class GameRoomListVM: BaseViewModel {
     }
     
     func onAppear() {
-        self.observeList()
     }
     
     func onDisappear() {
         
     }
     
-    private func removeRoom() {
-        if let joinedRoomId = Constants.joinedRoomId {
-            self.services.realtimeRoomDBService.deleteRoom(roomId: joinedRoomId)
-            Constants.joinedRoomId = nil
-            self.myRoom = nil
+    func isExistedMember(roomId: String) -> Bool {
+        let deviceId = self.services.keychainService.loadDeviceId()
+        if let room = self.list.first(where: { $0.id == roomId }) {
+            return (room.memberIds ?? []).contains(deviceId)
         }
+        return false
+    }
+    
+    private func removeRoom(roomId: String) {
+        self.services.realtimeRoomDBService.deleteRoom(roomId: roomId)
     }
     
     func observeList() {
         self.services.realtimeRoomDBService.roomChangedSubject
             .run(in: &self.subscription) {[weak self] response in
                 guard let self = self else { return }
-
                 self.list = response
+                self.participatingRoom = nil
                 response.forEach { item in
-                    if let deviceId = self.deviceId {
-                        Constants.joinedRoomId = item.id
-                        self.myRoom = item
+                    if (item.memberIds ?? []).contains(where: { $0 == self.deviceId }) {
+                        self.participatingRoom = item
+                        return
                     }
                 }
             } err: {[weak self] err in

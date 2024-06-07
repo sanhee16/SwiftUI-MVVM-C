@@ -16,7 +16,7 @@ class RealtimeRoomDBService {
     private let decoder = JSONDecoder()
     
     var roomChangedSubject: CurrentValueSubject<[RoomData], Error>
-    private var list: [RoomData] = [] { didSet { self.roomChangedSubject.send(list) } }
+    private var list: [RoomData] = []
     
     init() {
         self.ref = Database.database().reference()
@@ -27,31 +27,33 @@ class RealtimeRoomDBService {
     
     func addRoom(name: String, password: Int?, managerDeviceId: String, memberName: String) {
         let roomId = UUID().uuidString
-        let memberId = UUID().uuidString
-        var room = RoomData(id: roomId, name: name, status: MultiGameStatus.ready.rawValue, managerDeviceId: managerDeviceId, items: []).toDictionary()!
-        
+        var room = RoomData(id: roomId, name: name, status: MultiGameStatus.ready.rawValue, managerDeviceId: managerDeviceId, memberIds: [managerDeviceId], items: []).toDictionary()!
         
         if let password = password {
             room["password"] = password
         }
 
-        let member = MultiGameMemberData(id: memberId, name: memberName).toDictionary()
+        let member = MultiGameMemberData(id: managerDeviceId, name: memberName).toDictionary()
         self.databasePath.child("\(roomId)").setValue(room)
-        self.databasePath.child("\(roomId)/members/\(memberId)").setValue(member)
+        self.databasePath.child("\(roomId)/members/\(managerDeviceId)").setValue(member)
     }
+    
     
     func deleteRoom(roomId: String) {
         self.databasePath.child("\(roomId)").removeValue()
     }
     
-    func enterTheRoom(roomId: String, memberName: String) {
-        let memberId = UUID().uuidString
+    func enterTheRoom(roomId: String, deviceID: String, memberIds: [String], memberName: String) {
         let member = MultiGameMemberData(
-            id: memberId,
+            id: deviceID,
             name: memberName
         ).toDictionary()
         
-        self.databasePath.child("\(roomId)/members/\(memberId)").setValue(member)
+        self.databasePath.child("\(roomId)/members/\(deviceID)").setValue(member)
+        
+        var ids = memberIds
+        ids.append(deviceID)
+        self.databasePath.child("\(roomId)").setValue(["memberIds": ids])
     }
     
     private func start() {
@@ -65,6 +67,7 @@ class RealtimeRoomDBService {
 
                 print("[childAdded] room: \(room)")
                 self.list.append(room)
+                self.roomChangedSubject.send(self.list)
             } catch {
                 print("[childAdded] an error occurred", error)
             }
@@ -79,6 +82,7 @@ class RealtimeRoomDBService {
                 if let idx = self.list.firstIndex(where: { $0.id == room.id }) {
                     self.list[idx] = room
                 }
+                self.roomChangedSubject.send(self.list)
             } catch {
                 print("[childChanged] an error occurred", error)
             }
@@ -92,6 +96,7 @@ class RealtimeRoomDBService {
                 for (idx, roomItem) in self.list.enumerated() where room.id == roomItem.id {
                     self.list.remove(at: idx)
                 }
+                self.roomChangedSubject.send(self.list)
             } catch {
                 print("[childRemoved] an error occurred", error)
             }
@@ -99,8 +104,8 @@ class RealtimeRoomDBService {
         
         // 경로에 있는 컨텐츠의 모든 변경 내용을 감지하고 읽어온다.
         databasePath.observe(.value) {[weak self] snapshot in
-            guard let self = self else { return }
-            
+            guard let self = self, let json = snapshot.value as? [String: Any] else { return }
+
         }
     }
     

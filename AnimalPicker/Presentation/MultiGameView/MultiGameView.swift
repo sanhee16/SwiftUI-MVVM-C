@@ -11,8 +11,8 @@ import SwiftUI
 
 struct MultiGameView: View {
     typealias VM = MultiGameVM
-    public static func vc(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, items: [GameItem], completion: (()-> Void)? = nil) -> UIViewController {
-        let vm = VM.init(interactors, items: items)
+    public static func vc(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, services: DIContainer.Services, roomData: RoomData, completion: (()-> Void)? = nil) -> UIViewController {
+        let vm = VM.init(interactors, services: services, roomData: roomData)
         let view = Self.init(vm: vm, coordinator: coordinator)
         let vc = BaseViewController.init(view, completion: completion)
         vc.attachViewModel(vm)
@@ -35,6 +35,12 @@ struct MultiGameView: View {
                 Topbar(vm.level.rawValue, type: .back) {
                     self.coordinator.pop()
                 }
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Members")
+                        .font(.kr18b)
+                    
+                }
+                .padding(top: 12, leading: 8, bottom: 12, trailing: 8)
             }
             .frame(width: geometry.size.width, alignment: .center)
         }

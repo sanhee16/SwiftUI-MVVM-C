@@ -19,7 +19,7 @@ enum KeychainError: Error {
 }
 
 extension KeychainService {
-    func loadDeviceId() -> String? {
+    func loadDeviceId() -> String {
         do {
             let data = try self.load(key: KeyChainKeys.deviceId)
             return data
@@ -29,7 +29,7 @@ extension KeychainService {
                 try self.save(key: KeyChainKeys.deviceId, value: UUID().uuidString)
                 return loadDeviceId()
             } catch {
-                return nil
+                return ""
             }
         }
     }

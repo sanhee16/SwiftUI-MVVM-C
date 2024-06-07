@@ -13,5 +13,6 @@ struct RoomData: Codable, Identifiable, Hashable {
     var password: Int?
     var status: String
     var managerDeviceId: String
+    var memberIds: [String]?
     var items: [String]?
 }

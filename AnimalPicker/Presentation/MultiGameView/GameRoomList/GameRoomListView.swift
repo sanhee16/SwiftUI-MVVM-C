@@ -28,44 +28,33 @@ struct GameRoomListView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
+                Topbar("Multi-Game", type: .back) {
+                    self.coordinator.pop()
+                }
                 
-                HStack(alignment: .center, spacing: 0, content: {
-                    Spacer()
-                    if let myRoom = $vm.myRoom.wrappedValue {
-                        Text("My Room")
-                            .font(.kr20b)
-                            .frame(width: 130, height: 50, alignment: .center)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .foregroundStyle(Color.green)
-                            )
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                
-                            }
-                            .paddingHorizontal(8)
-                    } else {
-                        Text("Create Room")
-                            .font(.kr20b)
-                            .frame(width: 130, height: 50, alignment: .center)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .foregroundStyle(Color.yellow)
-                            )
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                self.coordinator.presentCreateRoomView()
-                            }
-                            .paddingHorizontal(8)
+                //MARK: Participating Room
+                Text("Participating Room")
+                    .font(.kr18b)
+                    .padding(8)
+                participateButton(room: $vm.participatingRoom.wrappedValue)
+                    .onTapGesture {
+                        if let participatingRoom = $vm.participatingRoom.wrappedValue {
+                            self.coordinator.presentEnterRoomView(roomData: participatingRoom)
+                        } else {
+                            self.coordinator.presentCreateRoomView()
+                        }
                     }
-                })
                 
+                //MARK: Total Room
+                Text("Total Room")
+                    .font(.kr18b)
+                    .padding(top: 20, leading: 8, bottom: 8, trailing: 0)
                 ScrollView(.vertical, showsIndicators: false, content: {
                     ForEach($vm.list.wrappedValue, id: \.self) { item in
                         drawRoom(room: item)
                     }
                 })
-                .paddingTop(30)
+                .paddingBottom(30)
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
@@ -77,33 +66,55 @@ struct GameRoomListView: View {
         }
     }
     
-    private func drawRoom(room: RoomData) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(room.name)
-                .font(.kr16b)
+    private func participateButton(room: RoomData?) -> some View {
+        HStack(alignment: .center, spacing: 6, content: {
+            if let _ = room?.password {
+                Image(systemName: "lock.fill")
+                    .resizable()
+                    .frame(width: 12.0, height: 16.0)
+            }
+            Text(room?.name ?? "Create Room")
+                .font(.kr16r)
                 .foregroundStyle(.black)
-            
-            HStack(alignment: .center, spacing: 0, content: {
-                if let password = room.password {
-                    Image(systemName: "lock.fill")
-                        .resizable()
-                        .frame(width: 12.0, height: 16.0)
-                }
-                Spacer()
-            })
-        }
-        .padding(top: 20, leading: 16, bottom: 20, trailing: 16)
+        })
+        .padding(top: 12, leading: 14, bottom: 12, trailing: 14)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundStyle(Color.yellow)
+        )
+        .contentShape(Rectangle())
+        .paddingHorizontal(8)
+    }
+    
+    private func drawRoom(room: RoomData) -> some View {
+        HStack(alignment: .center, spacing: 6, content: {
+            if let _ = room.password {
+                Image(systemName: "lock.fill")
+                    .resizable()
+                    .frame(width: 12.0, height: 16.0)
+            }
+            Text(room.name)
+                .font(.kr16r)
+                .foregroundStyle(.black)
+        })
+        .padding(top: 12, leading: 14, bottom: 12, trailing: 14)
         .contentShape(Rectangle())
         .background(
             RoundedRectangle(cornerRadius: 8)
                 .foregroundStyle(Color.green.opacity(0.9))
         )
         .onTapGesture {
-            if let password = room.password {
-                self.coordinator.presentEnterPasswordView(roomId: room.id, correctPassword: String(password))
+            if let _ = $vm.participatingRoom.wrappedValue {
+                //MARK: Show Toast
+            } else {
+                if vm.isExistedMember(roomId: room.id) {
+                    self.coordinator.pushMultiGameView(roomData: room)
+                } else {
+                    self.coordinator.presentEnterRoomView(roomData: room)
+                }
             }
         }
-        .padding(top: 4, leading: 10, bottom: 12, trailing: 10)
+        .padding(top: 4, leading: 8, bottom: 12, trailing: 10)
     }
 }
 

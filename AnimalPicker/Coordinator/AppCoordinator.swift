@@ -61,13 +61,18 @@ class AppCoordinator: BaseCoordinator, ObservableObject {
         self.push(vc, animated: false)
     }
     
+    func pushMultiGameView(roomData: RoomData) {
+        let vc = MultiGameView.vc(self, interactors: self.container.interactors, services: self.container.services, roomData: roomData)
+        self.push(vc, animated: false)
+    }
+    
     func presentCreateRoomView() {
         let vc = CreateRoomView.vc(self, interactors: self.container.interactors, services: self.container.services)
         self.present(vc, animated: false)
     }
     
-    func presentEnterPasswordView(roomId: String, correctPassword: String) {
-        let vc = EnterPasswordView.vc(self, roomId: roomId, correctPassword: correctPassword)
+    func presentEnterRoomView(roomData: RoomData) {
+        let vc = EnterRoomView.vc(self, interactors: self.container.interactors, services: self.container.services, roomData: roomData)
         self.present(vc, animated: false)
     }
 }

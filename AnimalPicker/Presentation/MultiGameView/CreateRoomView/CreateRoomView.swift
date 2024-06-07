@@ -27,9 +27,13 @@ struct CreateRoomView: View {
     static let WIDTH: CGFloat = UIScreen.main.bounds.width
     static let HEIGHT: CGFloat = UIScreen.main.bounds.height
     
-    @State private var name: String = ""
+    @State private var roomName: String = ""
+    @State private var nickname: String = ""
     @State private var password: String = ""
+    
+    @State private var emptyRoomname: Bool = false
     @State private var isSetPassword: Bool = false
+    @State private var emptyNickname: Bool = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -40,10 +44,36 @@ struct CreateRoomView: View {
                 .paddingBottom(16)
                 
                 
-                SingleBoxTextField(placeholder: "Room Name", text: $name) { _ in }
-                    .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
+                Text("Room Name")
+                    .font(.kr16b)
+                    .paddingBottom(2)
+                SingleBoxTextField(placeholder: "Room Name", text: $roomName) { _ in
+                    self.emptyRoomname = false
+                }
+                .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
+                .paddingBottom(6)
+                Text(emptyRoomname ? "Empty Room name" : "")
+                    .font(.kr12m)
+                    .foregroundStyle(.red.opacity(0.9))
                     .paddingBottom(8)
                 
+                Text("Nickname")
+                    .font(.kr16b)
+                    .paddingBottom(2)
+                SingleBoxTextField(placeholder: "Nickname", text: $nickname, keyboardType: .default, lengthLimit: 10) { _ in
+                    self.emptyNickname = false
+                }
+                .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
+                .paddingBottom(6)
+                Text(emptyNickname ? "Empty Nickname" : "")
+                    .font(.kr12m)
+                    .foregroundStyle(.red.opacity(0.9))
+                    .paddingBottom(8)
+
+                
+                Text("Password")
+                    .font(.kr16b)
+                    .paddingBottom(2)
                 HStack(alignment: .center, spacing: 10) {
                     Image(systemName: isSetPassword ? "checkmark.square.fill" : "checkmark.square")
                         .resizable()
@@ -54,7 +84,9 @@ struct CreateRoomView: View {
                         }
                     
                     SingleBoxTextField(placeholder: "Password", text: $password, keyboardType: .numberPad, lengthLimit: 4) { _ in }
-                        .disabled(!isSetPassword)
+                        .onTapGesture {
+                            self.isSetPassword = true
+                        }
                 }
                 .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
                 .paddingBottom(20)
@@ -66,11 +98,17 @@ struct CreateRoomView: View {
                     .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
                     .background(
                         RoundedRectangle(cornerRadius: 6)
-                            .foregroundStyle(self.name.isEmpty ? Color.gray.opacity(0.8) : Color.blue.opacity(0.8) )
+                            .foregroundStyle(self.roomName.isEmpty ? Color.gray.opacity(0.8) : Color.blue.opacity(0.8) )
                     )
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        vm.onClickCreateRoom(name: name, password: password)
+                        if roomName.isEmpty {
+                            self.emptyRoomname = true
+                        } else if nickname.isEmpty {
+                            self.emptyNickname = true
+                        } else {
+                            vm.onClickCreateRoom(roomName: roomName, password: password, nickname: nickname)
+                        }
                     }
             })
             .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)

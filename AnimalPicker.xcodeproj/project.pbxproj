@@ -10,7 +10,7 @@
 		580C10FF2C0EE7C900BFBBC4 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C10FE2C0EE7C900BFBBC4 /* KeychainService.swift */; };
 		580C11012C0EF6C000BFBBC4 /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11002C0EF6C000BFBBC4 /* CreateRoomView.swift */; };
 		580C11042C0EF70200BFBBC4 /* CreateRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11032C0EF70200BFBBC4 /* CreateRoomVM.swift */; };
-		580C11072C0F086C00BFBBC4 /* EnterPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11062C0F086C00BFBBC4 /* EnterPasswordView.swift */; };
+		580C11072C0F086C00BFBBC4 /* EnterRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11062C0F086C00BFBBC4 /* EnterRoomView.swift */; };
 		58585C462C085E62005B65FE /* RankingWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C452C085E62005B65FE /* RankingWebRepository.swift */; };
 		58585C482C085FAF005B65FE /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C472C085FAF005B65FE /* Encodable+Extension.swift */; };
 		58585C4A2C08607B005B65FE /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C492C08607B005B65FE /* Dictionary+Extension.swift */; };
@@ -74,6 +74,8 @@
 		587ED9392C0D84E300FEFA96 /* RealtimeDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED9382C0D84E300FEFA96 /* RealtimeDBService.swift */; };
 		587ED93B2C0D85A200FEFA96 /* RoomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED93A2C0D85A200FEFA96 /* RoomData.swift */; };
 		587ED93F2C0D976200FEFA96 /* MultiGameMemberData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED93E2C0D976200FEFA96 /* MultiGameMemberData.swift */; };
+		58856ACB2C12902C000F53FF /* HapticUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58856ACA2C12902C000F53FF /* HapticUtil.swift */; };
+		58856ACD2C129F40000F53FF /* EnterRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58856ACC2C129F40000F53FF /* EnterRoomVM.swift */; };
 		5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
 		5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */; };
 		58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */; };
@@ -103,7 +105,7 @@
 		580C10FE2C0EE7C900BFBBC4 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		580C11002C0EF6C000BFBBC4 /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		580C11032C0EF70200BFBBC4 /* CreateRoomVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomVM.swift; sourceTree = "<group>"; };
-		580C11062C0F086C00BFBBC4 /* EnterPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordView.swift; sourceTree = "<group>"; };
+		580C11062C0F086C00BFBBC4 /* EnterRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRoomView.swift; sourceTree = "<group>"; };
 		58585C452C085E62005B65FE /* RankingWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingWebRepository.swift; sourceTree = "<group>"; };
 		58585C472C085FAF005B65FE /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		58585C492C08607B005B65FE /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
@@ -159,6 +161,8 @@
 		587ED9382C0D84E300FEFA96 /* RealtimeDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeDBService.swift; sourceTree = "<group>"; };
 		587ED93A2C0D85A200FEFA96 /* RoomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomData.swift; sourceTree = "<group>"; };
 		587ED93E2C0D976200FEFA96 /* MultiGameMemberData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiGameMemberData.swift; sourceTree = "<group>"; };
+		58856ACA2C12902C000F53FF /* HapticUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticUtil.swift; sourceTree = "<group>"; };
+		58856ACC2C129F40000F53FF /* EnterRoomVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRoomVM.swift; sourceTree = "<group>"; };
 		5892AE152BFEC961009663C1 /* DuckImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuckImageRepository.swift; sourceTree = "<group>"; };
 		5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LizardImageRepository.swift; sourceTree = "<group>"; };
 		58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
@@ -207,12 +211,13 @@
 			path = CreateRoomView;
 			sourceTree = "<group>";
 		};
-		580C11052C0F085500BFBBC4 /* EnterPasswordView */ = {
+		580C11052C0F085500BFBBC4 /* EnterRoomView */ = {
 			isa = PBXGroup;
 			children = (
-				580C11062C0F086C00BFBBC4 /* EnterPasswordView.swift */,
+				580C11062C0F086C00BFBBC4 /* EnterRoomView.swift */,
+				58856ACC2C129F40000F53FF /* EnterRoomVM.swift */,
 			);
-			path = EnterPasswordView;
+			path = EnterRoomView;
 			sourceTree = "<group>";
 		};
 		585BB4C72BFC654C007CCD51 = {
@@ -238,6 +243,7 @@
 		585BB4D22BFC654C007CCD51 /* AnimalPicker */ = {
 			isa = PBXGroup;
 			children = (
+				58856AC92C12901E000F53FF /* Utils */,
 				585BB5322BFC6BAE007CCD51 /* Info.plist */,
 				587ED9192C0D708800FEFA96 /* GoogleService-Info.plist */,
 				58C50D2C2C041A1000C4E0F1 /* Domain */,
@@ -449,7 +455,7 @@
 		587ED91B2C0D70E400FEFA96 /* MultiGameView */ = {
 			isa = PBXGroup;
 			children = (
-				580C11052C0F085500BFBBC4 /* EnterPasswordView */,
+				580C11052C0F085500BFBBC4 /* EnterRoomView */,
 				580C11022C0EF6F900BFBBC4 /* CreateRoomView */,
 				587ED9332C0D848800FEFA96 /* GameRoomList */,
 				587ED91F2C0D72F500FEFA96 /* MultiGameView.swift */,
@@ -473,6 +479,14 @@
 				587ED9342C0D849400FEFA96 /* GameRoomListVM.swift */,
 			);
 			path = GameRoomList;
+			sourceTree = "<group>";
+		};
+		58856AC92C12901E000F53FF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				58856ACA2C12902C000F53FF /* HapticUtil.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		58C50D2C2C041A1000C4E0F1 /* Domain */ = {
@@ -671,8 +685,10 @@
 				585BB5252BFC6922007CCD51 /* BaseViewController.swift in Sources */,
 				58585C4A2C08607B005B65FE /* Dictionary+Extension.swift in Sources */,
 				585BB51F2BFC68D8007CCD51 /* SplashView.swift in Sources */,
+				58856ACB2C12902C000F53FF /* HapticUtil.swift in Sources */,
 				580C10FF2C0EE7C900BFBBC4 /* KeychainService.swift in Sources */,
 				58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */,
+				58856ACD2C129F40000F53FF /* EnterRoomVM.swift in Sources */,
 				585BB50C2BFC67F5007CCD51 /* AppCoordinator.swift in Sources */,
 				5878B4742C00130800A7329B /* RankingView.swift in Sources */,
 				585BB5132BFC681C007CCD51 /* AppEnvironment.swift in Sources */,
@@ -688,7 +704,7 @@
 				585BB53D2BFC745B007CCD51 /* FoxImageRepository.swift in Sources */,
 				587ED93F2C0D976200FEFA96 /* MultiGameMemberData.swift in Sources */,
 				5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */,
-				580C11072C0F086C00BFBBC4 /* EnterPasswordView.swift in Sources */,
+				580C11072C0F086C00BFBBC4 /* EnterRoomView.swift in Sources */,
 				5878B47E2C00193300A7329B /* RankingDBRepository.swift in Sources */,
 				585BB5212BFC68DF007CCD51 /* SplashVM.swift in Sources */,
 				585BB5232BFC6902007CCD51 /* BaseViewModel.swift in Sources */,
