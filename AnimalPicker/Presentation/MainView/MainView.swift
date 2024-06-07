@@ -44,7 +44,7 @@ struct MainView: View {
                     .onTapGesture {
                         self.coordinator.pushGameRoomListView()
                     }
-                    .paddingVertical(14)
+                    .paddingVertical(8)
                 
                 Text("Ranking")
                     .font(.kr14r)
@@ -58,7 +58,7 @@ struct MainView: View {
                     .onTapGesture {
                         self.coordinator.pushRankingView()
                     }
-                    .paddingVertical(14)
+                    .paddingVertical(8)
                 
                 Spacer()
 
@@ -75,7 +75,7 @@ struct MainView: View {
                         .onTapGesture {
                             self.coordinator.pushSingleGameView(level: level)
                         }
-                        .paddingBottom(20)
+                        .paddingBottom(6)
                 }
 
                 

@@ -37,8 +37,37 @@ struct MultiGameView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("Members")
-                        .font(.kr18b)
+                    HStack(alignment: .center, spacing: 4, content: {
+                        Text("Members")
+                            .font(.kr18b)
+                        Spacer()
+                        Text("Ready")
+                            .font(.kr15m)
+                            .foregroundStyle(Color.white)
+                            .padding(top: 8, leading: 10, bottom: 8, trailing: 10)
+                            .background(
+                                RoundedRectangle(cornerRadius: 4)
+                                    .foregroundStyle($vm.status.wrappedValue == .none ? Color.yellow : Color.gray)
+                            )
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                vm.onClickReady()
+                            }
+                        if vm.roomData.managerDeviceId == vm.deviceId {
+                            Text("Start")
+                                .font(.kr15m)
+                                .foregroundStyle(Color.white)
+                                .padding(top: 8, leading: 10, bottom: 8, trailing: 10)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .foregroundStyle(MultiGameStatus(rawValue: $vm.roomData.wrappedValue.status) == .ready ? Color.green : Color.gray)
+                                )
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    vm.onClickStart()
+                                }
+                        }
+                    })
                     HStack(alignment: .center, spacing: 8, content: {
                         ForEach($vm.members.wrappedValue, id: \.self) { item in
                             Text(item.name)
@@ -47,7 +76,7 @@ struct MultiGameView: View {
                                 .padding(top: 8, leading: 10, bottom: 8, trailing: 10)
                                 .background(
                                     RoundedRectangle(cornerRadius: 4)
-                                        .foregroundColor(item.id == vm.deviceId ? Color.blue.opacity(0.6) : Color.white)
+                                        .foregroundColor(MultiGameStatus(rawValue: item.status) == .ready ? Color.yellow : Color.white)
                                         .shadow(color: .black.opacity(0.65), radius: 2, x: 1, y: 1)
                                 )
                         }

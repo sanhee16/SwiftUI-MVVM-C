@@ -8,7 +8,12 @@
 import Foundation
 
 struct MultiGameMemberData: Codable, Identifiable, Hashable {
+    static func == (lhs: MultiGameMemberData, rhs: MultiGameMemberData) -> Bool {
+        return lhs.id == rhs.id && lhs.status == rhs.status && lhs.name == rhs.name
+    }
+
     var id: String
     var name: String
     var time: Float?
+    var status: String // MultiGameStatus
 }

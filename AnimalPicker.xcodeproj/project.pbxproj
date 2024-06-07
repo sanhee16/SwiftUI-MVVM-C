@@ -71,12 +71,13 @@
 		587ED9262C0D730A00FEFA96 /* MultiGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED9212C0D730000FEFA96 /* MultiGameVM.swift */; };
 		587ED9352C0D849400FEFA96 /* GameRoomListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED9342C0D849400FEFA96 /* GameRoomListVM.swift */; };
 		587ED9372C0D849700FEFA96 /* GameRoomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED9362C0D849700FEFA96 /* GameRoomListView.swift */; };
-		587ED9392C0D84E300FEFA96 /* RealtimeRoomDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED9382C0D84E300FEFA96 /* RealtimeRoomDBService.swift */; };
+		587ED9392C0D84E300FEFA96 /* RealtimeRoomListDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED9382C0D84E300FEFA96 /* RealtimeRoomListDBService.swift */; };
 		587ED93B2C0D85A200FEFA96 /* RoomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED93A2C0D85A200FEFA96 /* RoomData.swift */; };
 		587ED93F2C0D976200FEFA96 /* MultiGameMemberData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED93E2C0D976200FEFA96 /* MultiGameMemberData.swift */; };
 		58856ACB2C12902C000F53FF /* HapticUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58856ACA2C12902C000F53FF /* HapticUtil.swift */; };
 		58856ACD2C129F40000F53FF /* EnterRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58856ACC2C129F40000F53FF /* EnterRoomVM.swift */; };
 		58856ACF2C12C70F000F53FF /* RealtimeMemberDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58856ACE2C12C70F000F53FF /* RealtimeMemberDBService.swift */; };
+		58856AD12C12E4E8000F53FF /* RealtimeRoomDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58856AD02C12E4E8000F53FF /* RealtimeRoomDBService.swift */; };
 		5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
 		5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */; };
 		58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */; };
@@ -159,12 +160,13 @@
 		587ED9212C0D730000FEFA96 /* MultiGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiGameVM.swift; sourceTree = "<group>"; };
 		587ED9342C0D849400FEFA96 /* GameRoomListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomListVM.swift; sourceTree = "<group>"; };
 		587ED9362C0D849700FEFA96 /* GameRoomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomListView.swift; sourceTree = "<group>"; };
-		587ED9382C0D84E300FEFA96 /* RealtimeRoomDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeRoomDBService.swift; sourceTree = "<group>"; };
+		587ED9382C0D84E300FEFA96 /* RealtimeRoomListDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeRoomListDBService.swift; sourceTree = "<group>"; };
 		587ED93A2C0D85A200FEFA96 /* RoomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomData.swift; sourceTree = "<group>"; };
 		587ED93E2C0D976200FEFA96 /* MultiGameMemberData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiGameMemberData.swift; sourceTree = "<group>"; };
 		58856ACA2C12902C000F53FF /* HapticUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticUtil.swift; sourceTree = "<group>"; };
 		58856ACC2C129F40000F53FF /* EnterRoomVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRoomVM.swift; sourceTree = "<group>"; };
 		58856ACE2C12C70F000F53FF /* RealtimeMemberDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeMemberDBService.swift; sourceTree = "<group>"; };
+		58856AD02C12E4E8000F53FF /* RealtimeRoomDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeRoomDBService.swift; sourceTree = "<group>"; };
 		5892AE152BFEC961009663C1 /* DuckImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuckImageRepository.swift; sourceTree = "<group>"; };
 		5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LizardImageRepository.swift; sourceTree = "<group>"; };
 		58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
@@ -419,7 +421,8 @@
 			children = (
 				585BB5412BFC7516007CCD51 /* BaseNetwork.swift */,
 				5870E7562C071EDE00416F08 /* FirestoreService.swift */,
-				587ED9382C0D84E300FEFA96 /* RealtimeRoomDBService.swift */,
+				587ED9382C0D84E300FEFA96 /* RealtimeRoomListDBService.swift */,
+				58856AD02C12E4E8000F53FF /* RealtimeRoomDBService.swift */,
 				58856ACE2C12C70F000F53FF /* RealtimeMemberDBService.swift */,
 				580C10FE2C0EE7C900BFBBC4 /* KeychainService.swift */,
 			);
@@ -700,8 +703,9 @@
 				587ED9372C0D849700FEFA96 /* GameRoomListView.swift in Sources */,
 				585BB5372BFC7029007CCD51 /* SingleGameView.swift in Sources */,
 				587ED9202C0D72F500FEFA96 /* MultiGameView.swift in Sources */,
-				587ED9392C0D84E300FEFA96 /* RealtimeRoomDBService.swift in Sources */,
+				587ED9392C0D84E300FEFA96 /* RealtimeRoomListDBService.swift in Sources */,
 				5878B4892C007DCF00A7329B /* SingleBoxTextField.swift in Sources */,
+				58856AD12C12E4E8000F53FF /* RealtimeRoomDBService.swift in Sources */,
 				58585C4C2C086117005B65FE /* Int16+Extension.swift in Sources */,
 				585BB5272BFC6949007CCD51 /* MainView.swift in Sources */,
 				580C11012C0EF6C000BFBBC4 /* CreateRoomView.swift in Sources */,

@@ -28,7 +28,12 @@ class RealtimeMemberDBService {
     func updateRoomId(roomId: String) {
         self.databasePath = self.ref.child("rooms/\(roomId)/members")
         self.roomId = roomId
+        self.list.removeAll()
         self.start()
+    }
+    
+    func changeStatus(memberId: String, status: MultiGameStatus) {
+        self.databasePath?.child("\(memberId)").updateChildValues(["status": status.rawValue])
     }
     
     func removeMember(memberId: String) {
@@ -36,17 +41,13 @@ class RealtimeMemberDBService {
     }
     
     private func start() {
-        self.list.removeAll()
-        
         databasePath?.observe(.childAdded) {[weak self] snapshot, _ in
             guard let self = self, let json = snapshot.value as? [String: Any] else { return }
             do {
                 let memberData = try JSONSerialization.data(withJSONObject: json)
                 let member = try self.decoder.decode(MultiGameMemberData.self, from: memberData)
-
-                print("[childAdded] member: \(member)")
+                
                 self.list.append(member)
-                print("[childAdded] list: \(list)")
                 self.memberChangedSubject.send(self.list)
             } catch {
                 print("[childAdded] an error occurred", error)

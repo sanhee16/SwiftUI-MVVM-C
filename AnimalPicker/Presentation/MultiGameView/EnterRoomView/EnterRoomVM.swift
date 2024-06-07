@@ -36,7 +36,7 @@ class EnterRoomVM: BaseViewModel {
         let deviceId = services.keychainService.loadDeviceId()
         if deviceId.isEmpty || nickname.isEmpty { return }
         
-        self.services.realtimeRoomDBService.enterTheRoom(roomId: roomData.id, deviceID: deviceId, memberIds: roomData.memberIds ?? [], memberName: nickname)
+        self.services.realtimeRoomListDBService.enterTheRoom(roomId: roomData.id, deviceID: deviceId, memberIds: roomData.memberIds ?? [], memberName: nickname)
         self.enterRoom = true
     }
 }

@@ -50,11 +50,11 @@ class GameRoomListVM: BaseViewModel {
     }
     
     private func removeRoom(roomId: String) {
-        self.services.realtimeRoomDBService.deleteRoom(roomId: roomId)
+        self.services.realtimeRoomListDBService.deleteRoom(roomId: roomId)
     }
     
     func observeList() {
-        self.services.realtimeRoomDBService.roomChangedSubject
+        self.services.realtimeRoomListDBService.roomlistChangedSubject
             .run(in: &self.subscription) {[weak self] response in
                 guard let self = self else { return }
                 self.list = response
