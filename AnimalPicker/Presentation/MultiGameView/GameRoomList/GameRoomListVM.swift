@@ -29,18 +29,24 @@ class GameRoomListVM: BaseViewModel {
     }
     
     func onAppear() {
+
     }
     
     func onDisappear() {
         
     }
     
-    func isExistedMember(roomId: String) -> Bool {
+    func isExistedMember(roomId: String) -> RoomData? {
         let deviceId = self.services.keychainService.loadDeviceId()
+        print("list: \(self.list)")
+        print("roomId: \(roomId)")
         if let room = self.list.first(where: { $0.id == roomId }) {
-            return (room.memberIds ?? []).contains(deviceId)
+            print("room exist - \(room.memberIds)")
+            if (room.memberIds ?? []).contains(deviceId) {
+                return room
+            }
         }
-        return false
+        return nil
     }
     
     private func removeRoom(roomId: String) {

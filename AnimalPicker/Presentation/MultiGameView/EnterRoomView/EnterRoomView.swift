@@ -39,7 +39,7 @@ struct EnterRoomView: View {
         VStack(alignment: .center, spacing: 0) {
             VStack(alignment: .leading, spacing: 0, content: {
                 Topbar("Enter Password", type: .close) {
-                    self.coordinator.dismiss()
+                    self.coordinator.dismiss(false)
                 }
                 .paddingBottom(16)
                 
@@ -78,7 +78,7 @@ struct EnterRoomView: View {
                     .onTapGesture {
                         if nickname.isEmpty {
                             self.emptyNickname = true
-                        } else if let roomPW = roomData.password {
+                        } else if let roomPW = roomData.password, !String(roomPW).isEmpty {
                             if password == String(roomPW) {
                                 self.vm.enterRoom(nickname: nickname)
                             } else {
@@ -93,9 +93,9 @@ struct EnterRoomView: View {
             .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
             .padding(14)
         }
-        .onAppear(perform: {
-            if $vm.enterRoom.wrappedValue {
-                self.coordinator.pushMultiGameView(roomData: self.roomData)
+        .onChange(of: $vm.enterRoom.wrappedValue, perform: { value in
+            if value {
+                self.coordinator.dismiss(false)
             }
         })
         .frame(width: UIScreen.main.bounds.width - 40, alignment: .center)

@@ -39,7 +39,7 @@ struct GameRoomListView: View {
                 participateButton(room: $vm.participatingRoom.wrappedValue)
                     .onTapGesture {
                         if let participatingRoom = $vm.participatingRoom.wrappedValue {
-                            self.coordinator.presentEnterRoomView(roomData: participatingRoom)
+                            self.coordinator.pushMultiGameView(roomData: participatingRoom)
                         } else {
                             self.coordinator.presentCreateRoomView()
                         }
@@ -105,12 +105,16 @@ struct GameRoomListView: View {
         )
         .onTapGesture {
             if let _ = $vm.participatingRoom.wrappedValue {
-                //MARK: Show Toast
+                
             } else {
-                if vm.isExistedMember(roomId: room.id) {
+                if let room = vm.isExistedMember(roomId: room.id) {
                     self.coordinator.pushMultiGameView(roomData: room)
                 } else {
-                    self.coordinator.presentEnterRoomView(roomData: room)
+                    self.coordinator.presentEnterRoomView(roomData: room) {
+                        if let room = vm.isExistedMember(roomId: room.id) {
+                            self.coordinator.pushMultiGameView(roomData: room)
+                        }
+                    }
                 }
             }
         }

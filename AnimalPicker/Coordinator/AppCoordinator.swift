@@ -71,8 +71,8 @@ class AppCoordinator: BaseCoordinator, ObservableObject {
         self.present(vc, animated: false)
     }
     
-    func presentEnterRoomView(roomData: RoomData) {
+    func presentEnterRoomView(roomData: RoomData, onDismiss: @escaping () -> ()) {
         let vc = EnterRoomView.vc(self, interactors: self.container.interactors, services: self.container.services, roomData: roomData)
-        self.present(vc, animated: false)
+        self.present(vc, animated: false, onDismiss: onDismiss)
     }
 }

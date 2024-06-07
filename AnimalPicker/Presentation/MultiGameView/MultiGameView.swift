@@ -32,15 +32,29 @@ struct MultiGameView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
-                Topbar(vm.level.rawValue, type: .back) {
+                Topbar("Multi-Game", type: .back) {
                     self.coordinator.pop()
                 }
+                
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Members")
                         .font(.kr18b)
-                    
+                    HStack(alignment: .center, spacing: 8, content: {
+                        ForEach($vm.members.wrappedValue, id: \.self) { item in
+                            Text(item.name)
+                                .font(.kr15r)
+                                .foregroundStyle(Color.black)
+                                .padding(top: 8, leading: 10, bottom: 8, trailing: 10)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .foregroundColor(item.id == vm.deviceId ? Color.blue.opacity(0.6) : Color.white)
+                                        .shadow(color: .black.opacity(0.65), radius: 2, x: 1, y: 1)
+                                )
+                        }
+                    })
+                    .paddingVertical(8)
                 }
-                .padding(top: 12, leading: 8, bottom: 12, trailing: 8)
+                .padding(top: 12, leading: 12, bottom: 12, trailing: 12)
             }
             .frame(width: geometry.size.width, alignment: .center)
         }

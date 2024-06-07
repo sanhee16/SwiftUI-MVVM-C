@@ -25,7 +25,7 @@ class RealtimeRoomDBService {
         self.start()
     }
     
-    func addRoom(name: String, password: Int?, managerDeviceId: String, memberName: String) {
+    func createRoom(name: String, password: Int?, managerDeviceId: String, memberName: String) {
         let roomId = UUID().uuidString
         var room = RoomData(id: roomId, name: name, status: MultiGameStatus.ready.rawValue, managerDeviceId: managerDeviceId, memberIds: [managerDeviceId], items: []).toDictionary()!
         
@@ -33,9 +33,9 @@ class RealtimeRoomDBService {
             room["password"] = password
         }
 
-        let member = MultiGameMemberData(id: managerDeviceId, name: memberName).toDictionary()
         self.databasePath.child("\(roomId)").setValue(room)
-        self.databasePath.child("\(roomId)/members/\(managerDeviceId)").setValue(member)
+        
+        self.enterTheRoom(roomId: roomId, deviceID: managerDeviceId, memberIds: [managerDeviceId], memberName: memberName)
     }
     
     
@@ -53,10 +53,11 @@ class RealtimeRoomDBService {
         
         var ids = memberIds
         ids.append(deviceID)
-        self.databasePath.child("\(roomId)").setValue(["memberIds": ids])
+        ids = Array(Set(ids))
+        self.databasePath.child("\(roomId)").updateChildValues(["memberIds": ids])
     }
     
-    private func start() {
+    private func start() {  
         self.list.removeAll()
         
         databasePath.observe(.childAdded) {[weak self] snapshot, _ in
@@ -103,10 +104,19 @@ class RealtimeRoomDBService {
         }
         
         // 경로에 있는 컨텐츠의 모든 변경 내용을 감지하고 읽어온다.
-        databasePath.observe(.value) {[weak self] snapshot in
-            guard let self = self, let json = snapshot.value as? [String: Any] else { return }
-
-        }
+//        databasePath.observe(.value) {[weak self] snapshot in
+//            guard let self = self, let json = snapshot.value as? [String: Any] else { return }
+//            do {
+//                let roomData = try JSONSerialization.data(withJSONObject: json)
+//                let room = try self.decoder.decode(RoomData.self, from: roomData)
+//                for (idx, roomItem) in self.roomList.enumerated() where room.id == roomItem.id {
+//                    self.list[idx] = room
+//                }
+//                self.roomChangedSubject.send(self.list)
+//            } catch {
+//                print("[observe] an error occurred", error)
+//            }
+//        }
     }
     
     private func stop() {

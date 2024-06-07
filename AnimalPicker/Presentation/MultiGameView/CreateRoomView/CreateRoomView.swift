@@ -39,7 +39,7 @@ struct CreateRoomView: View {
         VStack(alignment: .center, spacing: 0) {
             VStack(alignment: .leading, spacing: 0, content: {
                 Topbar("Create Game Room", type: .close) {
-                    self.coordinator.dismiss()
+                    self.coordinator.dismiss(false)
                 }
                 .paddingBottom(16)
                 
@@ -128,7 +128,7 @@ struct CreateRoomView: View {
         }
         .onChange(of: $vm.isPop.wrappedValue, perform: { newValue in
             if newValue {
-                self.coordinator.dismiss()
+                self.coordinator.dismiss(false)
             }
         })
     }

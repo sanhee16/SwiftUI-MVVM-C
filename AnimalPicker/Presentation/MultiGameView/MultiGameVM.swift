@@ -22,10 +22,11 @@ class MultiGameVM: BaseViewModel {
     let level: Level = .multi
     let types: [ImageType] = [.dog, .fox, .duck, .lizard]
     var countWithType: [ImageType: Int] = [:]
-    
+    let deviceId: String
     var items: [GameItem] = []
     var answer: ImageType? = nil
     private var timer: Timer? = nil
+    @Published var members: [MultiGameMemberData] = []
     
     @Published var roomData: RoomData
     @Published var isCorrect: Bool = false
@@ -41,7 +42,11 @@ class MultiGameVM: BaseViewModel {
         self.interactors = interactors
         self.services = services
         self.roomData = roomData
+        self.deviceId = services.keychainService.loadDeviceId()
         super.init()
+        
+        self.services.realtimeMemberDBService.updateRoomId(roomId: self.roomData.id)
+        self.observeMembers()
     }
     
     func onAppear() {
@@ -50,6 +55,20 @@ class MultiGameVM: BaseViewModel {
     
     func onDisappear() {
         
+    }
+    
+    func observeMembers() {
+        self.services.realtimeMemberDBService.memberChangedSubject
+            .run(in: &self.subscription) {[weak self] response in
+                guard let self = self else { return }
+                self.members = response
+                print("members: \(response)")
+            } err: {[weak self] err in
+                guard let self = self else { return }
+                print(err)
+            } complete: {
+                
+            }
     }
 }
 
