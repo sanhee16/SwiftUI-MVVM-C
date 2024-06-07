@@ -46,7 +46,8 @@ class RealtimeRoomListDBService {
     func enterTheRoom(roomId: String, deviceID: String, memberIds: [String], memberName: String) {
         let member = MultiGameMemberData(
             id: deviceID,
-            name: memberName,
+            name: memberName, 
+            time: 0.0,
             status: MultiGameStatus.none.rawValue
         ).toDictionary()
         

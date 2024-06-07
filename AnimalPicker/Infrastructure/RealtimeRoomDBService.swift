@@ -35,6 +35,10 @@ class RealtimeRoomDBService {
         self.databasePath?.updateChildValues(["status": status.rawValue])
     }
     
+    func saveImages(imageUrls: [String]) {
+        self.databasePath?.updateChildValues(["items": imageUrls])
+    }
+    
     func removeRoom() {
         self.databasePath?.removeValue()
     }

@@ -40,6 +40,11 @@ class RealtimeMemberDBService {
         self.databasePath?.child("\(memberId)").removeValue()
     }
     
+    func clear(memberId: String, time: Float) {
+        self.databasePath?.child("\(memberId)").updateChildValues(["time": time])
+        self.databasePath?.child("\(memberId)").updateChildValues(["status": MultiGameStatus.clear.rawValue])
+    }
+    
     private func start() {
         databasePath?.observe(.childAdded) {[weak self] snapshot, _ in
             guard let self = self, let json = snapshot.value as? [String: Any] else { return }

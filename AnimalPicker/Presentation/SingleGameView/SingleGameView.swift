@@ -92,8 +92,8 @@ struct SingleGameView: View {
         .onDisappear {
             vm.onDisappear()
         }
-        
     }
+    
     private func statusView() -> some View {
         VStack(alignment: .center, spacing: 8, content: {
             switch $vm.status.wrappedValue {

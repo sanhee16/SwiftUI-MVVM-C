@@ -14,6 +14,6 @@ struct MultiGameMemberData: Codable, Identifiable, Hashable {
 
     var id: String
     var name: String
-    var time: Float?
+    var time: Float
     var status: String // MultiGameStatus
 }
