@@ -31,9 +31,7 @@ struct MultiGameView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            if $vm.myStatus.wrappedValue == .finish || $vm.myStatus.wrappedValue == .clear || $vm.myStatus.wrappedValue == .loading {
-                statusView()
-            }
+            statusView()
             
             VStack(alignment: .leading, spacing: 0) {
                 Topbar("Multi-Game", type: .back) {
@@ -126,64 +124,86 @@ struct MultiGameView: View {
     
     
     private func statusView() -> some View {
-        VStack(alignment: .center, spacing: 8, content: {
+        VStack(alignment: .center, spacing: 0, content: {
             if $vm.myStatus.wrappedValue == .finish {
-                VStack(alignment: .center, spacing: 0, content: {
-                    Text("Rank")
-                        .font(.kr32b)
-                        .foregroundStyle(Color.red.opacity(0.9))
-                    
-                    // 랭킹
-                    ForEach($vm.members.wrappedValue, id: \.self) { item in
-                        HStack(alignment: .center, spacing: 0, content: {
-                            Text(item.name)
-                                .font(.kr16b)
-                                .foregroundStyle(Color.black)
-                            
-                            Spacer()
-                            
-                            Text(String(format: "%.2f", item.time) )
-                                .font(.kr16m)
-                                .foregroundStyle(Color.black)
+                VStack(alignment: .center, spacing: 8) {
+                    VStack(alignment: .center, spacing: 0, content: {
+                        Text("Rank")
+                            .font(.kr32b)
+                            .foregroundStyle(Color.red.opacity(0.9))
+                        
+                        // 랭킹
+                        VStack(alignment: .leading, spacing: 0, content: {
+                            ForEach($vm.members.wrappedValue.sorted(by: { lhs, rhs in
+                                lhs.time < rhs.time
+                            }), id: \.self) { item in
+                                HStack(alignment: .center, spacing: 0, content: {
+                                    Text(item.name)
+                                        .font(.kr16b)
+                                        .foregroundStyle(Color.black)
+                                    
+                                    Spacer()
+                                    
+                                    Text(String(format: "%.2f", item.time) )
+                                        .font(.kr16m)
+                                        .foregroundStyle(Color.black)
+                                })
+                                .paddingHorizontal(20)
+                                .paddingVertical(4)
+                            }
+                            .paddingVertical(4)
                         })
-                    }
-                    .paddingHorizontal(80)
-                    .frame(width: UIScreen.main.bounds.size.width - 160, height: 340, alignment: .center)
-                    .background(RoundedRectangle(cornerRadius: 6).foregroundStyle(Color.white))
-                    .paddingBottom(20)
-                    
-                    Text("Retry")
-                        .font(.kr16m)
-                        .foregroundStyle(Color.white)
-                        .frame(width: 100, height: 40, alignment: .center)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundStyle(Color.red)
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            vm.reset()
-                        }
-                        .paddingVertical(20)
-                })
+                        .frame(width: UIScreen.main.bounds.size.width - 160, height: 340, alignment: .center)
+                        .background(RoundedRectangle(cornerRadius: 6).foregroundStyle(Color.white))
+                        .paddingHorizontal(80)
+                        .paddingBottom(20)
+                        
+                        Text("Retry")
+                            .font(.kr16m)
+                            .foregroundStyle(Color.white)
+                            .frame(width: 100, height: 40, alignment: .center)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundStyle(Color.red)
+                            )
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                vm.reset()
+                            }
+                            .paddingVertical(20)
+                    })
+                }
+                .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, alignment: .center)
+                .background($vm.myStatus.wrappedValue == .loading ? Color.black.opacity(0.9) : Color.black.opacity(0.8))
+                .zIndex(1)
             } else if $vm.myStatus.wrappedValue == .clear {
-                Text("Cleared!")
-                    .font(.kr35b)
-                    .foregroundStyle(Color.white)
-                
-                Text("Waiting others..")
-                    .font(.kr15m)
-                    .foregroundStyle(Color.black)
-                    .paddingVertical(16)
-            } else if $vm.myStatus.wrappedValue == .loading {
-                Text("Loading...")
-                    .font(.kr35b)
-                    .foregroundStyle(Color.white)
-                    .ignoresSafeArea()
+                VStack(alignment: .center, spacing: 8) {
+                    Text("Cleared!")
+                        .font(.kr35b)
+                        .foregroundStyle(Color.white)
+                    
+                    Text("Waiting others..")
+                        .font(.kr15m)
+                        .foregroundStyle(Color.black)
+                        .paddingVertical(16)
+                }
+                .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, alignment: .center)
+                .background($vm.myStatus.wrappedValue == .loading ? Color.black.opacity(0.9) : Color.black.opacity(0.8))
+                .zIndex(1)
+            } else if $vm.myStatus.wrappedValue == .loading || $vm.myStatus.wrappedValue == .loadFinish {
+                VStack(alignment: .center, spacing: 8) {
+                    Text("Loading...")
+                        .font(.kr35b)
+                        .foregroundStyle(Color.white)
+                        .ignoresSafeArea()
+                }
+                .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, alignment: .center)
+                .background($vm.myStatus.wrappedValue == .loading ? Color.black.opacity(0.9) : Color.black.opacity(0.8))
+                .zIndex(1)
             }
         })
         .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, alignment: .center)
-        .background($vm.myStatus.wrappedValue == .loading ? Color.black.opacity(0.9) : Color.black.opacity(0.8))
+        .background(Color.clear)
         .zIndex(1)
     }
     

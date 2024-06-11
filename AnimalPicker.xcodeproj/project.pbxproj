@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26DABF152C189152002010F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26DABF142C189152002010F9 /* GoogleService-Info.plist */; };
+		26DABF182C18918D002010F9 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26DABF162C18918D002010F9 /* animal_picker_db.xcdatamodeld */; };
 		580C10FF2C0EE7C900BFBBC4 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C10FE2C0EE7C900BFBBC4 /* KeychainService.swift */; };
 		580C11012C0EF6C000BFBBC4 /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11002C0EF6C000BFBBC4 /* CreateRoomView.swift */; };
 		580C11042C0EF70200BFBBC4 /* CreateRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11032C0EF70200BFBBC4 /* CreateRoomVM.swift */; };
@@ -61,7 +63,6 @@
 		5878B4832C002A5800A7329B /* SingleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4822C002A5800A7329B /* SingleTextField.swift */; };
 		5878B4892C007DCF00A7329B /* SingleBoxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */; };
 		5878B48D2C008AD100A7329B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5878B48C2C008AD100A7329B /* Kingfisher */; };
-		587ED91A2C0D708800FEFA96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 587ED9192C0D708800FEFA96 /* GoogleService-Info.plist */; };
 		587ED91E2C0D711900FEFA96 /* GameItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED91D2C0D711900FEFA96 /* GameItemView.swift */; };
 		587ED9202C0D72F500FEFA96 /* MultiGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED91F2C0D72F500FEFA96 /* MultiGameView.swift */; };
 		587ED9222C0D730000FEFA96 /* MultiGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED9212C0D730000FEFA96 /* MultiGameVM.swift */; };
@@ -78,7 +79,6 @@
 		588EE8852C18238F0053A711 /* MultiGameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EE8842C18238F0053A711 /* MultiGameService.swift */; };
 		5892AE162BFEC961009663C1 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
 		5892AE182BFECCE0009663C1 /* LizardImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */; };
-		58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */; };
 		58C50D282C04150000C4E0F1 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D272C04150000C4E0F1 /* CoreDataService.swift */; };
 		58C50D2F2C041A1D00C4E0F1 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */; };
 		58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D302C047E5400C4E0F1 /* Topbar.swift */; };
@@ -102,6 +102,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26DABF142C189152002010F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		26DABF172C18918D002010F9 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
 		580C10FE2C0EE7C900BFBBC4 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		580C11002C0EF6C000BFBBC4 /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		580C11032C0EF70200BFBBC4 /* CreateRoomVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomVM.swift; sourceTree = "<group>"; };
@@ -152,7 +154,6 @@
 		5878B4802C001B3A00A7329B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		5878B4822C002A5800A7329B /* SingleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextField.swift; sourceTree = "<group>"; };
 		5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBoxTextField.swift; sourceTree = "<group>"; };
-		587ED9192C0D708800FEFA96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		587ED91D2C0D711900FEFA96 /* GameItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemView.swift; sourceTree = "<group>"; };
 		587ED91F2C0D72F500FEFA96 /* MultiGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiGameView.swift; sourceTree = "<group>"; };
 		587ED9212C0D730000FEFA96 /* MultiGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiGameVM.swift; sourceTree = "<group>"; };
@@ -165,7 +166,6 @@
 		588EE8842C18238F0053A711 /* MultiGameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiGameService.swift; sourceTree = "<group>"; };
 		5892AE152BFEC961009663C1 /* DuckImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuckImageRepository.swift; sourceTree = "<group>"; };
 		5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LizardImageRepository.swift; sourceTree = "<group>"; };
-		58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animal_picker_db.xcdatamodel; sourceTree = "<group>"; };
 		58C50D272C04150000C4E0F1 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
 		58C50D302C047E5400C4E0F1 /* Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topbar.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 			children = (
 				58856AC92C12901E000F53FF /* Utils */,
 				585BB5322BFC6BAE007CCD51 /* Info.plist */,
-				587ED9192C0D708800FEFA96 /* GoogleService-Info.plist */,
+				26DABF142C189152002010F9 /* GoogleService-Info.plist */,
 				58C50D2C2C041A1000C4E0F1 /* Domain */,
 				5878B47F2C001B2900A7329B /* Persistence */,
 				585BB5402BFC74FF007CCD51 /* Infrastructure */,
@@ -445,7 +445,7 @@
 		5878B47F2C001B2900A7329B /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */,
+				26DABF162C18918D002010F9 /* animal_picker_db.xcdatamodeld */,
 				5878B4802C001B3A00A7329B /* UserDefaultsService.swift */,
 				58C50D272C04150000C4E0F1 /* CoreDataService.swift */,
 			);
@@ -632,7 +632,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				587ED91A2C0D708800FEFA96 /* GoogleService-Info.plist in Resources */,
+				26DABF152C189152002010F9 /* GoogleService-Info.plist in Resources */,
 				585BB4DB2BFC654D007CCD51 /* Preview Assets.xcassets in Resources */,
 				585BB4D82BFC654D007CCD51 /* Assets.xcassets in Resources */,
 			);
@@ -659,7 +659,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58C50D1E2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld in Sources */,
 				5878B4762C00130D00A7329B /* RankingVM.swift in Sources */,
 				585BB5112BFC6816007CCD51 /* DIContainer.swift in Sources */,
 				5870E7572C071EDE00416F08 /* FirestoreService.swift in Sources */,
@@ -708,6 +707,7 @@
 				5878B4892C007DCF00A7329B /* SingleBoxTextField.swift in Sources */,
 				58585C4C2C086117005B65FE /* Int16+Extension.swift in Sources */,
 				585BB5272BFC6949007CCD51 /* MainView.swift in Sources */,
+				26DABF182C18918D002010F9 /* animal_picker_db.xcdatamodeld in Sources */,
 				580C11012C0EF6C000BFBBC4 /* CreateRoomView.swift in Sources */,
 				585BB53D2BFC745B007CCD51 /* FoxImageRepository.swift in Sources */,
 				587ED93F2C0D976200FEFA96 /* MultiGameMemberData.swift in Sources */,
@@ -1113,14 +1113,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		58C50D1C2C040C5500C4E0F1 /* animal_picker_db.xcdatamodeld */ = {
+		26DABF162C18918D002010F9 /* animal_picker_db.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */,
+				26DABF172C18918D002010F9 /* animal_picker_db.xcdatamodel */,
 			);
-			currentVersion = 58C50D1D2C040C5500C4E0F1 /* animal_picker_db.xcdatamodel */;
+			currentVersion = 26DABF172C18918D002010F9 /* animal_picker_db.xcdatamodel */;
 			name = animal_picker_db.xcdatamodeld;
-			path = /Users/hessegg_pollberry/dev/AnimalPicker/AnimalPicker/Persistence/animal_picker_db.xcdatamodeld;
+			path = "/Users/sandy/dev/SwiftUI-MVVM-C/AnimalPicker/Persistence/animal_picker_db.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

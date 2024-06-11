@@ -86,7 +86,6 @@ class MultiGameVM: BaseViewModel {
         func loadImages() {
             self.items.removeAll()
             self.countWithType.removeAll()
-            self.myStatus = .loading
             self.answer = nil
             
             let totalCount = level.cell.row * level.cell.column
@@ -127,10 +126,12 @@ class MultiGameVM: BaseViewModel {
                 }
                 
                 // 이미지 로드 끝!
+                print("[방장] 이미지 로드 끝!")
                 newItems.shuffle()
                 let newAnswer = self.types.randomElement()?.rawValue ?? ""
                 
                 // 서버에 전송
+                print("[방장] 서버에 전송!")
                 self.services.multiGameService.loadGameItems(
                     roomId: self.roomData.id,
                     answer: newAnswer,
@@ -140,13 +141,6 @@ class MultiGameVM: BaseViewModel {
         }
     }
     
-    //MARK: LoadImages (방장)
-    
-    
-    //MARK: FinishToLoad
-    
-    
-    //MARK: onSelect
     
     
     //MARK: Timer
@@ -172,8 +166,7 @@ class MultiGameVM: BaseViewModel {
     }
     
     
-    
-    
+    //MARK: onSelect
     func onSelectItem(item: GameItem) {
         if isCorrect { return }
         guard let _ = self.answer, let idx = self.items.firstIndex(where: { $0.id == item.id }) else { return }
@@ -228,8 +221,10 @@ class MultiGameVM: BaseViewModel {
             .run(in: &self.subscription) {[weak self] response in
                 guard let self = self, let response = response else { return }
                 self.roomData = response
+                print("response: \(response)")
                 self.members = self.roomData.members?.compactMap({ $0.value }) ?? []
                 
+                // 방장일 때
                 if self.isManager {
                     if MultiGameStatus(rawValue: self.roomData.status) == .loading, self.members.count == self.members.filter({ MultiGameStatus(rawValue: $0.status) == .loadFinish }).count {
                         print("모두가 로드 완료")
@@ -240,9 +235,11 @@ class MultiGameVM: BaseViewModel {
                     }
                 }
                 
-                
-                if MultiGameStatus(rawValue: self.roomData.status) == .loading, self.myStatus == .ready {
+                if MultiGameStatus(rawValue: self.roomData.status) == .ready, self.myStatus != .ready {
+                    self.reset()
+                } else if MultiGameStatus(rawValue: self.roomData.status) == .loading, self.myStatus == .ready {
                     // 이미지 로드중..
+                    print("이미지 로드 시작!")
                     self.myStatus = .loading
                     if let responseItem = response.items, !responseItem.isEmpty {
                         self.items = responseItem
@@ -250,10 +247,12 @@ class MultiGameVM: BaseViewModel {
                     }
                 } else if MultiGameStatus(rawValue: self.roomData.status) == .onGaming, self.myStatus == .loadFinish {
                     // 게임 시작
+                    print("게임 시작!")
                     self.myStatus = .onGaming
                     self.startTimeCount()
-                } else if MultiGameStatus(rawValue: self.roomData.status) == .finish {
+                } else if MultiGameStatus(rawValue: self.roomData.status) == .clear, self.myStatus == .clear {
                     // 모두 게임 끝!
+                    print("게임 끝!")
                     self.myStatus = .finish
                 }
             } err: { err in
