@@ -38,29 +38,27 @@ class GameRoomListVM: BaseViewModel {
     
     func isExistedMember(roomId: String) -> RoomData? {
         let deviceId = self.services.keychainService.loadDeviceId()
-        print("list: \(self.list)")
-        print("roomId: \(roomId)")
-        if let room = self.list.first(where: { $0.id == roomId }) {
-            print("room exist - \(room.memberIds)")
-            if (room.memberIds ?? []).contains(deviceId) {
-                return room
-            }
+
+        if let room = self.list.first(where: { $0.id == roomId }), let members = room.members, members.keys.contains(where: { $0 == self.deviceId }) {
+            return room
         }
         return nil
     }
+
     
     private func removeRoom(roomId: String) {
-        self.services.realtimeRoomListDBService.deleteRoom(roomId: roomId)
+        
     }
     
     func observeList() {
-        self.services.realtimeRoomListDBService.roomlistChangedSubject
+        self.services.multiGameService.roomListSubject
             .run(in: &self.subscription) {[weak self] response in
                 guard let self = self else { return }
                 self.list = response
                 self.participatingRoom = nil
+                
                 response.forEach { item in
-                    if (item.memberIds ?? []).contains(where: { $0 == self.deviceId }) {
+                    if let members = item.members, members.keys.contains(where: { $0 == self.deviceId }) {
                         self.participatingRoom = item
                         return
                     }

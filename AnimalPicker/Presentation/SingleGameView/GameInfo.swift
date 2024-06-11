@@ -125,12 +125,20 @@ struct GameItem: Codable, Equatable, Hashable {
     }
     
     let id: Int
-    let type: ImageType
+    let type: String
     let url: String
     var isSelected: Bool
     var isLoaded: Bool
     
     init(id: Int, type: ImageType, url: String) {
+        self.id = id
+        self.type = type.rawValue
+        self.url = url
+        self.isSelected = false
+        self.isLoaded = false
+    }
+    
+    init(id: Int, type: String, url: String) {
         self.id = id
         self.type = type
         self.url = url

@@ -55,7 +55,7 @@ struct SingleGameView: View {
                     }
                     
                     if let answer = $vm.answer.wrappedValue {
-                        Text("Select All of \(answer.plural)!")
+                        Text("Select All of \(answer)!")
                             .font(.kr18b)
                             .paddingTop(16)
                         if let leftTime = $vm.leftTime.wrappedValue {

@@ -41,15 +41,11 @@ extension AppEnvironment {
         )
     }
     private static func configuredServices() -> DIContainer.Services {
-        let realtimeRoomListDBService = RealtimeRoomListDBService()
-        let realtimeRoomDBService = RealtimeRoomDBService()
-        let realtimeMemberDBService = RealtimeMemberDBService()
+        let multiGameService = MultiGameService()
         let keychainService = KeychainService()
         
         return .init(
-            realtimeRoomListDBService: realtimeRoomListDBService,
-            realtimeRoomDBService: realtimeRoomDBService,
-            realtimeMemberDBService: realtimeMemberDBService,
+            multiGameService: multiGameService,
             keychainService: keychainService
         )
     }

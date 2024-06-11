@@ -28,6 +28,7 @@ class BaseNetwork {
         let future: (() -> Deferred) = { () -> Deferred<Future<T, Error>> in
             var headers: HTTPHeaders = HTTPHeaders()
             headers.add(name: "Content-Type", value: "application/json")
+            headers.add(name: "Content-Type", value: "application/octet-stream")
             headers.add(name: "Accept", value: "*/*")
             
             if let headerItems = requestHeaders {

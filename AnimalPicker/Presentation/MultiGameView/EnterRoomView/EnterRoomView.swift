@@ -38,7 +38,7 @@ struct EnterRoomView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             VStack(alignment: .leading, spacing: 0, content: {
-                Topbar("Enter Password", type: .close) {
+                Topbar("Enter Room", type: .close) {
                     self.coordinator.dismiss(false)
                 }
                 .paddingBottom(16)

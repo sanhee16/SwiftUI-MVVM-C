@@ -8,11 +8,13 @@
 import Foundation
 
 struct RoomData: Codable, Identifiable, Hashable {
+    typealias MemberId = String
     var id: String
     var name: String
     var password: Int?
     var status: String
-    var managerDeviceId: String
-    var memberIds: [String]?
-    var items: [String]?
+    var managerId: String
+    var members: [MemberId: MultiGameMemberData]?
+    var items: [GameItem]?
+    var answer: String?
 }

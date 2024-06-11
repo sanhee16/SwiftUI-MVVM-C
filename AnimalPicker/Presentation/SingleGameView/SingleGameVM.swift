@@ -22,7 +22,7 @@ class SingleGameVM: BaseViewModel {
     let types: [ImageType] = [.dog, .fox, .duck, .lizard]
     var countWithType: [ImageType: Int] = [:]
     var items: [GameItem] = []
-    var answer: ImageType? = nil
+    var answer: String? = nil
     
     @Published var leftTime: Int? = nil
     @Published var isCorrect: Bool = false
@@ -184,8 +184,7 @@ class SingleGameVM: BaseViewModel {
             self.items.shuffle()
             self.objectWillChange.send()
             self.leftTime = level.timer
-            self.answer = self.types.randomElement()
-            print("self.items: \(self.items)")
+            self.answer = self.types.randomElement()?.rawValue
         }
     }
     

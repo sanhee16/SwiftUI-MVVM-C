@@ -26,7 +26,7 @@ class CreateRoomVM: BaseViewModel {
     func onClickCreateRoom(roomName: String, password: String, nickname: String) {
         if roomName.isEmpty || nickname.isEmpty { return }
         guard let deviceId = self.deviceId else { return }
-        self.services.realtimeRoomListDBService.createRoom(name: roomName, password: Int(password), managerDeviceId: deviceId, memberName: nickname)
+        self.services.multiGameService.createRoom(roomName: roomName, password: Int(password), managerId: deviceId, memberName: nickname)
         self.isPop = true
     }
 }
