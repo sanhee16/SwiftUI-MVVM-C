@@ -20,9 +20,7 @@ enum MultiGameStatus: String {
 class MultiGameVM: BaseViewModel {
     private let interactors: DIContainer.Interactors
     private let services: DIContainer.Services
-    let level: Level = .easy
-    let types: [ImageType] = [.dog, .fox, .duck, .lizard]
-    var countWithType: [ImageType: Int] = [:]
+    let level: Level = .multi
     let deviceId: String
     var items: [GameItem] = []
     var answer: String? = nil
@@ -67,7 +65,6 @@ class MultiGameVM: BaseViewModel {
     //MARK: Reset
     func reset() {
         self.items.removeAll()
-        self.countWithType.removeAll()
         self.myStatus = .ready
         self.answer = nil
         
@@ -85,59 +82,27 @@ class MultiGameVM: BaseViewModel {
         
         func loadImages() {
             self.items.removeAll()
-            self.countWithType.removeAll()
             self.answer = nil
             
-            let totalCount = level.cell.row * level.cell.column
-            let distributeTotalCount = distributeTotalCount(totalCount: totalCount, into: self.types.count)
-            
-            self.types.indices.forEach({
-                countWithType.updateValue(distributeTotalCount[$0], forKey: self.types[$0])
-            })
-            if countWithType.isEmpty { return }
-            
-            Publishers.Zip4(
-                self.interactors.animalImageInteractor.getDogImages(countWithType[.dog]),
-                self.interactors.animalImageInteractor.getFoxImages(countWithType[.fox]),
-                self.interactors.animalImageInteractor.getDuckImages(countWithType[.duck]),
-                self.interactors.animalImageInteractor.getLizardImages(countWithType[.lizard])
-            )
-            .run(in: &self.subscription) {[weak self] (dogs, foxes, ducks, lizards) in
-                guard let self = self else { return }
-                var idx: Int = 0
-                var newItems: [GameItem] = []
-                self.items.removeAll()
-                
-                dogs.forEach {
-                    newItems.append(GameItem(id: idx, type: .dog, url: $0.imageUrl))
-                    idx += 1
+            self.interactors.animalImageInteractor.generateGameItems(level: self.level)
+                .run(in: &self.subscription) {[weak self] response in
+                    guard let self = self else { return }
+                    let newAnswer = response.answer.rawValue
+                    let newItems = response.items
+                    
+                    // 서버에 전송
+                    print("[방장] 서버에 전송!")
+                    self.services.multiGameService.loadGameItems(
+                        roomId: self.roomData.id,
+                        answer: newAnswer,
+                        items: newItems
+                    )
+                } err: {[weak self] err in
+                    guard let self = self else { return }
+                    print(err)
+                } complete: {
+                    
                 }
-                foxes.forEach {
-                    newItems.append(GameItem(id: idx, type: .fox, url: $0.imageUrl))
-                    idx += 1
-                }
-                ducks.forEach {
-                    newItems.append(GameItem(id: idx, type: .duck, url: $0.imageUrl))
-                    idx += 1
-                }
-                lizards.forEach {
-                    newItems.append(GameItem(id: idx, type: .lizard, url: $0.imageUrl))
-                    idx += 1
-                }
-                
-                // 이미지 로드 끝!
-                print("[방장] 이미지 로드 끝!")
-                newItems.shuffle()
-                let newAnswer = self.types.randomElement()?.rawValue ?? ""
-                
-                // 서버에 전송
-                print("[방장] 서버에 전송!")
-                self.services.multiGameService.loadGameItems(
-                    roomId: self.roomData.id,
-                    answer: newAnswer,
-                    items: newItems
-                )
-            }
         }
     }
     
@@ -194,25 +159,6 @@ class MultiGameVM: BaseViewModel {
             self.myStatus = .loadFinish
             self.services.multiGameService.finishToLoadImages(roomId: self.roomData.id, memberId: self.deviceId)
         }
-    }
-    
-    private func distributeTotalCount(totalCount: Int, into n: Int) -> [Int] {
-        guard n > 0, totalCount >= n else { return [] }
-        
-        var result: [Int] = []
-        var remainingCount = totalCount - self.types.count
-        
-        for _ in 1..<n {
-            let maxPossibleValue = remainingCount - (n - result.count)
-            let randomValue = Int.random(in: 1...maxPossibleValue)
-            result.append(randomValue + 1)
-            remainingCount -= randomValue
-        }
-        
-        // 마지막 남은 수를 결과 배열에 추가하여 totalCount와 동일하게 만듦
-        result.append(remainingCount + 1)
-        
-        return result
     }
     
     func observe() {

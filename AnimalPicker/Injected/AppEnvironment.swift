@@ -43,7 +43,6 @@ extension AppEnvironment {
     private static func configuredServices() -> DIContainer.Services {
         let multiGameService = MultiGameService()
         let keychainService = KeychainService()
-        
         return .init(
             multiGameService: multiGameService,
             keychainService: keychainService

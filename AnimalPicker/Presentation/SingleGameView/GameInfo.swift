@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct GameInfo {
+    var answer: ImageType
+    var items: [GameItem]
+}
 
 enum ImageType: String, Codable {
     case dog
