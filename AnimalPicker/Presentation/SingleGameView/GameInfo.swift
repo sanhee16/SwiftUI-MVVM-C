@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct GameInfo {
     var answer: ImageType
@@ -118,6 +119,21 @@ enum Level: String, Codable {
             return 7
         case .multi:
             return -1
+        }
+    }
+    
+    var backgroundColor: Color {
+        switch self {
+        case .easy:
+            return .yellow
+        case .normal:
+            return .green
+        case .hard:
+            return .blue
+        case .hell:
+            return .red
+        case .multi:
+            return .purple
         }
     }
 }
