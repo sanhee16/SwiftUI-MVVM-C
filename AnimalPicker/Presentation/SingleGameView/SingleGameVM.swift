@@ -171,7 +171,7 @@ class SingleGameVM: BaseViewModel {
         }
         
         if let leftTime = self.leftTime, leftTime <= 0 {
-            self.status = self.score > 0 ? .enterRanking : .timeOut
+            self.status = (self.score + self.bonusScore) > 0 ? .enterRanking : .timeOut
             self.loadRankings()
             self.stopTimer()
         }

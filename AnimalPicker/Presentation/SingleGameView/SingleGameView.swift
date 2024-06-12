@@ -181,20 +181,34 @@ struct SingleGameView: View {
                 .background(RoundedRectangle(cornerRadius: 6).foregroundStyle(Color.white))
                 .paddingBottom(20)
                 
-                Text("Retry")
-                    .font(.kr16m)
-                    .foregroundStyle(Color.white)
-                    .frame(width: 100, height: 40, alignment: .center)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundStyle(Color.red)
-                    )
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        vm.reset()
-                    }
-                    .paddingVertical(20)
-                
+                HStack(alignment: .center, spacing: 12, content: {
+                    Text("Retry")
+                        .font(.kr16b)
+                        .foregroundStyle(Color.white)
+                        .frame(width: 120, height: 40, alignment: .center)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundStyle(Color.red)
+                        )
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            vm.reset()
+                        }
+                    
+                    Text("Quit")
+                        .font(.kr16b)
+                        .foregroundStyle(Color.white)
+                        .frame(width: 120, height: 40, alignment: .center)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundStyle(Color.gray)
+                        )
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            self.coordinator.pop()
+                        }
+                })
+                .paddingVertical(16)
             case .clear:
                 Text("Cleared!")
                     .font(.kr35b)

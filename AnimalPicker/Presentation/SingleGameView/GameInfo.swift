@@ -40,14 +40,14 @@ enum ImageType: String, Codable {
 }
 
 enum CellType {
-    case c9 // 3x3
-    case c15 // 3x5
-    case c24 // 3x8
-    case c30 // 3x10
-    case c100 // 4x25
+    case c9 
+    case c15
+    case c24
+    case c30
+    case c100
     
     var row: Int {
-        return 4
+        return 3
     }
     
     var column: Int {
