@@ -83,6 +83,7 @@
 		58C50D282C04150000C4E0F1 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D272C04150000C4E0F1 /* CoreDataService.swift */; };
 		58C50D2F2C041A1D00C4E0F1 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */; };
 		58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D302C047E5400C4E0F1 /* Topbar.swift */; };
+		58F4EBD92C2010140025246E /* SDError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4EBD82C2010140025246E /* SDError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,7 @@
 		58C50D272C04150000C4E0F1 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
 		58C50D302C047E5400C4E0F1 /* Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topbar.swift; sourceTree = "<group>"; };
+		58F4EBD82C2010140025246E /* SDError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -514,6 +516,7 @@
 				58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */,
 				587ED93A2C0D85A200FEFA96 /* RoomData.swift */,
 				587ED93E2C0D976200FEFA96 /* MultiGameMemberData.swift */,
+				58F4EBD82C2010140025246E /* SDError.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				589ADA792C1FC8EB00228BE7 /* ImageRepository.swift in Sources */,
 				585BB5112BFC6816007CCD51 /* DIContainer.swift in Sources */,
 				5870E7572C071EDE00416F08 /* FirestoreService.swift in Sources */,
+				58F4EBD92C2010140025246E /* SDError.swift in Sources */,
 				585BB52C2BFC698B007CCD51 /* Util.swift in Sources */,
 				587ED9352C0D849400FEFA96 /* GameRoomListVM.swift in Sources */,
 				585BB5292BFC6954007CCD51 /* MainVM.swift in Sources */,

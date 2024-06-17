@@ -68,18 +68,22 @@ class RealAnimalImageInteractor: AnimalImageInteractor {
         func distributeTotalCount(totalCount: Int, into n: Int) -> [Int] {
             guard n > 0, totalCount >= n else { return [] }
             
+            
             var result: [Int] = []
-            var remainingCount = totalCount - types.count
+
+            // 동물당 나올 수 있는 갯수
+            let maxValue = totalCount / types.count
+            var remainingCount = totalCount
             
             for _ in 1..<n {
-                let maxPossibleValue = remainingCount - (n - result.count)
-                let randomValue = Int.random(in: 1...maxPossibleValue)
-                result.append(randomValue + 1)
-                remainingCount -= randomValue
+//                let maxPossibleValue = remainingCount - (n - result.count)
+//                let randomValue = Int.random(in: 1...maxPossibleValue)
+                result.append(maxValue)
+                remainingCount -= maxValue
             }
             
             // 마지막 남은 수를 결과 배열에 추가하여 totalCount와 동일하게 만듦
-            result.append(remainingCount + 1)
+            result.append(remainingCount)
             
             return result
         }
@@ -125,10 +129,13 @@ class RealAnimalImageInteractor: AnimalImageInteractor {
                             idx += 1
                         }
                         
-                        // 이미지 로드 끝!
+                        // 이미지 url insert 끝!
                         items.shuffle()
-                        let answer = types.randomElement() ?? types.first
-                        promise(.success(GameInfo(answer: answer!, items: items)))
+                        if let answer = types.randomElement() ?? types.first {
+                            promise(.success(GameInfo(answer: answer, items: items)))
+                        } else {
+                            promise(.failure(SDError(message: "no answer")))
+                        }
                     }
                     
                 }
