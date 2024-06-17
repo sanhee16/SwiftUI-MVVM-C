@@ -56,6 +56,11 @@ class MultiGameService {
         self.databasePath.child("\(roomId)/members/\(memberId)").updateChildValues(["status": status.rawValue])
     }
     
+    func removeMember(roomId: String, memberId: String) {
+        self.databasePath.child("\(roomId)/members/\(memberId)").removeValue()
+    }
+    
+    
     
     //MARK: Room
     func allFinishToLoadImages(roomId: String) {
@@ -89,7 +94,6 @@ class MultiGameService {
     func removeRoom(roomId: String) {
         self.databasePath.child("\(roomId)").removeValue()
     }
-    
     
     
     

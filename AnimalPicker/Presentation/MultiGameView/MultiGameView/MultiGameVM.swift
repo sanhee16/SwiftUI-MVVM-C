@@ -37,7 +37,6 @@ class MultiGameVM: BaseViewModel {
     
     @Published var ranking: [RankingData] = []
     
-    
     init(_ interactors: DIContainer.Interactors, services: DIContainer.Services, roomData: RoomData) {
         self.interactors = interactors
         self.services = services
@@ -106,12 +105,13 @@ class MultiGameVM: BaseViewModel {
         }
     }
     
-    func onClickDelete() {
+    func onClickDeleteRoom() {
         self.services.multiGameService.removeRoom(roomId: self.roomData.id)
-        
     }
     
-    
+    func onClickDeleteMember(memberId: String) {
+        self.services.multiGameService.removeMember(roomId: self.roomData.id, memberId: memberId)
+    }
     
     //MARK: Timer
     private func startTimeCount() {

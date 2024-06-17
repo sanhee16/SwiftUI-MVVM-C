@@ -27,6 +27,7 @@ struct MultiGameView: View {
     private var safeBottom: CGFloat { get { Util.safeBottom() }}
     
     @State private var nickname: String = ""
+    @State private var memberNameList: [String] = []
     
     
     var body: some View {
@@ -70,7 +71,7 @@ struct MultiGameView: View {
                                         )
                                         .contentShape(Rectangle())
                                         .onTapGesture {
-                                            vm.onClickDelete()
+                                            vm.onClickDeleteRoom()
                                         }
                                 })
                                     
@@ -78,16 +79,10 @@ struct MultiGameView: View {
                             
                         })
                         HStack(alignment: .center, spacing: 8, content: {
-                            ForEach($vm.members.wrappedValue, id: \.self) { item in
-                                Text(item.name)
-                                    .font(.kr15r)
-                                    .foregroundStyle(Color.black)
-                                    .padding(top: 8, leading: 10, bottom: 8, trailing: 10)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .foregroundColor(Color.white)
-                                            .shadow(color: .black.opacity(0.65), radius: 2, x: 1, y: 1)
-                                    )
+                            SDHashTagView(tags: $vm.members.wrappedValue.map({ $0.name })) { name in
+                                if let member = $vm.members.wrappedValue.first(where: { $0.name == name }) {
+                                    vm.onClickDeleteMember(memberId: member.id)
+                                }
                             }
                         })
                         .paddingVertical(8)
@@ -126,6 +121,9 @@ struct MultiGameView: View {
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
+        .onChange(of: $vm.members.wrappedValue, perform: { newValue in
+            self.memberNameList = newValue.map({ $0.name })
+        })
         .onChange(of: $vm.isPop.wrappedValue, perform: { newValue in
             if newValue {
                 self.coordinator.pop()
