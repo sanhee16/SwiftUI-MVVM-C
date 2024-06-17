@@ -46,19 +46,36 @@ struct MultiGameView: View {
                             Spacer()
                             
                             if vm.roomData.managerId == vm.deviceId {
-                                Text("Start")
-                                    .font(.kr15m)
-                                    .foregroundStyle(Color.white)
-                                    .padding(top: 8, leading: 10, bottom: 8, trailing: 10)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .foregroundStyle(Color.green)
-                                    )
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        vm.onClickStart()
-                                    }
+                                HStack(alignment: .center, spacing: 10, content: {
+                                    Text("Start")
+                                        .font(.kr15m)
+                                        .foregroundStyle(Color.white)
+                                        .padding(top: 8, leading: 10, bottom: 8, trailing: 10)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 4)
+                                                .foregroundStyle(Color.green)
+                                        )
+                                        .contentShape(Rectangle())
+                                        .onTapGesture {
+                                            vm.onClickStart()
+                                        }
+                                    
+                                    Text("Delete Room")
+                                        .font(.kr15m)
+                                        .foregroundStyle(Color.white)
+                                        .padding(top: 8, leading: 10, bottom: 8, trailing: 10)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 4)
+                                                .foregroundStyle(Color.red)
+                                        )
+                                        .contentShape(Rectangle())
+                                        .onTapGesture {
+                                            vm.onClickDelete()
+                                        }
+                                })
+                                    
                             }
+                            
                         })
                         HStack(alignment: .center, spacing: 8, content: {
                             ForEach($vm.members.wrappedValue, id: \.self) { item in

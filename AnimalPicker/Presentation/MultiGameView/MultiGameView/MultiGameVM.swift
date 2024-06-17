@@ -106,6 +106,11 @@ class MultiGameVM: BaseViewModel {
         }
     }
     
+    func onClickDelete() {
+        self.services.multiGameService.removeRoom(roomId: self.roomData.id)
+        
+    }
+    
     
     
     //MARK: Timer
@@ -162,6 +167,19 @@ class MultiGameVM: BaseViewModel {
     }
     
     func observe() {
+        self.services.multiGameService.roomListSubject
+            .run(in: &self.subscription) {[weak self] response in
+                guard let self = self else { return }
+                if response.first(where: { $0.id == self.roomData.id }) == nil {
+                    self.isPop = true
+                }
+            } err: {[weak self] err in
+                guard let self = self else { return }
+                print(err)
+            } complete: {
+                
+            }
+        
         //MARK: Member Change
         self.services.multiGameService.roomSubject
             .run(in: &self.subscription) {[weak self] response in

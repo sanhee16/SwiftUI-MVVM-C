@@ -137,8 +137,6 @@ class MultiGameService {
                 let result = try self.decoder.decode(RoomData.self, from: data)
                 self.room = result
                 self.roomSubject.send(self.room)
-//                print("[observe room] self.room", self.room)
-//                print("[observe room] members", self.room?.members)
             } catch {
                 print("[observe room] an error occurred", error)
             }
