@@ -46,13 +46,33 @@ class AppCoordinator: BaseCoordinator, ObservableObject {
     }
     
     //MARK: SubViews
-    func pushGameView(level: Level) {
-        let vc = GameView.vc(self, interactors: self.container.interactors, level: level)
+    func pushSingleGameView(level: Level) {
+        let vc = SingleGameView.vc(self, interactors: self.container.interactors, level: level)
         self.push(vc, animated: false)
     }
     
     func pushRankingView() {
         let vc = RankingView.vc(self, interactors: self.container.interactors)
         self.push(vc, animated: false)
+    }
+    
+    func pushGameRoomListView() {
+        let vc = GameRoomListView.vc(self, interactors: self.container.interactors, services: self.container.services)
+        self.push(vc, animated: false)
+    }
+    
+    func pushMultiGameView(roomData: RoomData) {
+        let vc = MultiGameView.vc(self, interactors: self.container.interactors, services: self.container.services, roomData: roomData)
+        self.push(vc, animated: false)
+    }
+    
+    func presentCreateRoomView() {
+        let vc = CreateRoomView.vc(self, interactors: self.container.interactors, services: self.container.services)
+        self.present(vc, animated: false)
+    }
+    
+    func presentEnterRoomView(roomData: RoomData, onDismiss: @escaping () -> ()) {
+        let vc = EnterRoomView.vc(self, interactors: self.container.interactors, services: self.container.services, roomData: roomData)
+        self.present(vc, animated: false, onDismiss: onDismiss)
     }
 }

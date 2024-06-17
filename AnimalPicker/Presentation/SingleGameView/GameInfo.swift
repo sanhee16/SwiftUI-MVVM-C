@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
+struct GameInfo {
+    var answer: ImageType
+    var items: [GameItem]
+}
 
-enum ImageType: String {
+enum ImageType: String, Codable {
     case dog
     case duck
     case fox
@@ -35,10 +40,11 @@ enum ImageType: String {
 }
 
 enum CellType {
-    case c9 // 3x3
-    case c15 // 3x5
-    case c24 // 3x8
-    case c30 // 3x10
+    case c9 
+    case c15
+    case c24
+    case c30
+    case c100
     
     var row: Int {
         return 3
@@ -54,6 +60,8 @@ enum CellType {
             return 8
         case .c30:
             return 10
+        case .c100:
+            return 25
         }
     }
 }
@@ -63,6 +71,7 @@ enum Level: String, Codable {
     case normal = "Normal"
     case hard = "Hard"
     case hell = "Hell"
+    case multi = "Multi"
     
     var point: Int {
         return 10
@@ -78,6 +87,8 @@ enum Level: String, Codable {
             return 2
         case .hell:
             return 3
+        case .multi:
+            return 4
         }
     }
     
@@ -91,6 +102,8 @@ enum Level: String, Codable {
             return .c24
         case .hell:
             return .c30
+        case .multi:
+            return .c100
         }
     }
     
@@ -104,23 +117,48 @@ enum Level: String, Codable {
             return 8
         case .hell:
             return 7
+        case .multi:
+            return -1
+        }
+    }
+    
+    var backgroundColor: Color {
+        switch self {
+        case .easy:
+            return .yellow
+        case .normal:
+            return .green
+        case .hard:
+            return .blue
+        case .hell:
+            return .red
+        case .multi:
+            return .purple
         }
     }
 }
 
 
-struct GameItem: Equatable, Hashable {
+struct GameItem: Codable, Equatable, Hashable {
     static func == (lhs: GameItem, rhs: GameItem) -> Bool {
         return lhs.id == rhs.id && lhs.url == rhs.url && lhs.isSelected == rhs.isSelected
     }
     
     let id: Int
-    let type: ImageType
+    let type: String
     let url: String
     var isSelected: Bool
     var isLoaded: Bool
     
     init(id: Int, type: ImageType, url: String) {
+        self.id = id
+        self.type = type.rawValue
+        self.url = url
+        self.isSelected = false
+        self.isLoaded = false
+    }
+    
+    init(id: Int, type: String, url: String) {
         self.id = id
         self.type = type
         self.url = url

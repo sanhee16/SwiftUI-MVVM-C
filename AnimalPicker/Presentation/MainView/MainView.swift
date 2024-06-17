@@ -30,37 +30,69 @@ struct MainView: View {
             VStack(alignment: .leading, spacing: 0) {
                 Text("Animal Picker")
                     .font(.kr20b)
-                    .foregroundStyle(.black)
-                Text("Ranking")
-                    .font(.kr14r)
-                    .paddingVertical(15)
+                    .foregroundColor(.black)
+                    .paddingBottom(12)
+                
+                
+                Text("Multi Game")
+                    .font(.kr17b)
+                    .foregroundStyle(Color.black)
+                    .paddingVertical(8)
+                Text("MultiGame")
+                    .font(.kr20b)
+                    .foregroundStyle(Color.white)
+                    .paddingVertical(12)
                     .frame(width: UIScreen.main.bounds.size.width - 40, alignment: .center)
                     .background(
                         RoundedRectangle(cornerRadius: 8)
-                            .foregroundStyle(Color.green.opacity(0.8))
+                            .foregroundStyle(Level.multi.backgroundColor)
+                    )
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        self.coordinator.pushGameRoomListView()
+                    }
+                    .shadow(color: Level.multi.backgroundColor.opacity(0.75), radius: 3, x: 2, y: 2)
+                    .paddingVertical(8)
+                    .paddingBottom(24)
+
+                Text("Single Game")
+                    .font(.kr17b)
+                    .foregroundStyle(Color.black)
+                    .paddingVertical(8)
+                
+                Text("Ranking")
+                    .font(.kr20b)
+                    .foregroundStyle(Color.black)
+                    .paddingVertical(12)
+                    .frame(width: UIScreen.main.bounds.size.width - 40, alignment: .center)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundStyle(Color.white)
                     )
                     .contentShape(Rectangle())
                     .onTapGesture {
                         self.coordinator.pushRankingView()
                     }
-                    .paddingVertical(14)
+                    .clipped()
+                    .shadow(color: .black.opacity(0.25), radius: 3, x: 2, y: 2)
+                    .paddingBottom(28)
                 
-                Spacer()
-
                 ForEach(vm.levels, id: \.self) { level in
                     Text(level.rawValue)
-                        .font(.kr14r)
-                        .paddingVertical(15)
+                        .font(.kr20b)
+                        .foregroundStyle(Color.white)
+                        .paddingVertical(12)
                         .frame(width: UIScreen.main.bounds.size.width - 40, alignment: .center)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
-                                .foregroundStyle(Color.blue.opacity(0.8))
+                                .foregroundStyle(level.backgroundColor)
                         )
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            self.coordinator.pushGameView(level: level)
+                            self.coordinator.pushSingleGameView(level: level)
                         }
-                        .paddingBottom(20)
+                        .shadow(color: level.backgroundColor.opacity(0.75), radius: 3, x: 2, y: 2)
+                        .paddingBottom(16)
                 }
 
                 

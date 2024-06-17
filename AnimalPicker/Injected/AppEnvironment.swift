@@ -14,6 +14,7 @@ struct AppEnvironment {
 
 extension AppEnvironment {
     static func bootstrap() -> AppEnvironment {
+        let services = configuredServices()
         let apiRepositories = configuredApiRepositories()
         let dbRepositories = configuredDBRepositories()
         let interactors = configuredInteractors(
@@ -21,7 +22,7 @@ extension AppEnvironment {
             apiRepositories: apiRepositories
         )
 
-        let diContainer = DIContainer(interactors: interactors)
+        let diContainer = DIContainer(services: services, interactors: interactors)
 
         return AppEnvironment(container: diContainer)
     }
@@ -31,11 +32,20 @@ extension AppEnvironment {
         let dogImageRepository = RealDogImageRepository(network: BaseNetwork(), baseUrl: "https://dog.ceo/api")
         let duckImageRepository = RealDuckImageRepository(network: BaseNetwork(), baseUrl: "https://random-d.uk/api/v2")
         let lizardIamgeRepository = RealLizardImageRepository(network: BaseNetwork(), baseUrl: "https://nekos.life/api/v2")
+
         return .init(
             foxImageRepository: foxImageRepository,
             dogImageRepository: dogImageRepository,
             duckImageRepository: duckImageRepository,
             lizardIamgeRepository: lizardIamgeRepository
+        )
+    }
+    private static func configuredServices() -> DIContainer.Services {
+        let multiGameService = MultiGameService()
+        let keychainService = KeychainService()
+        return .init(
+            multiGameService: multiGameService,
+            keychainService: keychainService
         )
     }
     
@@ -51,7 +61,10 @@ extension AppEnvironment {
             firestoreServcice: firestoreService
         )
         
-        return .init(rankingDBRepository: rankingDBRepository, rankingWebRepository: rankingWebRepository)
+        return .init(
+            rankingDBRepository: rankingDBRepository,
+            rankingWebRepository: rankingWebRepository
+        )
     }
     
     private static func configuredInteractors(
@@ -69,6 +82,9 @@ extension AppEnvironment {
             rankingWebRepository: dbRepositories.rankingWebRepository
         )
         
-        return .init(animalImageInteractor: animalImageInteractor, rankingInteractor: rankingInteractor)
+        return .init(
+            animalImageInteractor: animalImageInteractor,
+            rankingInteractor: rankingInteractor
+        )
     }
 }

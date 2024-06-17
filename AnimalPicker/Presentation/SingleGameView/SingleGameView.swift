@@ -1,5 +1,5 @@
 //
-//  GameView.swift
+//  SingleGameView.swift
 //  AnimalPicker
 //
 //  Created by Sandy on 5/21/24.
@@ -9,8 +9,8 @@ import Foundation
 import Kingfisher
 import SwiftUI
 
-struct GameView: View {
-    typealias VM = GameVM
+struct SingleGameView: View {
+    typealias VM = SingleGameVM
     public static func vc(_ coordinator: AppCoordinator, interactors: DIContainer.Interactors, level: Level, completion: (()-> Void)? = nil) -> UIViewController {
         let vm = VM.init(interactors, level: level)
         let view = Self.init(vm: vm, coordinator: coordinator)
@@ -26,9 +26,6 @@ struct GameView: View {
     private var safeTop: CGFloat { get { Util.safeTop() }}
     private var safeBottom: CGFloat { get { Util.safeBottom() }}
     
-    let spacing: CGFloat = 16.0
-    let size: CGFloat = (UIScreen.main.bounds.width - (20*2 + 16*2)) / 3
-    
     @State private var nickname: String = ""
     
     
@@ -43,16 +40,22 @@ struct GameView: View {
                     self.coordinator.pop()
                 }
                 VStack(alignment: .leading, spacing: 0, content: {
-                    HStack {
+                    HStack(spacing: 0) {
                         Text(vm.level.rawValue)
                             .font(.kr24b)
                         Spacer()
                         Text("score: \($vm.score.wrappedValue)")
                             .font(.kr16m)
+                        if $vm.bonusScore.wrappedValue > 0 {
+                            Text("(Bonus: \($vm.bonusScore.wrappedValue))")
+                                .font(.kr16m)
+                                .foregroundStyle(Color.red.opacity(0.8))
+                                .paddingLeading(4)
+                        }
                     }
                     
                     if let answer = $vm.answer.wrappedValue {
-                        Text("Select All of \(answer.plural)!")
+                        Text("Select All of \(answer)!")
                             .font(.kr18b)
                             .paddingTop(16)
                         if let leftTime = $vm.leftTime.wrappedValue {
@@ -67,36 +70,18 @@ struct GameView: View {
                 .paddingVertical(12)
                 
                 ScrollView(.vertical, showsIndicators: false) {
-                    SDGrid(columnCount: vm.level.cell.row, spacing: self.spacing, data: vm.results) { item in
-                        if let url = URL(string: item.url) {
-                            KFImage(url)
-                                .onSuccess({ _ in
-                                    vm.onLoadSuccess(item: item)
-                                })
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(both: self.size, aligment: .center)
-                                .overlay {
-                                    if item.isSelected {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .foregroundStyle(Color.black.opacity(0.7))
-                                    }
-                                }
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .clipped()
-                                .shadow(color: .black.opacity(0.3), radius: 2, x: 2, y: 2)
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    vm.onSelectItem(item: item)
-                                }
+                    GameItemView(
+                        items: vm.items,
+                        level: vm.level) { item in
+                            vm.onLoadSuccess(item: item)
+                        } onSelectItem: { item in
+                            vm.onSelectItem(item: item)
                         }
-                    }
-                    .paddingHorizontal(20.0)
                 }
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
-        .onChange(of: $vm.iaPop.wrappedValue, perform: { newValue in
+        .onChange(of: $vm.isPop.wrappedValue, perform: { newValue in
             if newValue {
                 self.coordinator.pop()
             }
@@ -107,8 +92,8 @@ struct GameView: View {
         .onDisappear {
             vm.onDisappear()
         }
-        
     }
+    
     private func statusView() -> some View {
         VStack(alignment: .center, spacing: 8, content: {
             switch $vm.status.wrappedValue {
@@ -118,7 +103,7 @@ struct GameView: View {
                     .foregroundStyle(Color.red.opacity(0.9))
                 
                 // 점수
-                Text("Score: \($vm.score.wrappedValue)")
+                Text("Score: \($vm.score.wrappedValue + $vm.bonusScore.wrappedValue)")
                     .font(.kr28b)
                     .foregroundStyle(Color.white)
                 
@@ -196,20 +181,34 @@ struct GameView: View {
                 .background(RoundedRectangle(cornerRadius: 6).foregroundStyle(Color.white))
                 .paddingBottom(20)
                 
-                Text("Retry")
-                    .font(.kr16m)
-                    .foregroundStyle(Color.white)
-                    .frame(width: 100, height: 40, alignment: .center)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundStyle(Color.red)
-                    )
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        vm.reset()
-                    }
-                .paddingVertical(20)
-                
+                HStack(alignment: .center, spacing: 12, content: {
+                    Text("Retry")
+                        .font(.kr16b)
+                        .foregroundStyle(Color.white)
+                        .frame(width: 120, height: 40, alignment: .center)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundStyle(Color.red)
+                        )
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            vm.reset()
+                        }
+                    
+                    Text("Quit")
+                        .font(.kr16b)
+                        .foregroundStyle(Color.white)
+                        .frame(width: 120, height: 40, alignment: .center)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundStyle(Color.gray)
+                        )
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            self.coordinator.pop()
+                        }
+                })
+                .paddingVertical(16)
             case .clear:
                 Text("Cleared!")
                     .font(.kr35b)
