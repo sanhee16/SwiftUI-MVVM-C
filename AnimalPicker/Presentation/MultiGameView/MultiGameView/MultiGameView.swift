@@ -88,7 +88,11 @@ struct MultiGameView: View {
                             .paddingBottom(2)
                         HStack(alignment: .center, spacing: 8, content: {
                             FlowView(items: $vm.members.wrappedValue.map({ member in
-                                FlowItem(text: member.name, isRemoveable: (member.id != vm.deviceId) && ($vm.isManager.wrappedValue)) {
+                                FlowItem(
+                                    text: member.name,
+                                    isRemoveable: (member.id != vm.deviceId) && ($vm.isManager.wrappedValue),
+                                    isStar: member.id == $vm.roomData.wrappedValue.managerId
+                                ) {
                                     vm.onClickDeleteMember(memberId: member.id)
                                 }
                             }))

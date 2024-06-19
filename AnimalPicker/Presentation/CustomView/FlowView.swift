@@ -11,6 +11,7 @@ import SwiftUI
 struct FlowItem {
     var text: String
     var isRemoveable: Bool
+    var isStar: Bool
     var onRemove: (()->())
 }
 
@@ -71,7 +72,13 @@ struct FlowView: View {
     }
     
     private func drawItem(idx: Int) -> some View {
-        HStack(alignment: .center, spacing: 8, content: {
+        HStack(alignment: .center, spacing: 3, content: {
+            if items[idx].isStar {
+                Image("Star")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(both: 16.0, aligment: .center)
+            }
             Text(items[idx].text)
                 .font(.kr16b)
                 .foregroundStyle(Color.white)
@@ -80,6 +87,7 @@ struct FlowView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(both: 14.0, aligment: .center)
+                    .paddingLeading(3)
                     .onTapGesture {
                         items[idx].onRemove()
                     }
