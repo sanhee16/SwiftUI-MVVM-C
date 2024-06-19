@@ -37,8 +37,6 @@ class GameRoomListVM: BaseViewModel {
     }
     
     func isExistedMember(roomId: String) -> RoomData? {
-        let deviceId = self.services.keychainService.loadDeviceId()
-
         if let room = self.list.first(where: { $0.id == roomId }), let members = room.members, members.keys.contains(where: { $0 == self.deviceId }) {
             return room
         }

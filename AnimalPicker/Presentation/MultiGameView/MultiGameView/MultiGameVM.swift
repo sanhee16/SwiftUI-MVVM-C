@@ -170,11 +170,11 @@ class MultiGameVM: BaseViewModel {
         self.services.multiGameService.roomListSubject
             .run(in: &self.subscription) {[weak self] response in
                 guard let self = self else { return }
+                // 방이 사라짐
                 if response.first(where: { $0.id == self.roomData.id }) == nil {
                     self.isPop = true
                 }
-            } err: {[weak self] err in
-                guard let self = self else { return }
+            } err: { err in
                 print(err)
             } complete: {
                 
@@ -197,6 +197,11 @@ class MultiGameVM: BaseViewModel {
                         print("모두가 문제 풀이 완료")
                         self.services.multiGameService.allClear(roomId: self.roomData.id)
                     }
+                }
+                
+                // 방에서 퇴출당했을 때
+                if self.members.first(where: { $0.id == self.deviceId }) == nil {
+                    self.isPop = true
                 }
                 
                 if MultiGameStatus(rawValue: self.roomData.status) == .ready, self.myStatus != .ready {
