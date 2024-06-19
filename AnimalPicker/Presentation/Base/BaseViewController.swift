@@ -30,7 +30,8 @@ class BaseViewController<Content>: UIViewController, Dismissible, Nameable, Swip
         self.isAvailableToSwipe = isAvailableToSwipe
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
-        self.modalPresentationStyle = .fullScreen
+        
+        self.hideNavigationBar()
     }
         
     required init?(coder: NSCoder) {
@@ -43,11 +44,9 @@ class BaseViewController<Content>: UIViewController, Dismissible, Nameable, Swip
     }
     
     open override func viewDidLoad() {
-        super.viewDidLoad()
+        self.hideNavigationBar()
         
-        DispatchQueue.main.async { [weak self] in
-            self?.controller.navigationController?.isNavigationBarHidden = true
-        }
+        super.viewDidLoad()
         addChild(controller)
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(controller.view)
@@ -69,18 +68,40 @@ class BaseViewController<Content>: UIViewController, Dismissible, Nameable, Swip
         self.vm = vm
     }
     
+    override func viewWillLayoutSubviews() {
+        self.hideNavigationBar()
+        super.viewWillLayoutSubviews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.hideNavigationBar()
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
+        self.hideNavigationBar()
         super.viewDidAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = self.isAvailableToSwipe
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        self.hideNavigationBar()
         super.viewDidDisappear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        self.hideNavigationBar()
         super.viewWillDisappear(animated)
+    }
+    
+    private func hideNavigationBar() {
+        DispatchQueue.main.async {
+            // Remove navigationBar's back button
+            self.controller.navigationController?.navigationItem.backButtonTitle = nil
+            self.controller.navigationController?.navigationItem.hidesBackButton = true
+            self.controller.navigationController?.navigationBar.isHidden = true
+        }
     }
 }
 
@@ -102,4 +123,18 @@ extension Nameable {
 
 public protocol Swipeable {
     var isAvailableToSwipe: Bool { get set }
+}
+
+extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        self.hideNavigationBar()
+        super.viewDidLoad()
+    }
+    
+    private func hideNavigationBar() {
+        DispatchQueue.main.async {
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.title = nil
+        }
+    }
 }
