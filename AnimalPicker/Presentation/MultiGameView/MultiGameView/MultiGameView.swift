@@ -77,7 +77,23 @@ struct MultiGameView: View {
                                         vm.onClickDeleteRoom()
                                     }
                                 })
+                            } else {
+                                
+                                ZStack(alignment: .center, content: {
+                                    Image("ButtonText_Large_Square_Red")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 40, alignment: .center)
                                     
+                                    Text("Quit Room")
+                                        .font(.kr16b)
+                                        .foregroundStyle(Color.white)
+                                        .zIndex(1)
+                                })
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    vm.onClickQuitRoom()
+                                }
                             }
                             
                         })
