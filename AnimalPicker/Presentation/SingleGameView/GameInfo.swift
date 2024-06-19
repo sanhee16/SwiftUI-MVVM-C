@@ -136,6 +136,21 @@ enum Level: String, Codable {
             return .purple
         }
     }
+    
+    var buttonImage: String {
+        switch self {
+        case .easy:
+            return "ButtonText_Large_Square_Yellow"
+        case .normal:
+            return "ButtonText_Large_Square_Green"
+        case .hard:
+            return "ButtonText_Large_Square_Blue"
+        case .hell:
+            return "ButtonText_Large_Square_Red"
+        case .multi:
+            return "ButtonText_Large_Square_Orange"
+        }
+    }
 }
 
 

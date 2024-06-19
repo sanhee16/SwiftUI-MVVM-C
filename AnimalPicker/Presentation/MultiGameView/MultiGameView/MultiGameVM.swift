@@ -25,7 +25,7 @@ class MultiGameVM: BaseViewModel {
     var items: [GameItem] = []
     var answer: String? = nil
     private var timer: Timer? = nil
-    private var isManager: Bool = false
+    @Published var isManager: Bool = false
     
     @Published var elapsedTime: Float? = nil
     @Published var members: [MultiGameMemberData] = []

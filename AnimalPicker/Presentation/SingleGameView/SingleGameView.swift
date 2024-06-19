@@ -118,26 +118,28 @@ struct SingleGameView: View {
                         }
                         
                         if $vm.status.wrappedValue == .enterRanking {
-                            Text("Register")
-                                .font(.kr16m)
-                                .foregroundStyle(Color.white)
-                                .frame(width: 100, height: 40, alignment: .center)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .foregroundStyle($nickname.wrappedValue.isEmpty ? Color.gray : Color.yellow)
-                                )
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    if !$nickname.wrappedValue.isEmpty {
-                                        vm.onUploadRanking($nickname.wrappedValue)
-                                    }
+                            ZStack(alignment: .center, content: {
+                                Image($nickname.wrappedValue.isEmpty ? "ButtonText_Large_Square_Gray" : "ButtonText_Large_Square_Green")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 40, alignment: .center)
+                                
+                                Text("Register")
+                                    .font(.kr16b)
+                                    .foregroundStyle(Color.white)
+                                    .zIndex(1)
+                            })
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                if !$nickname.wrappedValue.isEmpty {
+                                    vm.onUploadRanking($nickname.wrappedValue)
                                 }
-                                .paddingBottom(10)
+                            }
                         }
                     }
                 })
                 .frame(width: UIScreen.main.bounds.size.width - 100, height: 40, alignment: .center)
-                .paddingTop(10)
+                .paddingVertical(10)
                 
                 // 랭킹 기록
                 VStack(alignment: .leading, spacing: 0) {
@@ -182,31 +184,37 @@ struct SingleGameView: View {
                 .paddingBottom(20)
                 
                 HStack(alignment: .center, spacing: 12, content: {
-                    Text("Retry")
-                        .font(.kr16b)
-                        .foregroundStyle(Color.white)
-                        .frame(width: 120, height: 40, alignment: .center)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundStyle(Color.red)
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            vm.reset()
-                        }
+                    ZStack(alignment: .center, content: {
+                        Image("Button_Round_Green")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 40, alignment: .center)
+                        
+                        Text("Retry")
+                            .font(.kr16b)
+                            .foregroundStyle(Color.white)
+                            .zIndex(1)
+                    })
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        vm.reset()
+                    }
                     
-                    Text("Quit")
-                        .font(.kr16b)
-                        .foregroundStyle(Color.white)
-                        .frame(width: 120, height: 40, alignment: .center)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundStyle(Color.gray)
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            self.coordinator.pop()
-                        }
+                    ZStack(alignment: .center, content: {
+                        Image("Button_Round_Red")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 40, alignment: .center)
+                        
+                        Text("Quit")
+                            .font(.kr16b)
+                            .foregroundStyle(Color.white)
+                            .zIndex(1)
+                    })
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        self.coordinator.pop()
+                    }
                 })
                 .paddingVertical(16)
             case .clear:
@@ -215,18 +223,21 @@ struct SingleGameView: View {
                     .foregroundStyle(Color.white)
                 
                 HStack(alignment: .center, spacing: 12, content: {
-                    Text("Next")
-                        .font(.kr15m)
-                        .foregroundStyle(Color.black)
-                        .frame(width: 100, height: 40, alignment: .center)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundStyle(Color.yellow)
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            vm.nextLevel()
-                        }
+                    ZStack(alignment: .center, content: {
+                        Image("Button_Round_Red")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 40, alignment: .center)
+                        
+                        Text("Next")
+                            .font(.kr16b)
+                            .foregroundStyle(Color.white)
+                            .zIndex(1)
+                    })
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        vm.nextLevel()
+                    }
                 })
             case .loading:
                 Text("Loading...")

@@ -84,7 +84,7 @@
 		58C50D2F2C041A1D00C4E0F1 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */; };
 		58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D302C047E5400C4E0F1 /* Topbar.swift */; };
 		58F4EBD92C2010140025246E /* SDError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4EBD82C2010140025246E /* SDError.swift */; };
-		58F4EBDB2C2012220025246E /* SDHashTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4EBDA2C2012220025246E /* SDHashTagView.swift */; };
+		58F4EBDB2C2012220025246E /* FlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4EBDA2C2012220025246E /* FlowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,7 +174,7 @@
 		58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
 		58C50D302C047E5400C4E0F1 /* Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topbar.swift; sourceTree = "<group>"; };
 		58F4EBD82C2010140025246E /* SDError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDError.swift; sourceTree = "<group>"; };
-		58F4EBDA2C2012220025246E /* SDHashTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDHashTagView.swift; sourceTree = "<group>"; };
+		58F4EBDA2C2012220025246E /* FlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,7 +436,7 @@
 				5878B4822C002A5800A7329B /* SingleTextField.swift */,
 				5878B4882C007DCF00A7329B /* SingleBoxTextField.swift */,
 				58C50D302C047E5400C4E0F1 /* Topbar.swift */,
-				58F4EBDA2C2012220025246E /* SDHashTagView.swift */,
+				58F4EBDA2C2012220025246E /* FlowView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -704,7 +704,7 @@
 				585BB5252BFC6922007CCD51 /* BaseViewController.swift in Sources */,
 				58585C4A2C08607B005B65FE /* Dictionary+Extension.swift in Sources */,
 				585BB51F2BFC68D8007CCD51 /* SplashView.swift in Sources */,
-				58F4EBDB2C2012220025246E /* SDHashTagView.swift in Sources */,
+				58F4EBDB2C2012220025246E /* FlowView.swift in Sources */,
 				58856ACB2C12902C000F53FF /* HapticUtil.swift in Sources */,
 				580C10FF2C0EE7C900BFBBC4 /* KeychainService.swift in Sources */,
 				58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */,

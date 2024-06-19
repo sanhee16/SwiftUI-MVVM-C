@@ -42,48 +42,56 @@ struct MultiGameView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     VStack(alignment: .leading, spacing: 0) {
                         HStack(alignment: .center, spacing: 4, content: {
-                            Text("Members")
-                                .font(.kr18b)
                             Spacer()
-                            
                             if vm.roomData.managerId == vm.deviceId {
                                 HStack(alignment: .center, spacing: 10, content: {
-                                    Text("Start")
-                                        .font(.kr15m)
-                                        .foregroundStyle(Color.white)
-                                        .padding(top: 8, leading: 10, bottom: 8, trailing: 10)
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 4)
-                                                .foregroundStyle(Color.green)
-                                        )
-                                        .contentShape(Rectangle())
-                                        .onTapGesture {
-                                            vm.onClickStart()
-                                        }
+                                    ZStack(alignment: .center, content: {
+                                        Image("ButtonText_Large_Square_Green")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: 40, alignment: .center)
+                                        
+                                        Text("Start")
+                                            .font(.kr16b)
+                                            .foregroundStyle(Color.white)
+                                            .zIndex(1)
+                                    })
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        vm.onClickStart()
+                                    }
                                     
-                                    Text("Delete Room")
-                                        .font(.kr15m)
-                                        .foregroundStyle(Color.white)
-                                        .padding(top: 8, leading: 10, bottom: 8, trailing: 10)
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 4)
-                                                .foregroundStyle(Color.red)
-                                        )
-                                        .contentShape(Rectangle())
-                                        .onTapGesture {
-                                            vm.onClickDeleteRoom()
-                                        }
+                                    ZStack(alignment: .center, content: {
+                                        Image("ButtonText_Large_Square_Gray")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: 40, alignment: .center)
+                                        
+                                        Text("Delete Room")
+                                            .font(.kr16b)
+                                            .foregroundStyle(Color.white)
+                                            .zIndex(1)
+                                    })
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        vm.onClickDeleteRoom()
+                                    }
                                 })
                                     
                             }
                             
                         })
+                        
+                        Text("Members")
+                            .font(.kr18b)
+                            .foregroundStyle(Color.black)
+                            .paddingBottom(2)
                         HStack(alignment: .center, spacing: 8, content: {
-                            SDHashTagView(tags: $vm.members.wrappedValue.map({ $0.name })) { name in
-                                if let member = $vm.members.wrappedValue.first(where: { $0.name == name }) {
+                            FlowView(items: $vm.members.wrappedValue.map({ member in
+                                FlowItem(text: member.name, isRemoveable: (member.id != vm.deviceId) && ($vm.isManager.wrappedValue)) {
                                     vm.onClickDeleteMember(memberId: member.id)
                                 }
-                            }
+                            }))
                         })
                         .paddingVertical(8)
                     }

@@ -36,60 +36,59 @@ struct MainView: View {
                         .foregroundStyle(Color.black)
                         .paddingVertical(8)
                     
-                    Text("MultiGame")
-                        .font(.kr20b)
-                        .foregroundStyle(Color.white)
-                        .paddingVertical(12)
-                        .frame(width: UIScreen.main.bounds.size.width - 40, alignment: .center)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundStyle(Level.multi.backgroundColor)
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            self.coordinator.pushGameRoomListView()
-                        }
-                        .shadow(color: Level.multi.backgroundColor.opacity(0.75), radius: 3, x: 2, y: 2)
-                        .paddingBottom(24)
+                    ZStack(alignment: .center, content: {
+                        Image("ButtonText_Large_Square_Orange")
+                            .resizable()
+                            .frame(height: 48, alignment: .center)
+                        
+                        Text("MultiGame")
+                            .font(.kr20b)
+                            .foregroundStyle(Color.white)
+                            .zIndex(1)
+                    })
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        self.coordinator.pushGameRoomListView()
+                    }
+                    .paddingBottom(24)
                     
                     Text("Single Game")
                         .font(.kr17b)
                         .foregroundStyle(Color.black)
                         .paddingVertical(8)
                     
-                    Text("Ranking")
-                        .font(.kr20b)
-                        .foregroundStyle(Color.black)
-                        .paddingVertical(12)
-                        .frame(width: UIScreen.main.bounds.size.width - 40, alignment: .center)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundStyle(Color.white)
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            self.coordinator.pushRankingView()
-                        }
-                        .clipped()
-                        .shadow(color: .black.opacity(0.25), radius: 3, x: 2, y: 2)
-                        .paddingBottom(28)
-                    
-                    ForEach(vm.levels, id: \.self) { level in
-                        Text(level.rawValue)
+                    ZStack(alignment: .center, content: {
+                        Image("ButtonText_Large_Square_Gray")
+                            .resizable()
+                            .frame(height: 48, alignment: .center)
+                        
+                        Text("Ranking")
                             .font(.kr20b)
                             .foregroundStyle(Color.white)
-                            .paddingVertical(12)
-                            .frame(width: UIScreen.main.bounds.size.width - 40, alignment: .center)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .foregroundStyle(level.backgroundColor)
-                            )
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                self.coordinator.pushSingleGameView(level: level)
-                            }
-                            .shadow(color: level.backgroundColor.opacity(0.75), radius: 3, x: 2, y: 2)
-                            .paddingBottom(16)
+                            .zIndex(1)
+                    })
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        self.coordinator.pushRankingView()
+                    }
+                    .paddingBottom(24)
+                    
+                    ForEach(vm.levels, id: \.self) { level in
+                        ZStack(alignment: .center, content: {
+                            Image(level.buttonImage)
+                                .resizable()
+                                .frame(height: 48, alignment: .center)
+                            
+                            Text(level.rawValue)
+                                .font(.kr20b)
+                                .foregroundStyle(Color.white)
+                                .zIndex(1)
+                        })
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            self.coordinator.pushSingleGameView(level: level)
+                        }
+                        .paddingBottom(8)
                     }
                 }
                 .paddingHorizontal(20)
