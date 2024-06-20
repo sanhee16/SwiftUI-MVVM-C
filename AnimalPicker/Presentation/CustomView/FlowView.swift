@@ -8,7 +8,11 @@
 import Foundation
 import SwiftUI
 
-struct FlowItem {
+struct FlowItem: Equatable {
+    static func == (lhs: FlowItem, rhs: FlowItem) -> Bool {
+        lhs.text == rhs.text
+    }
+    
     var text: String
     var isRemoveable: Bool
     var isStar: Bool
@@ -16,7 +20,11 @@ struct FlowItem {
 }
 
 
-struct FlowView: View {
+struct FlowView: View, Equatable {
+    static func == (lhs: FlowView, rhs: FlowView) -> Bool {
+        lhs.items == rhs.items
+    }
+    
     @Binding var items: [FlowItem]
     @State private var totalHeight = CGFloat.zero
     

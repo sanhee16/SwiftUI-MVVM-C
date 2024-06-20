@@ -27,8 +27,7 @@ struct MultiGameView: View {
     private var safeBottom: CGFloat { get { Util.safeBottom() }}
     
     @State private var nickname: String = ""
-    @State private var memberNameList: [String] = []
-    
+    @State private var time: Float? = nil
     
     var body: some View {
         GeometryReader { geometry in
@@ -111,7 +110,7 @@ struct MultiGameView: View {
                                 ) {
                                     vm.onClickDeleteMember(memberId: member.id)
                                 }
-                            }))
+                            })).equatable()
                         })
                         .paddingVertical(8)
                     }
@@ -123,7 +122,7 @@ struct MultiGameView: View {
                                 Text("Select All of \(answer)!")
                                     .font(.kr18b)
                                     .paddingTop(16)
-                                if let elapsedTime = $vm.elapsedTime.wrappedValue {
+                                if let elapsedTime = self.time {
                                     Text("Elapsed Time: \(elapsedTime)")
                                         .font(.kr16b)
                                         .foregroundStyle(Color.black)
@@ -149,13 +148,13 @@ struct MultiGameView: View {
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
-        .onChange(of: $vm.members.wrappedValue, perform: { newValue in
-            self.memberNameList = newValue.map({ $0.name })
-        })
         .onChange(of: $vm.isPop.wrappedValue, perform: { newValue in
             if newValue {
                 self.coordinator.pop()
             }
+        })
+        .onChange(of: $vm.elapsedTime.wrappedValue, perform: { newValue in
+            self.time = newValue
         })
         .onAppear {
             vm.onAppear()
