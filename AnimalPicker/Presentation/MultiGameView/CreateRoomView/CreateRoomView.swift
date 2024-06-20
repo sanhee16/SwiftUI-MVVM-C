@@ -47,7 +47,7 @@ struct CreateRoomView: View {
                 Text("Room Name")
                     .font(.kr16b)
                     .paddingBottom(2)
-                SingleBoxTextField(placeholder: "Room Name", text: $roomName) { _ in
+                SingleBoxTextField(placeholder: "Enter the Room Name", text: $roomName) { _ in
                     self.emptyRoomname = false
                 }
                 .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
@@ -60,7 +60,7 @@ struct CreateRoomView: View {
                 Text("Nickname")
                     .font(.kr16b)
                     .paddingBottom(2)
-                SingleBoxTextField(placeholder: "Nickname", text: $nickname, keyboardType: .default, lengthLimit: 10) { _ in
+                SingleBoxTextField(placeholder: "Enter the Nickname", text: $nickname, keyboardType: .default, lengthLimit: 10) { _ in
                     self.emptyNickname = false
                 }
                 .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
@@ -83,7 +83,7 @@ struct CreateRoomView: View {
                             self.isSetPassword.toggle()
                         }
                     
-                    SingleBoxTextField(placeholder: "Password", text: $password, keyboardType: .numberPad, lengthLimit: 4) { _ in }
+                    SingleBoxTextField(placeholder: "Enter the Password", text: $password, keyboardType: .numberPad, lengthLimit: 4) { _ in }
                         .onTapGesture {
                             self.isSetPassword = true
                         }
@@ -98,7 +98,7 @@ struct CreateRoomView: View {
                     .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
                     .background(
                         RoundedRectangle(cornerRadius: 6)
-                            .foregroundStyle(self.roomName.isEmpty ? Color.gray.opacity(0.8) : Color.blue.opacity(0.8) )
+                            .foregroundStyle((self.roomName.isEmpty && self.nickname.isEmpty) ? Color.gray.opacity(0.8) : Color.blue.opacity(0.8) )
                     )
                     .contentShape(Rectangle())
                     .onTapGesture {

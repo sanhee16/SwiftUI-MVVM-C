@@ -43,7 +43,10 @@ struct EnterRoomView: View {
                 }
                 .paddingBottom(16)
                 
-                SingleBoxTextField(placeholder: "Nickname", text: $nickname, keyboardType: .default, lengthLimit: 10) { _ in
+                Text("Nickname *")
+                    .font(.kr16b)
+                    .foregroundStyle(Color.black)
+                SingleBoxTextField(placeholder: "Enter the nickname", text: $nickname, keyboardType: .default, lengthLimit: 10) { _ in
                     self.emptyNickname = false
                 }
                 .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
@@ -54,7 +57,11 @@ struct EnterRoomView: View {
                     .paddingBottom(8)
                 
                 if let _ = roomData.password {
-                    SingleBoxTextField(placeholder: "Password", text: $password, keyboardType: .numberPad, lengthLimit: 4) { _ in
+                    Text("Password")
+                        .font(.kr16b)
+                        .foregroundStyle(Color.black)
+                    
+                    SingleBoxTextField(placeholder: "Enter the Password", text: $password, keyboardType: .numberPad, lengthLimit: 4) { _ in
                         self.wrongPassword = false
                     }
                     .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
@@ -72,7 +79,7 @@ struct EnterRoomView: View {
                     .frame(width: UIScreen.main.bounds.width - 40 - 28, alignment: .center)
                     .background(
                         RoundedRectangle(cornerRadius: 6)
-                            .foregroundStyle(self.password.isEmpty ? Color.gray.opacity(0.8) : Color.blue.opacity(0.8))
+                            .foregroundStyle(self.nickname.isEmpty ? Color.gray.opacity(0.8) : Color.blue.opacity(0.8))
                     )
                     .contentShape(Rectangle())
                     .onTapGesture {
