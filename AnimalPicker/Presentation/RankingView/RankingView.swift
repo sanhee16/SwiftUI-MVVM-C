@@ -37,8 +37,16 @@ struct RankingView: View {
                 drawSelector(geometry: geometry)
                 ScrollView(.vertical, showsIndicators: false, content: {
                     VStack(alignment: .leading, spacing: 0) {
-                        ForEach($vm.rankings.wrappedValue, id: \.self) { item in
-                            rankingItem(rankingData: item)
+                        if $vm.rankings.wrappedValue.isEmpty {
+                            Text("No Ranking")
+                                .font(.kr15m)
+                                .foregroundStyle(Color.black)
+                                .frame(width: geometry.size.width, alignment: .center)
+                                .paddingVertical(20)
+                        } else {
+                            ForEach($vm.rankings.wrappedValue, id: \.self) { item in
+                                rankingItem(rankingData: item)
+                            }
                         }
                     }
                 })
