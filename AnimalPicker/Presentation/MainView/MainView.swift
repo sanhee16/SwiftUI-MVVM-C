@@ -32,18 +32,13 @@ struct MainView: View {
             VStack(alignment: .leading, spacing: 0) {
                 Topbar("Animal Picker", backgroundColor: Color.clear)
                 ZStack(alignment: .bottom, content: {
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text("Multi Game")
-                            .font(.kr17b)
-                            .foregroundStyle(Color.black)
-                            .paddingVertical(8)
-                        
+                    VStack(alignment: .leading, spacing: 14) {
                         ZStack(alignment: .center, content: {
                             Image("ButtonText_Large_Square_Orange")
                                 .resizable()
                                 .frame(height: 48, alignment: .center)
                             
-                            Text("MultiGame")
+                            Text("Multi Game")
                                 .font(.kr20b)
                                 .foregroundStyle(Color.white)
                                 .zIndex(1)
@@ -52,19 +47,14 @@ struct MainView: View {
                         .onTapGesture {
                             self.coordinator.pushGameRoomListView()
                         }
-                        .paddingBottom(24)
-                        
-                        Text("Single Game")
-                            .font(.kr17b)
-                            .foregroundStyle(Color.black)
-                            .paddingVertical(8)
+                        .paddingTop(30)
                         
                         ZStack(alignment: .center, content: {
-                            Image("ButtonText_Large_Square_Gray")
+                            Image("ButtonText_Large_Square_Green")
                                 .resizable()
                                 .frame(height: 48, alignment: .center)
                             
-                            Text("Ranking")
+                            Text("Single Game")
                                 .font(.kr20b)
                                 .foregroundStyle(Color.white)
                                 .zIndex(1)
@@ -72,25 +62,6 @@ struct MainView: View {
                         .contentShape(Rectangle())
                         .onTapGesture {
                             self.coordinator.pushRankingView()
-                        }
-                        .paddingBottom(24)
-                        
-                        ForEach(vm.levels, id: \.self) { level in
-                            ZStack(alignment: .center, content: {
-                                Image(level.buttonImage)
-                                    .resizable()
-                                    .frame(height: 48, alignment: .center)
-                                
-                                Text(level.rawValue)
-                                    .font(.kr20b)
-                                    .foregroundStyle(Color.white)
-                                    .zIndex(1)
-                            })
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                self.coordinator.pushSingleGameView(level: level)
-                            }
-                            .paddingBottom(8)
                         }
                         Spacer()
                     }

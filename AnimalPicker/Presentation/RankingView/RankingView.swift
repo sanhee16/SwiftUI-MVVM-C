@@ -50,6 +50,24 @@ struct RankingView: View {
                         }
                     }
                 })
+                .layoutPriority(.greatestFiniteMagnitude)
+                
+                Divider()
+                ZStack(alignment: .center, content: {
+                    Image(currentLevel.buttonImage)
+                        .resizable()
+                        .frame(height: 48, alignment: .center)
+                    
+                    Text("Play \(currentLevel.rawValue) Level")
+                        .font(.kr20b)
+                        .foregroundStyle(Color.white)
+                        .zIndex(1)
+                })
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    self.coordinator.pushSingleGameView(level: currentLevel)
+                }
+                .padding(8)
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
