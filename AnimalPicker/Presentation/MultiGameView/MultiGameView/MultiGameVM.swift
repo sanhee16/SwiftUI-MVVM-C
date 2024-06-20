@@ -122,8 +122,10 @@ class MultiGameVM: BaseViewModel {
         print("startTimeCount")
         self.stopTimer()
         self.elapsedTime = 0
-        
-        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+        DispatchQueue.global(qos: .background).async {
+            self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.timerFired), userInfo: nil, repeats: true)
+                RunLoop.current.run()
+            }
     }
     
     @objc
@@ -148,9 +150,7 @@ class MultiGameVM: BaseViewModel {
         self.objectWillChange.send()
         
         if self.items.filter({ $0.type == self.answer && !$0.isSelected}).isEmpty && self.items.filter({ $0.type != self.answer && $0.isSelected}).isEmpty {
-            
             if let elapsedTime = self.elapsedTime {
-                print("done")
                 self.stopTimer()
                 self.myStatus = .clear
                 self.services.multiGameService.clear(roomId: self.roomData.id, memberId: self.deviceId, time: elapsedTime)
@@ -190,6 +190,7 @@ class MultiGameVM: BaseViewModel {
                 guard let self = self, let response = response else { return }
                 self.roomData = response
                 print("response: \(response)")
+                
                 self.members = self.roomData.members?.compactMap({ $0.value }) ?? []
                 
                 // 방장일 때
