@@ -48,13 +48,15 @@ class MultiGameVM: BaseViewModel {
             self.isManager = true
         }
         self.services.multiGameService.startToRoomObserve(roomId: self.roomData.id)
-        
+        if self.isManager {
+            self.services.multiGameService.allClear(roomId: self.roomData.id)
+        }
+            
         self.observe()
         self.reset()
     }
     
     func onAppear() {
-        
     }
     
     func onDisappear() {
