@@ -200,19 +200,22 @@ struct MultiGameView: View {
                         .paddingHorizontal(80)
                         .paddingBottom(20)
                         
-                        Text("Retry")
-                            .font(.kr16m)
-                            .foregroundStyle(Color.white)
-                            .frame(width: 100, height: 40, alignment: .center)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .foregroundStyle(Color.red)
-                            )
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                vm.reset()
-                            }
-                            .paddingVertical(20)
+                        ZStack(alignment: .center, content: {
+                            Image("Button_Round_Green")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 40, alignment: .center)
+                            
+                            Text("Retry")
+                                .font(.kr16b)
+                                .foregroundStyle(Color.white)
+                                .zIndex(1)
+                        })
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            vm.reset()
+                        }
+                        .paddingVertical(20)
                     })
                 }
                 .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, alignment: .center)
