@@ -49,6 +49,7 @@ struct RankingView: View {
                             }
                         }
                     }
+                    .paddingVertical(16)
                 })
                 .layoutPriority(.greatestFiniteMagnitude)
                 
@@ -67,7 +68,7 @@ struct RankingView: View {
                 .onTapGesture {
                     self.coordinator.pushSingleGameView(level: currentLevel)
                 }
-                .padding(8)
+                .padding(top: 14, leading: 8, bottom: 8, trailing: 8)
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
@@ -102,15 +103,12 @@ struct RankingView: View {
     }
     
     private func rankingItem(rankingData: RankingData) -> some View {
-        VStack(alignment: .leading, spacing: 0, content: {
+        HStack(alignment: .center, spacing: 0, content: {
             Text(rankingData.nickname)
                 .font(.kr16b)
-                .paddingBottom(12)
-            HStack(alignment: .center, spacing: 0, content: {
-                Text("Score: \(rankingData.score)")
-                    .font(.kr14r)
-                Spacer()
-            })
+            Spacer()
+            Text("Score: \(rankingData.score)")
+                .font(.kr14r)
         })
         .padding(top: 10, leading: 12, bottom: 10, trailing: 12)
         .background(
@@ -118,7 +116,6 @@ struct RankingView: View {
                 .foregroundColor(Color.white)
         )
         .padding(top: 5, leading: 12, bottom: 5, trailing: 12)
-        .shadow(color: .black.opacity(0.2), radius: 2, x: 2, y: 2)
     }
 }
 
