@@ -127,10 +127,10 @@ struct MainView: View {
                     .scaledToFit()
                     .frame(width: 120)
                     .zIndex(1)
-                Text("find Me!")
-                    .font(.kr20m)
+                Text("find M\ne!")
+                    .font(.kr22m)
                     .zIndex(2)
-                    .paddingTop(15)
+                    .paddingTop(11)
             })
             .offset(x: ($duckpos.wrappedValue.minX) - 60, y: -($duckpos.wrappedValue.size.height))
             
