@@ -39,110 +39,11 @@ struct MultiGameView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    VStack(alignment: .leading, spacing: 0) {
-                        HStack(alignment: .center, spacing: 4, content: {
-                            Spacer()
-                            if vm.roomData.managerId == vm.deviceId {
-                                HStack(alignment: .center, spacing: 10, content: {
-                                    ZStack(alignment: .center, content: {
-                                        Image("ButtonText_Large_Square_Green")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(height: 40, alignment: .center)
-                                        
-                                        Text("Start")
-                                            .font(.kr16b)
-                                            .foregroundStyle(Color.white)
-                                            .zIndex(1)
-                                    })
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        vm.onClickStart()
-                                    }
-                                    
-                                    ZStack(alignment: .center, content: {
-                                        Image("ButtonText_Large_Square_Gray")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(height: 40, alignment: .center)
-                                        
-                                        Text("Delete Room")
-                                            .font(.kr16b)
-                                            .foregroundStyle(Color.white)
-                                            .zIndex(1)
-                                    })
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        vm.onClickDeleteRoom()
-                                    }
-                                })
-                            } else {
-                                
-                                ZStack(alignment: .center, content: {
-                                    Image("ButtonText_Large_Square_Red")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: 40, alignment: .center)
-                                    
-                                    Text("Quit Room")
-                                        .font(.kr16b)
-                                        .foregroundStyle(Color.white)
-                                        .zIndex(1)
-                                })
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    vm.onClickQuitRoom()
-                                }
-                            }
-                            
-                        })
-                        
-                        Text("Members")
-                            .font(.kr18b)
-                            .foregroundStyle(Color.black)
-                            .paddingBottom(2)
-                        HStack(alignment: .center, spacing: 8, content: {
-                            FlowView(items: $vm.members.wrappedValue.map({ member in
-                                FlowItem(
-                                    text: member.name,
-                                    isRemoveable: (member.id != vm.deviceId) && ($vm.isManager.wrappedValue),
-                                    isStar: member.id == $vm.roomData.wrappedValue.managerId
-                                ) {
-                                    vm.onClickDeleteMember(memberId: member.id)
-                                }
-                            })).equatable()
-                        })
-                        .paddingVertical(8)
-                    }
-                    .padding(top: 12, leading: 12, bottom: 12, trailing: 12)
-                    
-                    if !$vm.items.wrappedValue.isEmpty {
-                        VStack(alignment: .leading, spacing: 0) {
-                            if let answer = $vm.answer.wrappedValue {
-                                Text("Select All of \(answer)!")
-                                    .font(.kr18b)
-                                    .paddingTop(16)
-                                if let elapsedTime = self.time {
-                                    Text("Elapsed Time: \(elapsedTime)")
-                                        .font(.kr16b)
-                                        .foregroundStyle(Color.black)
-                                        .paddingTop(4)
-                                }
-                            }
-                        }
-                        .paddingHorizontal(20.0)
-                        .paddingVertical(12)
-                        
-                        ScrollView(.vertical, showsIndicators: false) {
-                            GameItemView(
-                                items: $vm.items.wrappedValue,
-                                level: vm.level) { item in
-                                    vm.onLoadSuccess(item: item)
-                                } onSelectItem: { item in
-                                    vm.onSelectItem(item: item)
-                                }
-                        }
-                        .paddingVertical(10)
+                    switch MultiGameStatus(rawValue: $vm.roomData.wrappedValue.status) {
+                    case .ready, .clear:
+                        Lobby()
+                    default:
+                        GamePage()
                     }
                 }
             }
@@ -161,6 +62,118 @@ struct MultiGameView: View {
         }
         .onDisappear {
             vm.onDisappear()
+        }
+    }
+    
+    private func Lobby() -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(alignment: .center, spacing: 4, content: {
+                Spacer()
+                if vm.roomData.managerId == vm.deviceId {
+                    HStack(alignment: .center, spacing: 10, content: {
+                        ZStack(alignment: .center, content: {
+                            Image("ButtonText_Large_Square_Green")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 40, alignment: .center)
+                            
+                            Text("Start")
+                                .font(.kr16b)
+                                .foregroundStyle(Color.white)
+                                .zIndex(1)
+                        })
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            vm.onClickStart()
+                        }
+                        
+                        ZStack(alignment: .center, content: {
+                            Image("ButtonText_Large_Square_Gray")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 40, alignment: .center)
+                            
+                            Text("Delete Room")
+                                .font(.kr16b)
+                                .foregroundStyle(Color.white)
+                                .zIndex(1)
+                        })
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            vm.onClickDeleteRoom()
+                        }
+                    })
+                } else {
+                    
+                    ZStack(alignment: .center, content: {
+                        Image("ButtonText_Large_Square_Red")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 40, alignment: .center)
+                        
+                        Text("Quit Room")
+                            .font(.kr16b)
+                            .foregroundStyle(Color.white)
+                            .zIndex(1)
+                    })
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        vm.onClickQuitRoom()
+                    }
+                }
+                
+            })
+            
+            Text("Members")
+                .font(.kr18b)
+                .foregroundStyle(Color.black)
+                .paddingBottom(2)
+            HStack(alignment: .center, spacing: 8, content: {
+                FlowView(items: $vm.members.wrappedValue.map({ member in
+                    FlowItem(
+                        text: member.name,
+                        isRemoveable: (member.id != vm.deviceId) && ($vm.isManager.wrappedValue),
+                        isStar: member.id == $vm.roomData.wrappedValue.managerId
+                    ) {
+                        vm.onClickDeleteMember(memberId: member.id)
+                    }
+                })).equatable()
+            })
+            .paddingVertical(8)
+        }
+        .padding(top: 12, leading: 12, bottom: 12, trailing: 12)
+    }
+    
+    private func GamePage() -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            if !$vm.items.wrappedValue.isEmpty {
+                VStack(alignment: .leading, spacing: 0) {
+                    if let answer = $vm.answer.wrappedValue {
+                        Text("Select All of \(answer)!")
+                            .font(.kr18b)
+                            .paddingTop(16)
+                        if let elapsedTime = self.time {
+                            Text("Elapsed Time: \(elapsedTime)")
+                                .font(.kr16b)
+                                .foregroundStyle(Color.black)
+                                .paddingTop(4)
+                        }
+                    }
+                }
+                .paddingHorizontal(20.0)
+                .paddingVertical(12)
+                
+                ScrollView(.vertical, showsIndicators: false) {
+                    GameItemView(
+                        items: $vm.items.wrappedValue,
+                        level: vm.level) { item in
+                            vm.onLoadSuccess(item: item)
+                        } onSelectItem: { item in
+                            vm.onSelectItem(item: item)
+                        }
+                }
+                .paddingVertical(10)
+            }
         }
     }
     
