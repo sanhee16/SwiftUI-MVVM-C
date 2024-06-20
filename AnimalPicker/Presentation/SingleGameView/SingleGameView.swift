@@ -224,7 +224,7 @@ struct SingleGameView: View {
                 
                 HStack(alignment: .center, spacing: 12, content: {
                     ZStack(alignment: .center, content: {
-                        Image("Button_Round_Red")
+                        Image("Button_Round_Green")
                             .resizable()
                             .scaledToFit()
                             .frame(height: 40, alignment: .center)
@@ -237,6 +237,22 @@ struct SingleGameView: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         vm.nextLevel()
+                    }
+                    
+                    ZStack(alignment: .center, content: {
+                        Image("Button_Round_Red")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 40, alignment: .center)
+                        
+                        Text("Quit")
+                            .font(.kr16b)
+                            .foregroundStyle(Color.white)
+                            .zIndex(1)
+                    })
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        self.coordinator.pop()
                     }
                 })
             case .loading:

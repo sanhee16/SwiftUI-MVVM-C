@@ -33,28 +33,49 @@ struct GameRoomListView: View {
                 }
                 
                 //MARK: Participating Room
-                Text("Participating Room")
-                    .font(.kr18b)
-                    .padding(8)
-                participateButton(room: $vm.participatingRoom.wrappedValue)
-                    .onTapGesture {
-                        if let participatingRoom = $vm.participatingRoom.wrappedValue {
-                            self.coordinator.pushMultiGameView(roomData: participatingRoom)
-                        } else {
-                            self.coordinator.presentCreateRoomView()
-                        }
-                    }
-                
+//                if let participatingRoom = $vm.participatingRoom.wrappedValue {
+//                    Text("Participating Room")
+//                        .font(.kr18b)
+//                        .padding(8)
+//                    
+//                    participateButton(room: participatingRoom)
+//                        .onTapGesture {
+//                            self.coordinator.pushMultiGameView(roomData: participatingRoom)
+//                        }
+//                }
+
                 //MARK: Total Room
-                Text("Total Room")
-                    .font(.kr18b)
+                Text("Rooms")
+                    .font(.kr18m)
                     .padding(top: 20, leading: 8, bottom: 8, trailing: 0)
                 ScrollView(.vertical, showsIndicators: false, content: {
                     ForEach($vm.list.wrappedValue, id: \.self) { item in
-                        drawRoom(room: item)
+                        drawRoomItem(room: item)
                     }
                 })
-                .paddingBottom(30)
+                .layoutPriority(.greatestFiniteMagnitude)
+                
+                
+                Divider()
+                ZStack(alignment: .center, content: {
+                    Image("ButtonText_Large_Square_Red")
+                        .resizable()
+                        .frame(height: 48, alignment: .center)
+                    
+                    Text($vm.participatingRoom.wrappedValue == nil ? "Create Room" : "Enter Room")
+                        .font(.kr20b)
+                        .foregroundStyle(Color.white)
+                        .zIndex(1)
+                })
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    if let participatingRoom = $vm.participatingRoom.wrappedValue {
+                        self.coordinator.pushMultiGameView(roomData: participatingRoom)
+                    } else {
+                        self.coordinator.presentCreateRoomView()
+                    }
+                }
+                .padding(top: 14, leading: 8, bottom: 8, trailing: 8)
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
@@ -86,7 +107,7 @@ struct GameRoomListView: View {
         .paddingHorizontal(8)
     }
     
-    private func drawRoom(room: RoomData) -> some View {
+    private func drawRoomItem(room: RoomData) -> some View {
         HStack(alignment: .center, spacing: 6, content: {
             if let _ = room.password {
                 Image(systemName: "lock.fill")
@@ -94,31 +115,44 @@ struct GameRoomListView: View {
                     .frame(width: 12.0, height: 16.0)
             }
             Text(room.name)
-                .font(.kr16r)
+                .font(.kr19b)
                 .foregroundStyle(.black)
+            Spacer()
+            if $vm.participatingRoom.wrappedValue == nil {
+                ZStack(alignment: .center, content: {
+                    Image("ButtonText_Large_Square_Green")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30, alignment: .center)
+                    Text("Join")
+                        .font(.kr16b)
+                        .foregroundStyle(Color.white)
+                        .zIndex(1)
+                })
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    if let _ = $vm.participatingRoom.wrappedValue {
+                        
+                    } else {
+                        if let room = vm.isExistedMember(roomId: room.id) {
+                            self.coordinator.pushMultiGameView(roomData: room)
+                        } else {
+                            self.coordinator.presentEnterRoomView(roomData: room) {
+                                if let room = vm.isExistedMember(roomId: room.id) {
+                                    self.coordinator.pushMultiGameView(roomData: room)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         })
         .padding(top: 12, leading: 14, bottom: 12, trailing: 14)
         .contentShape(Rectangle())
         .background(
             RoundedRectangle(cornerRadius: 8)
-                .foregroundStyle(Color.green.opacity(0.9))
+                .foregroundStyle(Color.white)
         )
-        .onTapGesture {
-            if let _ = $vm.participatingRoom.wrappedValue {
-                
-            } else {
-                if let room = vm.isExistedMember(roomId: room.id) {
-                    self.coordinator.pushMultiGameView(roomData: room)
-                } else {
-                    self.coordinator.presentEnterRoomView(roomData: room) {
-                        if let room = vm.isExistedMember(roomId: room.id) {
-                            self.coordinator.pushMultiGameView(roomData: room)
-                        }
-                    }
-                }
-            }
-        }
-        .padding(top: 4, leading: 8, bottom: 12, trailing: 10)
     }
 }
 
