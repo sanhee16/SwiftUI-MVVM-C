@@ -48,6 +48,17 @@ class GameRoomListVM: BaseViewModel {
         
     }
     
+    func quitRoom() {
+        guard let deviceId = self.deviceId, let room = self.participatingRoom else { return }
+        if room.managerId == deviceId {
+            print("[SD] quitRoom - manager")
+            self.services.multiGameService.removeRoom(roomId: room.id)
+        } else {
+            print("[SD] quitRoom - normal")
+            self.services.multiGameService.removeMember(roomId: room.id, memberId: deviceId)
+        }
+    }
+    
     func observeList() {
         self.services.multiGameService.roomListSubject
             .run(in: &self.subscription) {[weak self] response in

@@ -20,9 +20,7 @@ class BaseCoordinator {
         self.navigationController = BaseUINavigationController()
         self.childViewController = []
         
-        self.navigationController.attachSwipeBack {[weak self] in
-            self?.swipePop()
-        }
+        self.navigationController.attachSwipeBack(swipeBack: self.swipePop)
     }
     
     //MARK: Present & Dismiss
@@ -102,6 +100,7 @@ class BaseCoordinator {
     }
     
     func swipePop() {
+        print("[SD] swipePop")
         weak var dismissedVc = self.childViewController.removeLast()
         if let baseViewController = dismissedVc as? Dismissible, let onDismiss = baseViewController.onDismiss {
             onDismiss()
@@ -109,6 +108,7 @@ class BaseCoordinator {
     }
     
     func pop(_ animated: Bool = true, completion: (() -> Void)? = nil) {
+        print("[SD] pop")
         if self.presentViewController == navigationController {
             completion?()
             return

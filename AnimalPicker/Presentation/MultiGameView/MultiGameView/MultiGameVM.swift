@@ -107,13 +107,13 @@ class MultiGameVM: BaseViewModel {
         }
     }
     
-    func onClickQuitRoom() {
-        self.services.multiGameService.removeMember(roomId: self.roomData.id, memberId: self.deviceId)
-    }
+//    func onClickQuitRoom() {
+//        self.services.multiGameService.removeMember(roomId: self.roomData.id, memberId: self.deviceId)
+//    }
     
-    func onClickDeleteRoom() {
-        self.services.multiGameService.removeRoom(roomId: self.roomData.id)
-    }
+//    func onClickDeleteRoom() {
+//        self.services.multiGameService.removeRoom(roomId: self.roomData.id)
+//    }
     
     func onClickDeleteMember(memberId: String) {
         self.services.multiGameService.removeMember(roomId: self.roomData.id, memberId: memberId)

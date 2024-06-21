@@ -30,6 +30,11 @@ class AppCoordinator: BaseCoordinator, ObservableObject {
         completion?()
     }
     
+    func enterMultiGameRoom(roomData: RoomData, onDismiss: @escaping () -> ()) {
+        print("[SD] enterMultiGameRoom")
+        self.pushMultiGameView(roomData: roomData, onDismiss: onDismiss)
+    }
+    
     //MARK: Start
     func startSplash() {
         let vc = SplashView.vc(self, interactors: self.container.interactors)
@@ -58,14 +63,14 @@ class AppCoordinator: BaseCoordinator, ObservableObject {
         self.push(vc, animated: false)
     }
     
-    func pushMultiGameView(roomData: RoomData) {
+    func pushMultiGameView(roomData: RoomData, onDismiss: @escaping () -> ()) {
         let vc = MultiGameView.vc(self, interactors: self.container.interactors, services: self.container.services, roomData: roomData)
-        self.push(vc, animated: false)
+        self.push(vc, animated: false, onDismiss: onDismiss)
     }
     
-    func presentCreateRoomView() {
+    func presentCreateRoomView(_ onDismiss: @escaping () -> ()) {
         let vc = CreateRoomView.vc(self, interactors: self.container.interactors, services: self.container.services)
-        self.present(vc, animated: false)
+        self.present(vc, animated: false, onDismiss: onDismiss)
     }
     
     func presentEnterRoomView(roomData: RoomData, onDismiss: @escaping () -> ()) {

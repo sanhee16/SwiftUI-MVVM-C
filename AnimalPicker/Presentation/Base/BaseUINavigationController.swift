@@ -19,7 +19,7 @@ class BaseUINavigationController: UINavigationController, UIGestureRecognizerDel
         self.delegate = self
     }
 
-    func attachSwipeBack(swipeBack: @escaping (()->())) {
+    func attachSwipeBack(swipeBack: (()->())?) {
         self.swipeBack = swipeBack
     }
     

@@ -24,6 +24,7 @@ struct GameRoomListView: View {
     
     private var safeTop: CGFloat { get { Util.safeTop() }}
     private var safeBottom: CGFloat { get { Util.safeBottom() }}
+    @State private var enterRoom: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -31,19 +32,6 @@ struct GameRoomListView: View {
                 Topbar("Multi-Game", type: .back) {
                     self.coordinator.pop()
                 }
-                
-                //MARK: Participating Room
-//                if let participatingRoom = $vm.participatingRoom.wrappedValue {
-//                    Text("Participating Room")
-//                        .font(.kr18b)
-//                        .padding(8)
-//                    
-//                    participateButton(room: participatingRoom)
-//                        .onTapGesture {
-//                            self.coordinator.pushMultiGameView(roomData: participatingRoom)
-//                        }
-//                }
-
                 //MARK: Total Room
                 Text("Rooms")
                     .font(.kr18m)
@@ -70,15 +58,32 @@ struct GameRoomListView: View {
                 .contentShape(Rectangle())
                 .onTapGesture {
                     if let participatingRoom = $vm.participatingRoom.wrappedValue {
-                        self.coordinator.pushMultiGameView(roomData: participatingRoom)
+                        self.coordinator.enterMultiGameRoom(roomData: participatingRoom) {
+                            print("[SD] enterMultiGameRoom dismiss")
+                            vm.quitRoom()
+                        }
                     } else {
-                        self.coordinator.presentCreateRoomView()
+                        self.coordinator.presentCreateRoomView() {
+                            print("[SD] presentCreateRoomView dismiss")
+                            //TODO: 방으로 바로 들어가기
+                            self.enterRoom = true
+                        }
                     }
                 }
                 .padding(top: 14, leading: 8, bottom: 8, trailing: 8)
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
+        .onChange(of: $vm.participatingRoom.wrappedValue, perform: { value in
+            print("[SD] participatingRoom Name: \(value?.name), enterRoom: \(self.enterRoom)")
+            if let room = value, self.enterRoom {
+                self.enterRoom = false
+                self.coordinator.enterMultiGameRoom(roomData: room) {
+                    print("[SD] enterMultiGameRoom dismiss")
+                    vm.quitRoom()
+                }
+            }
+        })
         .onAppear {
             vm.onAppear()
         }
@@ -135,12 +140,13 @@ struct GameRoomListView: View {
                         
                     } else {
                         if let room = vm.isExistedMember(roomId: room.id) {
-                            self.coordinator.pushMultiGameView(roomData: room)
+                            self.coordinator.enterMultiGameRoom(roomData: room) {
+                                vm.quitRoom()
+                            }
                         } else {
                             self.coordinator.presentEnterRoomView(roomData: room) {
-                                if let room = vm.isExistedMember(roomId: room.id) {
-                                    self.coordinator.pushMultiGameView(roomData: room)
-                                }
+                                //TODO: 방으로 바로 들어가기
+                                self.enterRoom = true
                             }
                         }
                     }

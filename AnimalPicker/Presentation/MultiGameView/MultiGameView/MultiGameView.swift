@@ -87,41 +87,23 @@ struct MultiGameView: View {
                             vm.onClickStart()
                         }
                         
-                        ZStack(alignment: .center, content: {
-                            Image("ButtonText_Large_Square_Gray")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 40, alignment: .center)
-                            
-                            Text("Delete Room")
-                                .font(.kr16b)
-                                .foregroundStyle(Color.white)
-                                .zIndex(1)
-                        })
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            vm.onClickDeleteRoom()
-                        }
+//                        ZStack(alignment: .center, content: {
+//                            Image("ButtonText_Large_Square_Gray")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(height: 40, alignment: .center)
+//                            
+//                            Text("Delete Room")
+//                                .font(.kr16b)
+//                                .foregroundStyle(Color.white)
+//                                .zIndex(1)
+//                        })
+//                        .contentShape(Rectangle())
+//                        .onTapGesture {
+//                            vm.onClickDeleteRoom()
+//                        }
                     })
-                } else {
-                    
-                    ZStack(alignment: .center, content: {
-                        Image("ButtonText_Large_Square_Red")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 40, alignment: .center)
-                        
-                        Text("Quit Room")
-                            .font(.kr16b)
-                            .foregroundStyle(Color.white)
-                            .zIndex(1)
-                    })
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        vm.onClickQuitRoom()
-                    }
                 }
-                
             })
             
             Text("Members")
