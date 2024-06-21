@@ -8,7 +8,7 @@
 import SwiftUI
 
 class BaseCoordinator {
-    var navigationController = UINavigationController()
+    var navigationController: BaseUINavigationController = BaseUINavigationController()
     var childViewController: [UIViewController] = []
     var presentViewController: UIViewController {
         get {

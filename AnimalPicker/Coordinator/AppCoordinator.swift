@@ -19,11 +19,8 @@ class AppCoordinator: BaseCoordinator, ObservableObject {
         self.container = container
         
         super.init() // Coordinator init
-        let navigationController = UINavigationController()
-        self.navigationController = navigationController // Coordinator의 navigationController
-        
         // rootViewController 지정 + makeKeyAndVisible 호출 = 지정한 rootViewController가 상호작용을 받는 현재 화면으로 세팅 완료
-        self.window.rootViewController = navigationController // window의 rootViewController
+        self.window.rootViewController = self.navigationController // window의 rootViewController
         window.makeKeyAndVisible()
     }
     
