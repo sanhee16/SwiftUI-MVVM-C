@@ -10,10 +10,17 @@ import Combine
 import UIKit
 
 class BaseUINavigationController: UINavigationController, UIGestureRecognizerDelegate, UINavigationControllerDelegate {
+    var swipeBack: (()->())? = nil
+    
+    
     override open func viewDidLoad() {
         self.hideNavigationBar()
         super.viewDidLoad()
         self.delegate = self
+    }
+
+    func attachSwipeBack(swipeBack: @escaping (()->())) {
+        self.swipeBack = swipeBack
     }
     
     private func hideNavigationBar() {
@@ -25,8 +32,13 @@ class BaseUINavigationController: UINavigationController, UIGestureRecognizerDel
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if let coordinator = navigationController.topViewController?.transitionCoordinator {
-            coordinator.notifyWhenInteractionChanges({ (context) in
+            coordinator.notifyWhenInteractionChanges({[weak self] (context) in
+                guard let self = self else { return }
                 print("Is cancelled: \(context.isCancelled)")
+                if !context.isCancelled {
+                    // 이 시점이 swipe로 back 한 것.
+                    self.swipeBack?()
+                }
             })
         }
     }

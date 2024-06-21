@@ -8,11 +8,20 @@
 import SwiftUI
 
 class BaseCoordinator {
-    var navigationController: BaseUINavigationController = BaseUINavigationController()
-    var childViewController: [UIViewController] = []
+    var navigationController: BaseUINavigationController
+    var childViewController: [UIViewController]
     var presentViewController: UIViewController {
         get {
             return childViewController.last ?? navigationController
+        }
+    }
+    
+    init() {
+        self.navigationController = BaseUINavigationController()
+        self.childViewController = []
+        
+        self.navigationController.attachSwipeBack {[weak self] in
+            self?.swipePop()
         }
     }
     
@@ -89,6 +98,13 @@ class BaseCoordinator {
                 }
                 self.childViewController.removeLast()
             }
+        }
+    }
+    
+    func swipePop() {
+        weak var dismissedVc = self.childViewController.removeLast()
+        if let baseViewController = dismissedVc as? Dismissible, let onDismiss = baseViewController.onDismiss {
+            onDismiss()
         }
     }
     

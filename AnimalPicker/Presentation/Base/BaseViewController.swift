@@ -123,17 +123,3 @@ extension Nameable {
 public protocol Swipeable {
     var isAvailableToSwipe: Bool { get set }
 }
-
-//extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
-//    override open func viewDidLoad() {
-//        self.hideNavigationBar()
-//        super.viewDidLoad()
-//    }
-//    
-//    private func hideNavigationBar() {
-//        DispatchQueue.main.async {
-//            self.navigationController?.isNavigationBarHidden = true
-//            self.navigationController?.title = nil
-//        }
-//    }
-//}
