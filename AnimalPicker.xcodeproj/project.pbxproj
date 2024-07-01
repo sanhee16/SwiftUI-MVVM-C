@@ -12,6 +12,7 @@
 		580C11012C0EF6C000BFBBC4 /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11002C0EF6C000BFBBC4 /* CreateRoomView.swift */; };
 		580C11042C0EF70200BFBBC4 /* CreateRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11032C0EF70200BFBBC4 /* CreateRoomVM.swift */; };
 		580C11072C0F086C00BFBBC4 /* EnterRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11062C0F086C00BFBBC4 /* EnterRoomView.swift */; };
+		58127CDB2C293B2B00216BA1 /* SingleGameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58127CDA2C293B2B00216BA1 /* SingleGameInfo.swift */; };
 		58585C462C085E62005B65FE /* RankingWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C452C085E62005B65FE /* RankingWebRepository.swift */; };
 		58585C482C085FAF005B65FE /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C472C085FAF005B65FE /* Encodable+Extension.swift */; };
 		58585C4A2C08607B005B65FE /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C492C08607B005B65FE /* Dictionary+Extension.swift */; };
@@ -111,6 +112,7 @@
 		580C11002C0EF6C000BFBBC4 /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		580C11032C0EF70200BFBBC4 /* CreateRoomVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomVM.swift; sourceTree = "<group>"; };
 		580C11062C0F086C00BFBBC4 /* EnterRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRoomView.swift; sourceTree = "<group>"; };
+		58127CDA2C293B2B00216BA1 /* SingleGameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGameInfo.swift; sourceTree = "<group>"; };
 		58585C452C085E62005B65FE /* RankingWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingWebRepository.swift; sourceTree = "<group>"; };
 		58585C472C085FAF005B65FE /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		58585C492C08607B005B65FE /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 				587ED93A2C0D85A200FEFA96 /* RoomData.swift */,
 				587ED93E2C0D976200FEFA96 /* MultiGameMemberData.swift */,
 				58F4EBD82C2010140025246E /* SDError.swift */,
+				58127CDA2C293B2B00216BA1 /* SingleGameInfo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				585BB5092BFC67CC007CCD51 /* SceneDelegate.swift in Sources */,
 				585BB5252BFC6922007CCD51 /* BaseViewController.swift in Sources */,
 				58585C4A2C08607B005B65FE /* Dictionary+Extension.swift in Sources */,
+				58127CDB2C293B2B00216BA1 /* SingleGameInfo.swift in Sources */,
 				585BB51F2BFC68D8007CCD51 /* SplashView.swift in Sources */,
 				58F4EBDB2C2012220025246E /* FlowView.swift in Sources */,
 				58856ACB2C12902C000F53FF /* HapticUtil.swift in Sources */,

@@ -18,6 +18,7 @@ protocol AnimalImageInteractor {
     func getDogImages(_ num: Int?) -> AnyPublisher<[ImageResponse], Error>
     func getDuckImages(_ num: Int?) -> AnyPublisher<[ImageResponse], Error>
     func getLizardImages(_ num: Int?) -> AnyPublisher<[ImageResponse], Error>
+    func selectSingleGameItem(singleGameInfo: SingleGameInfo) -> SingleGameInfo
     func generateGameItems(level: Level) -> AnyPublisher<GameInfo, Error>
 }
 
@@ -62,6 +63,27 @@ class RealAnimalImageInteractor: AnimalImageInteractor {
             .collect()
             .eraseToAnyPublisher()
     }
+    
+    func selectSingleGameItem(singleGameInfo: SingleGameInfo) -> SingleGameInfo {
+        var info = singleGameInfo
+        
+        guard let idx = info.gameList.firstIndex(where: { $0.id == info.selectItem.id }) else { return singleGameInfo }
+        info.gameList[idx].isSelected.toggle()
+        
+        // 답 맞춤
+        if info.gameList[idx].isSelected, ImageType(rawValue: info.gameList[idx].type) == info.answer {
+            info.bonusCount += 1
+            if info.bonusCount == 5 {
+                info.bonusScore += info.level.point
+                info.bonusCount = 0
+            }
+        } else {
+            info.bonusCount = 0
+        }
+        
+        return info
+    }
+    
     
     func generateGameItems(level: Level) -> AnyPublisher<GameInfo, Error> {
         let types: [ImageType] = [.dog, .fox, .duck, .lizard]

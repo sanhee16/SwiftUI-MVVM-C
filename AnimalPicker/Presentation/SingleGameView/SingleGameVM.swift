@@ -21,7 +21,7 @@ class SingleGameVM: BaseViewModel {
     let level: Level
     let types: [ImageType] = [.dog, .fox, .duck, .lizard]
     var items: [GameItem] = []
-    var answer: String? = nil
+    var answer: ImageType? = nil
     
     @Published var leftTime: Int? = nil
     @Published var isCorrect: Bool = false
@@ -96,17 +96,24 @@ class SingleGameVM: BaseViewModel {
     }
     
     func onSelectItem(item: GameItem) {
-        if isCorrect { return }
-        guard let _ = self.answer, let idx = self.items.firstIndex(where: { $0.id == item.id }) else { return }
-        self.items[idx].isSelected.toggle()
-        self.bonusCnt = self.items[idx].isSelected ? self.bonusCnt + 1 : 0
-        if self.bonusCnt == 5 {
-            self.bonusScore += self.level.point
-            self.bonusCnt = 0
-        }
-        self.objectWillChange.send()
+        guard let answer = self.answer, let idx = self.items.firstIndex(where: { $0.id == item.id }) else { return }
         
-        if self.items.filter({ $0.type == self.answer && !$0.isSelected}).isEmpty && self.items.filter({ $0.type != self.answer && $0.isSelected}).isEmpty {
+        let result = self.interactors.animalImageInteractor.selectSingleGameItem(
+            singleGameInfo: SingleGameInfo(
+                gameList: self.items,
+                selectItem: item,
+                answer: answer,
+                level: self.level,
+                bonusCount: self.bonusCnt,
+                bonusScore: self.bonusScore
+            )
+        )
+        self.bonusCnt = result.bonusCount
+        self.bonusScore = result.bonusScore
+        
+        self.items[idx].isSelected.toggle()
+        
+        if self.items.filter({ $0.type == answer.rawValue && !$0.isSelected}).isEmpty && self.items.filter({ $0.type != answer.rawValue && $0.isSelected}).isEmpty {
             self.stopTimer()
             self.status = .clear
         }
@@ -146,7 +153,7 @@ class SingleGameVM: BaseViewModel {
         self.interactors.animalImageInteractor.generateGameItems(level: self.level)
             .run(in: &self.subscription) {[weak self] response in
                 guard let self = self else { return }
-                self.answer = response.answer.rawValue
+                self.answer = response.answer
                 self.items = response.items
                 
                 self.objectWillChange.send()
