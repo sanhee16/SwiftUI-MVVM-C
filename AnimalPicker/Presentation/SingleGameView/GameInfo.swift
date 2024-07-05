@@ -165,11 +165,11 @@ struct GameItem: Codable, Equatable, Hashable {
     var isSelected: Bool
     var isLoaded: Bool
     
-    init(id: Int, type: ImageType, url: String) {
+    init(id: Int, type: ImageType, url: String, isSelected: Bool = false) {
         self.id = id
         self.type = type.rawValue
         self.url = url
-        self.isSelected = false
+        self.isSelected = isSelected
         self.isLoaded = false
     }
     
