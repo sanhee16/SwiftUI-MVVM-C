@@ -97,6 +97,8 @@ class SingleGameVM: BaseViewModel {
     
     func onSelectItem(item: GameItem) {
         guard let answer = self.answer, let idx = self.items.firstIndex(where: { $0.id == item.id }) else { return }
+        if self.isLoading { return }
+        self.isLoading = true
         
         let result = self.interactors.animalImageInteractor.selectSingleGameItem(
             singleGameInfo: SingleGameInfo(
@@ -105,18 +107,21 @@ class SingleGameVM: BaseViewModel {
                 answer: answer,
                 level: self.level,
                 bonusCount: self.bonusCnt,
-                bonusScore: self.bonusScore
+                bonusScore: self.bonusScore,
+                isFinish: false
             )
         )
+        
+        // view update
         self.bonusCnt = result.bonusCount
         self.bonusScore = result.bonusScore
-        
         self.items[idx].isSelected.toggle()
         
-        if self.items.filter({ $0.type == answer.rawValue && !$0.isSelected}).isEmpty && self.items.filter({ $0.type != answer.rawValue && $0.isSelected}).isEmpty {
+        if result.isFinish {
             self.stopTimer()
             self.status = .clear
         }
+        self.isLoading = false
     }
     
     func onLoadSuccess(item: GameItem) {

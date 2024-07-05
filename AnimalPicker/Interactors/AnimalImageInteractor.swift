@@ -8,12 +8,15 @@
 import Foundation
 import Combine
 import Alamofire
+import SwiftUI
 
 enum GameGenerateError: Error {
     case unknown
 }
 
 protocol AnimalImageInteractor {
+    func changeScore(score: Binding<Int>)
+    
     func getFoxImages(_ num: Int?) -> AnyPublisher<[ImageResponse], Error>
     func getDogImages(_ num: Int?) -> AnyPublisher<[ImageResponse], Error>
     func getDuckImages(_ num: Int?) -> AnyPublisher<[ImageResponse], Error>
@@ -64,6 +67,10 @@ class RealAnimalImageInteractor: AnimalImageInteractor {
             .eraseToAnyPublisher()
     }
     
+    func changeScore(score: Binding<Int>) {
+        score.wrappedValue += 1
+    }
+    
     func selectSingleGameItem(singleGameInfo: SingleGameInfo) -> SingleGameInfo {
         var info = singleGameInfo
         
@@ -81,6 +88,10 @@ class RealAnimalImageInteractor: AnimalImageInteractor {
             info.bonusCount = 0
         }
         
+        if info.gameList.filter({ $0.type == info.answer.rawValue && !$0.isSelected }).isEmpty
+            && info.gameList.filter({ $0.type != info.answer.rawValue && $0.isSelected }).isEmpty {
+            info.isFinish = true
+        }
         return info
     }
     

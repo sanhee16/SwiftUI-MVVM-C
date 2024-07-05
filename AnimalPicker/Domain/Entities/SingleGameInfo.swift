@@ -14,4 +14,5 @@ struct SingleGameInfo {
     var level: Level
     var bonusCount: Int
     var bonusScore: Int
+    var isFinish: Bool
 }
