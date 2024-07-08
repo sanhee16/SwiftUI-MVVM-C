@@ -24,3 +24,13 @@ struct MultiGameMemberData: Codable, Identifiable, Hashable {
         case status = "status"
     }
 }
+
+
+enum MultiGameStatus: String {
+    case ready = "ready"
+    case loading = "loading"
+    case onGaming = "onGaming"
+    case loadFinish = "loadFinish"
+    case clear = "clear"
+    case finish = "finish"
+}

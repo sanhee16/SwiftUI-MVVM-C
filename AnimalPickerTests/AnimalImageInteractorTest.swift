@@ -68,5 +68,97 @@ final class AnimalImageInteractorTest: XCTestCase {
         // Then
         XCTAssertEqual(result.isFinish, true)
     }
+    
+    func test_Given_leftServeralAnswer_When_selectCorrectImage_Expect_nonFinish() {
+        // Given
+        let mockGameList: [GameItem] = [
+            GameItem(id: 0, type: .dog, url: "", isSelected: false),
+            GameItem(id: 1, type: .dog, url: "", isSelected: false),
+            GameItem(id: 2, type: .lizard, url: "", isSelected: false),
+            GameItem(id: 3, type: .lizard, url: "", isSelected: false),
+            GameItem(id: 4, type: .cat, url: "", isSelected: false),
+            GameItem(id: 5, type: .cat, url: "", isSelected: false),
+            GameItem(id: 6, type: .duck, url: "", isSelected: false),
+            GameItem(id: 7, type: .duck, url: "", isSelected: false)
+        ]
+        
+        let mockData: SingleGameInfo = SingleGameInfo(
+            gameList: mockGameList,
+            selectItem: GameItem(id: 1, type: .dog, url: "", isSelected: false),
+            answer: .dog,
+            level: .easy,
+            bonusCount: 0,
+            bonusScore: 0,
+            isFinish: false
+        )
+        
+        // When
+        let result = sut.selectSingleGameItem(singleGameInfo: mockData)
+        
+        // Then
+        XCTAssertEqual(result.isFinish, false)
+    }
+    
+    func test_Given_leftServeralAnswer_When_selectCorrectImage_Expect_bonusIncreased() {
+        // Given
+        let bonusCount = 2
+        let mockGameList: [GameItem] = [
+            GameItem(id: 0, type: .dog, url: "", isSelected: false),
+            GameItem(id: 1, type: .dog, url: "", isSelected: false),
+            GameItem(id: 2, type: .lizard, url: "", isSelected: false),
+            GameItem(id: 3, type: .lizard, url: "", isSelected: false),
+            GameItem(id: 4, type: .cat, url: "", isSelected: false),
+            GameItem(id: 5, type: .cat, url: "", isSelected: false),
+            GameItem(id: 6, type: .duck, url: "", isSelected: false),
+            GameItem(id: 7, type: .duck, url: "", isSelected: false)
+        ]
+        
+        let mockData: SingleGameInfo = SingleGameInfo(
+            gameList: mockGameList,
+            selectItem: GameItem(id: 1, type: .dog, url: "", isSelected: false),
+            answer: .dog,
+            level: .easy,
+            bonusCount: bonusCount,
+            bonusScore: 0,
+            isFinish: false
+        )
+        
+        // When
+        let result = sut.selectSingleGameItem(singleGameInfo: mockData)
+        
+        // Then
+        XCTAssertEqual(result.bonusCount, bonusCount + 1)
+    }
+    
+    func test_Given_bonusCountExist_When_selectIncorrectImage_Expect_initBonusCount() {
+        // Given
+        let bonusCount = 2
+        let mockGameList: [GameItem] = [
+            GameItem(id: 0, type: .dog, url: "", isSelected: false),
+            GameItem(id: 1, type: .dog, url: "", isSelected: false),
+            GameItem(id: 2, type: .lizard, url: "", isSelected: false),
+            GameItem(id: 3, type: .lizard, url: "", isSelected: false),
+            GameItem(id: 4, type: .cat, url: "", isSelected: false),
+            GameItem(id: 5, type: .cat, url: "", isSelected: false),
+            GameItem(id: 6, type: .duck, url: "", isSelected: false),
+            GameItem(id: 7, type: .duck, url: "", isSelected: false)
+        ]
+        
+        let mockData: SingleGameInfo = SingleGameInfo(
+            gameList: mockGameList,
+            selectItem: GameItem(id: 1, type: .dog, url: "", isSelected: false),
+            answer: .lizard,
+            level: .easy,
+            bonusCount: bonusCount,
+            bonusScore: 0,
+            isFinish: false
+        )
+        
+        // When
+        let result = sut.selectSingleGameItem(singleGameInfo: mockData)
+        
+        // Then
+        XCTAssertEqual(result.bonusCount, 0)
+    }
 
 }

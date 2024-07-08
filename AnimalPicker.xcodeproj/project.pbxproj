@@ -13,8 +13,6 @@
 		580C11042C0EF70200BFBBC4 /* CreateRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11032C0EF70200BFBBC4 /* CreateRoomVM.swift */; };
 		580C11072C0F086C00BFBBC4 /* EnterRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C11062C0F086C00BFBBC4 /* EnterRoomView.swift */; };
 		58127CDB2C293B2B00216BA1 /* SingleGameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58127CDA2C293B2B00216BA1 /* SingleGameInfo.swift */; };
-		5834633B2C37E8C400D17AD2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5834633A2C37E8C400D17AD2 /* FirebaseFirestore */; };
-		5834633D2C37E8C400D17AD2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5834633C2C37E8C400D17AD2 /* FirebaseFirestoreSwift */; };
 		583463412C37E90B00D17AD2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 583463402C37E90B00D17AD2 /* Alamofire */; };
 		583463432C37E91F00D17AD2 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 583463422C37E91F00D17AD2 /* FirebaseDatabase */; };
 		583463452C37E91F00D17AD2 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 583463442C37E91F00D17AD2 /* FirebaseDatabaseSwift */; };
@@ -87,16 +85,8 @@
 		5834638D2C37E9CB00D17AD2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5192BFC6866007CCD51 /* Constants.swift */; };
 		583463922C37E9CB00D17AD2 /* AnimalPickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB4EE2BFC654E007CCD51 /* AnimalPickerUITests.swift */; };
 		583463932C37E9CB00D17AD2 /* AnimalPickerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB4F02BFC654E007CCD51 /* AnimalPickerUITestsLaunchTests.swift */; };
-		583463972C37EA8D00D17AD2 /* AnimalImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */; };
-		583463982C37EA9200D17AD2 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589ADA782C1FC8EB00228BE7 /* ImageRepository.swift */; };
-		583463992C37EA9200D17AD2 /* FoxImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */; };
-		5834639A2C37EA9200D17AD2 /* DogImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5432BFC764A007CCD51 /* DogImageRepository.swift */; };
-		5834639B2C37EA9200D17AD2 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
-		5834639C2C37EA9200D17AD2 /* LizardImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */; };
-		5834639D2C37EA9200D17AD2 /* RankingDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47D2C00193300A7329B /* RankingDBRepository.swift */; };
-		5834639E2C37EA9200D17AD2 /* RankingWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C452C085E62005B65FE /* RankingWebRepository.swift */; };
-		5834639F2C37EABF00D17AD2 /* AnimalPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB4E42BFC654E007CCD51 /* AnimalPickerTests.swift */; };
-		583463A02C37EABF00D17AD2 /* AnimalImageInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583462A22C37CFD400D17AD2 /* AnimalImageInteractorTest.swift */; };
+		584540BF2C3B761C00644F1A /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870E7562C071EDE00416F08 /* FirestoreService.swift */; };
+		584540C02C3B763E00644F1A /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 26DABF142C189152002010F9 /* GoogleService-Info.plist */; };
 		58585C462C085E62005B65FE /* RankingWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C452C085E62005B65FE /* RankingWebRepository.swift */; };
 		58585C482C085FAF005B65FE /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C472C085FAF005B65FE /* Encodable+Extension.swift */; };
 		58585C4A2C08607B005B65FE /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C492C08607B005B65FE /* Dictionary+Extension.swift */; };
@@ -128,6 +118,35 @@
 		585BB5442BFC764A007CCD51 /* DogImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5432BFC764A007CCD51 /* DogImageRepository.swift */; };
 		585BB5482BFC8379007CCD51 /* AnimalImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */; };
 		585BB54A2BFC8F5E007CCD51 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */; };
+		5869810D2C3B6B6200FF1593 /* AnimalImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5472BFC8379007CCD51 /* AnimalImageInteractor.swift */; };
+		5869810E2C3B6B6200FF1593 /* RankingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4772C00188600A7329B /* RankingInteractor.swift */; };
+		5869810F2C3B6B6200FF1593 /* AnimalImageInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583462A22C37CFD400D17AD2 /* AnimalImageInteractorTest.swift */; };
+		586981102C3B6B6B00FF1593 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B4802C001B3A00A7329B /* UserDefaultsService.swift */; };
+		586981112C3B6B6B00FF1593 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D272C04150000C4E0F1 /* CoreDataService.swift */; };
+		586981132C3B6B6B00FF1593 /* MultiGameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EE8842C18238F0053A711 /* MultiGameService.swift */; };
+		586981142C3B6B6B00FF1593 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C10FE2C0EE7C900BFBBC4 /* KeychainService.swift */; };
+		586981152C3B6B7000FF1593 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5102BFC6816007CCD51 /* DIContainer.swift */; };
+		586981162C3B6B7500FF1593 /* BaseNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5412BFC7516007CCD51 /* BaseNetwork.swift */; };
+		586981172C3B6B9500FF1593 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589ADA782C1FC8EB00228BE7 /* ImageRepository.swift */; };
+		586981182C3B6B9500FF1593 /* FoxImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB53C2BFC745B007CCD51 /* FoxImageRepository.swift */; };
+		586981192C3B6B9500FF1593 /* DogImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5432BFC764A007CCD51 /* DogImageRepository.swift */; };
+		5869811A2C3B6B9500FF1593 /* DuckImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE152BFEC961009663C1 /* DuckImageRepository.swift */; };
+		5869811B2C3B6B9500FF1593 /* LizardImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */; };
+		5869811C2C3B6BA800FF1593 /* RoomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED93A2C0D85A200FEFA96 /* RoomData.swift */; };
+		5869811D2C3B6BB100FF1593 /* SingleGameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58127CDA2C293B2B00216BA1 /* SingleGameInfo.swift */; };
+		5869811E2C3B6BBB00FF1593 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB53A2BFC7137007CCD51 /* GameInfo.swift */; };
+		5869811F2C3B6BDA00FF1593 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D2E2C041A1D00C4E0F1 /* RankingData.swift */; };
+		586981202C3B6C0A00FF1593 /* RankingDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B47D2C00193300A7329B /* RankingDBRepository.swift */; };
+		586981212C3B6C0A00FF1593 /* RankingWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C452C085E62005B65FE /* RankingWebRepository.swift */; };
+		586981222C3B6C3700FF1593 /* MultiGameMemberData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587ED93E2C0D976200FEFA96 /* MultiGameMemberData.swift */; };
+		586981232C3B6C7200FF1593 /* animal_picker_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5874D77A2C191DE4002911D5 /* animal_picker_db.xcdatamodeld */; };
+		586981242C3B6CBB00FF1593 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C472C085FAF005B65FE /* Encodable+Extension.swift */; };
+		586981252C3B6CF200FF1593 /* SDError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4EBD82C2010140025246E /* SDError.swift */; };
+		586981262C3B6D0800FF1593 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585BB5492BFC8F5E007CCD51 /* Publisher+Extension.swift */; };
+		586981272C3B6D4A00FF1593 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C492C08607B005B65FE /* Dictionary+Extension.swift */; };
+		586981282C3B6D4A00FF1593 /* Int16+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C4B2C086117005B65FE /* Int16+Extension.swift */; };
+		586A84302C3B69A30005495D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 586A842F2C3B69A30005495D /* Kingfisher */; };
+		586A84322C3B69C70005495D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 586A84312C3B69C70005495D /* Kingfisher */; };
 		5870E7482C06F71800416F08 /* SDGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870E7472C06F71800416F08 /* SDGrid.swift */; };
 		5870E74F2C0718E700416F08 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5870E74E2C0718E700416F08 /* FirebaseDatabase */; };
 		5870E7512C0718E700416F08 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5870E7502C0718E700416F08 /* FirebaseDatabaseSwift */; };
@@ -275,11 +294,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				586A84302C3B69A30005495D /* Kingfisher in Frameworks */,
 				583463452C37E91F00D17AD2 /* FirebaseDatabaseSwift in Frameworks */,
 				583463412C37E90B00D17AD2 /* Alamofire in Frameworks */,
-				5834633B2C37E8C400D17AD2 /* FirebaseFirestore in Frameworks */,
 				583463432C37E91F00D17AD2 /* FirebaseDatabase in Frameworks */,
-				5834633D2C37E8C400D17AD2 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +305,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				586A84322C3B69C70005495D /* Kingfisher in Frameworks */,
 				5834634F2C37E97C00D17AD2 /* Alamofire in Frameworks */,
 				583463492C37E96E00D17AD2 /* FirebaseDatabaseSwift in Frameworks */,
 				583463472C37E96E00D17AD2 /* FirebaseDatabase in Frameworks */,
@@ -668,11 +687,10 @@
 			);
 			name = AnimalPickerTests;
 			packageProductDependencies = (
-				5834633A2C37E8C400D17AD2 /* FirebaseFirestore */,
-				5834633C2C37E8C400D17AD2 /* FirebaseFirestoreSwift */,
 				583463402C37E90B00D17AD2 /* Alamofire */,
 				583463422C37E91F00D17AD2 /* FirebaseDatabase */,
 				583463442C37E91F00D17AD2 /* FirebaseDatabaseSwift */,
+				586A842F2C3B69A30005495D /* Kingfisher */,
 			);
 			productName = AnimalPickerTests;
 			productReference = 585BB4E02BFC654E007CCD51 /* AnimalPickerTests.xctest */;
@@ -698,6 +716,7 @@
 				5834634A2C37E97500D17AD2 /* FirebaseFirestore */,
 				5834634C2C37E97500D17AD2 /* FirebaseFirestoreSwift */,
 				5834634E2C37E97C00D17AD2 /* Alamofire */,
+				586A84312C3B69C70005495D /* Kingfisher */,
 			);
 			productName = AnimalPickerUITests;
 			productReference = 585BB4EA2BFC654E007CCD51 /* AnimalPickerUITests.xctest */;
@@ -852,16 +871,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5834639F2C37EABF00D17AD2 /* AnimalPickerTests.swift in Sources */,
-				583463A02C37EABF00D17AD2 /* AnimalImageInteractorTest.swift in Sources */,
-				583463982C37EA9200D17AD2 /* ImageRepository.swift in Sources */,
-				583463992C37EA9200D17AD2 /* FoxImageRepository.swift in Sources */,
-				5834639A2C37EA9200D17AD2 /* DogImageRepository.swift in Sources */,
-				5834639B2C37EA9200D17AD2 /* DuckImageRepository.swift in Sources */,
-				5834639C2C37EA9200D17AD2 /* LizardImageRepository.swift in Sources */,
-				5834639D2C37EA9200D17AD2 /* RankingDBRepository.swift in Sources */,
-				5834639E2C37EA9200D17AD2 /* RankingWebRepository.swift in Sources */,
-				583463972C37EA8D00D17AD2 /* AnimalImageInteractor.swift in Sources */,
+				584540C02C3B763E00644F1A /* GoogleService-Info.plist in Sources */,
+				584540BF2C3B761C00644F1A /* FirestoreService.swift in Sources */,
+				586981272C3B6D4A00FF1593 /* Dictionary+Extension.swift in Sources */,
+				586981282C3B6D4A00FF1593 /* Int16+Extension.swift in Sources */,
+				586981262C3B6D0800FF1593 /* Publisher+Extension.swift in Sources */,
+				586981252C3B6CF200FF1593 /* SDError.swift in Sources */,
+				586981242C3B6CBB00FF1593 /* Encodable+Extension.swift in Sources */,
+				586981232C3B6C7200FF1593 /* animal_picker_db.xcdatamodeld in Sources */,
+				586981222C3B6C3700FF1593 /* MultiGameMemberData.swift in Sources */,
+				586981202C3B6C0A00FF1593 /* RankingDBRepository.swift in Sources */,
+				586981212C3B6C0A00FF1593 /* RankingWebRepository.swift in Sources */,
+				5869811F2C3B6BDA00FF1593 /* RankingData.swift in Sources */,
+				5869811E2C3B6BBB00FF1593 /* GameInfo.swift in Sources */,
+				5869811D2C3B6BB100FF1593 /* SingleGameInfo.swift in Sources */,
+				5869811C2C3B6BA800FF1593 /* RoomData.swift in Sources */,
+				586981172C3B6B9500FF1593 /* ImageRepository.swift in Sources */,
+				586981182C3B6B9500FF1593 /* FoxImageRepository.swift in Sources */,
+				586981192C3B6B9500FF1593 /* DogImageRepository.swift in Sources */,
+				5869811A2C3B6B9500FF1593 /* DuckImageRepository.swift in Sources */,
+				5869811B2C3B6B9500FF1593 /* LizardImageRepository.swift in Sources */,
+				586981162C3B6B7500FF1593 /* BaseNetwork.swift in Sources */,
+				586981152C3B6B7000FF1593 /* DIContainer.swift in Sources */,
+				586981102C3B6B6B00FF1593 /* UserDefaultsService.swift in Sources */,
+				586981112C3B6B6B00FF1593 /* CoreDataService.swift in Sources */,
+				586981132C3B6B6B00FF1593 /* MultiGameService.swift in Sources */,
+				586981142C3B6B6B00FF1593 /* KeychainService.swift in Sources */,
+				5869810D2C3B6B6200FF1593 /* AnimalImageInteractor.swift in Sources */,
+				5869810E2C3B6B6200FF1593 /* RankingInteractor.swift in Sources */,
+				5869810F2C3B6B6200FF1593 /* AnimalImageInteractorTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1134,6 +1172,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"BUNDLE_LOADER[sdk=iphoneos*]" = "$(BUILT_PRODUCTS_DIR)/AnimalPicker.app/AnimalPicker";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3RZRY2TK85;
@@ -1154,6 +1193,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"BUNDLE_LOADER[sdk=iphoneos*]" = "$(BUILT_PRODUCTS_DIR)/AnimalPicker.app/AnimalPicker";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3RZRY2TK85;
@@ -1274,16 +1314,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5834633A2C37E8C400D17AD2 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5870E74D2C0718E700416F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		5834633C2C37E8C400D17AD2 /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5870E74D2C0718E700416F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
-		};
 		583463402C37E90B00D17AD2 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 585BB4FF2BFC6753007CCD51 /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -1328,6 +1358,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 585BB4FF2BFC6753007CCD51 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		586A842F2C3B69A30005495D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5878B48B2C008AD100A7329B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		586A84312C3B69C70005495D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5878B48B2C008AD100A7329B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		5870E74E2C0718E700416F08 /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
