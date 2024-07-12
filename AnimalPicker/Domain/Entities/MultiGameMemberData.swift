@@ -11,7 +11,7 @@ struct MultiGameMemberData: Codable, Identifiable, Hashable {
     static func == (lhs: MultiGameMemberData, rhs: MultiGameMemberData) -> Bool {
         return lhs.id == rhs.id && lhs.status == rhs.status && lhs.name == rhs.name
     }
-
+asdfasdfasd
     var id: String
     var name: String
     var time: Float
