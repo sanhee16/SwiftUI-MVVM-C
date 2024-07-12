@@ -50,11 +50,12 @@ extension AppEnvironment {
     }
     
     private static func configuredDBRepositories() -> DIContainer.DBRepositories {
-        let coredataService = CoreDataService()
+        let coredataService = RealCoreDataService()
         let firestoreService = FirestoreService()
+        let userDefaultsService = UserDefaultsService()
         
         let rankingDBRepository = RealRankingDBRepository(
-            userDefaultsService: UserDefaultsService(),
+            userDefaultsService: userDefaultsService,
             coredataService: coredataService
         )
         let rankingWebRepository = RealRankingWebRepository(

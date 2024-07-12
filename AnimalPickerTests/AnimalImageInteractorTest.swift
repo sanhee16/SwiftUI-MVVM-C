@@ -36,6 +36,11 @@ final class AnimalImageInteractorTest: XCTestCase {
         print("tearDown")
         sut = nil
         
+        self.foxImageRepository = nil
+        self.dogImageRepository = nil
+        self.duckImageRepository = nil
+        self.lizardIamgeRepository = nil
+        
         try super.tearDownWithError()
     }
     
@@ -159,6 +164,37 @@ final class AnimalImageInteractorTest: XCTestCase {
         
         // Then
         XCTAssertEqual(result.bonusCount, 0)
+    }
+    
+    func test_Given_gameItems_When_unSelectImage_Expect_isSelectedSetFalse() {
+        // Given
+        let bonusCount = 2
+        let mockGameList: [GameItem] = [
+            GameItem(id: 0, type: .dog, url: "", isSelected: false),
+            GameItem(id: 1, type: .dog, url: "", isSelected: true),
+            GameItem(id: 2, type: .lizard, url: "", isSelected: false),
+            GameItem(id: 3, type: .lizard, url: "", isSelected: false),
+            GameItem(id: 4, type: .cat, url: "", isSelected: false),
+            GameItem(id: 5, type: .cat, url: "", isSelected: false),
+            GameItem(id: 6, type: .duck, url: "", isSelected: false),
+            GameItem(id: 7, type: .duck, url: "", isSelected: false)
+        ]
+        
+        let mockData: SingleGameInfo = SingleGameInfo(
+            gameList: mockGameList,
+            selectItem: GameItem(id: 1, type: .dog, url: "", isSelected: false),
+            answer: .lizard,
+            level: .easy,
+            bonusCount: bonusCount,
+            bonusScore: 0,
+            isFinish: false
+        )
+        
+        // When
+        let result = sut.selectSingleGameItem(singleGameInfo: mockData)
+        
+        // Then
+        XCTAssertEqual(result.gameList.filter({ $0.isSelected }).count, 0)
     }
 
 }

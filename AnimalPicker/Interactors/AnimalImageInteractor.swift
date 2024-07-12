@@ -77,14 +77,15 @@ class RealAnimalImageInteractor: AnimalImageInteractor {
         guard let idx = info.gameList.firstIndex(where: { $0.id == info.selectItem.id }) else { return singleGameInfo }
         info.gameList[idx].isSelected.toggle()
         
-        // 답 맞춤
         if info.gameList[idx].isSelected, ImageType(rawValue: info.gameList[idx].type) == info.answer {
+            // 답 맞춤
             info.bonusCount += 1
             if info.bonusCount == 5 {
                 info.bonusScore += info.level.point
                 info.bonusCount = 0
             }
         } else {
+            // 답 못 맞추거나, 선택 해제
             info.bonusCount = 0
         }
         
