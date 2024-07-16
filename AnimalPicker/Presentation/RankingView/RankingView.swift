@@ -31,7 +31,7 @@ struct RankingView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
-                Topbar("Ranking", type: .back) {
+                Topbar("Single Game", type: .back) {
                     self.coordinator.pop()
                 }
                 drawSelector(geometry: geometry)

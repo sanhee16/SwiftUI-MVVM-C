@@ -52,18 +52,20 @@ extension AppEnvironment {
     private static func configuredDBRepositories() -> DIContainer.DBRepositories {
         let coredataService = CoreDataService()
         let firestoreService = FirestoreService()
+        let userDefaultsService = UserDefaultsService()
         
         let rankingDBRepository = RealRankingDBRepository(
             userDefaultsService: UserDefaultsService(),
             coredataService: coredataService
         )
-        let rankingWebRepository = RealRankingWebRepository(
-            firestoreServcice: firestoreService
+        let rankingRepository = RealRankingRepository(
+            firestoreService: firestoreService,
+            userDefaultsService: userDefaultsService,
+            coredataService: coredataService
         )
         
         return .init(
-            rankingDBRepository: rankingDBRepository,
-            rankingWebRepository: rankingWebRepository
+            rankingRepository: rankingRepository
         )
     }
     
@@ -78,8 +80,7 @@ extension AppEnvironment {
             lizardIamgeRepository: apiRepositories.lizardIamgeRepository
         )
         let rankingInteractor = RealRankingInteractor(
-            rankingDBRepository: dbRepositories.rankingDBRepository,
-            rankingWebRepository: dbRepositories.rankingWebRepository
+            rankingRepository: dbRepositories.rankingRepository
         )
         
         return .init(

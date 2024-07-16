@@ -73,7 +73,8 @@ class SingleGameVM: BaseViewModel {
         if score <= 0 {
              return
         }
-        self.interactors.rankingInteractor.saveRemoteRanking(
+        
+        self.interactors.rankingInteractor.saveRanking(
             rankingData: RankingData(
                 nickname: nickname,
                 score: self.score + self.bonusScore,
@@ -136,7 +137,7 @@ class SingleGameVM: BaseViewModel {
     }
     
     func loadRankings() {
-        self.interactors.rankingInteractor.loadRemoteRankings(level: self.level)
+        self.interactors.rankingInteractor.loadRankings(level: self.level)
             .run(in: &self.subscription) {[weak self] response in
                 guard let self = self else { return }
                 self.rankings = response

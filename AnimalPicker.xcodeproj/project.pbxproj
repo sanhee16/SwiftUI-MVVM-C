@@ -87,6 +87,8 @@
 		58C50D312C047E5400C4E0F1 /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C50D302C047E5400C4E0F1 /* Topbar.swift */; };
 		58F4EBD92C2010140025246E /* SDError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4EBD82C2010140025246E /* SDError.swift */; };
 		58F4EBDB2C2012220025246E /* FlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4EBDA2C2012220025246E /* FlowView.swift */; };
+		58F546212C46287A00C9A7B8 /* RankingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F546202C46287A00C9A7B8 /* RankingRepository.swift */; };
+		58F546232C46288100C9A7B8 /* RankingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F546202C46287A00C9A7B8 /* RankingRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +181,7 @@
 		58C50D302C047E5400C4E0F1 /* Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topbar.swift; sourceTree = "<group>"; };
 		58F4EBD82C2010140025246E /* SDError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDError.swift; sourceTree = "<group>"; };
 		58F4EBDA2C2012220025246E /* FlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowView.swift; sourceTree = "<group>"; };
+		58F546202C46287A00C9A7B8 /* RankingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +412,7 @@
 				5892AE172BFECCE0009663C1 /* LizardImageRepository.swift */,
 				5878B47D2C00193300A7329B /* RankingDBRepository.swift */,
 				58585C452C085E62005B65FE /* RankingWebRepository.swift */,
+				58F546202C46287A00C9A7B8 /* RankingRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -675,6 +679,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5878B4762C00130D00A7329B /* RankingVM.swift in Sources */,
+				58F546212C46287A00C9A7B8 /* RankingRepository.swift in Sources */,
 				589ADA792C1FC8EB00228BE7 /* ImageRepository.swift in Sources */,
 				585BB5112BFC6816007CCD51 /* DIContainer.swift in Sources */,
 				5870E7572C071EDE00416F08 /* FirestoreService.swift in Sources */,
@@ -746,6 +751,7 @@
 				587ED9262C0D730A00FEFA96 /* MultiGameVM.swift in Sources */,
 				587ED9232C0D730500FEFA96 /* MultiGameView.swift in Sources */,
 				585BB4E52BFC654E007CCD51 /* AnimalPickerTests.swift in Sources */,
+				58F546232C46288100C9A7B8 /* RankingRepository.swift in Sources */,
 				5870E7582C071EDE00416F08 /* FirestoreService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

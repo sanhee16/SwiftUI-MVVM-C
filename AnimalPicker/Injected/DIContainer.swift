@@ -34,8 +34,7 @@ extension DIContainer {
     }
     
     struct DBRepositories {
-        let rankingDBRepository: RankingDBRepository
-        let rankingWebRepository: RankingWebRepository
+        let rankingRepository: RankingRepository
     }
 
     struct Interactors {

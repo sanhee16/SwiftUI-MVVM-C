@@ -37,9 +37,14 @@ struct SplashView: View {
         .ignoresSafeArea()
         .background(Color.primary)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.coordinator.pushMain()
-            }
+            vm.onAppear()
         }
+        .onChange(of: $vm.isMoveToMain.wrappedValue, perform: { value in
+            if value {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.coordinator.pushMain()
+                }
+            }
+        })
     }
 }
