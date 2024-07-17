@@ -85,15 +85,15 @@ class SingleGameVM: BaseViewModel {
         .run(in: &self.subscription) {[weak self] response in
             guard let self = self else { return }
             self.myRankingId = response
+            self.loadRankings()
+            self.status = .timeOut
         } err: {[weak self] err in
             guard let self = self else { return }
             print(err)
+            self.status = .timeOut
         } complete: {
             
         }
-
-        self.loadRankings()
-        self.status = .timeOut
     }
     
     func onSelectItem(item: GameItem) {

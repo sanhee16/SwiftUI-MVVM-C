@@ -200,7 +200,9 @@ class RealRankingInteractor: RankingInteractor {
                 Future<[RankingData], Error> { promise in
                     self.rankingRepository.loadRankings()
                         .run(in: &self.subscription) { response in
-                            promise(.success(response.filter({ $0.level == level })))
+                            promise(.success(response.filter({ $0.level == level }).sorted(by: { lhs, rhs in
+                                lhs.score > rhs.score
+                            })))
                         } err: { error in
                             promise(.failure(error))
                         } complete: {
