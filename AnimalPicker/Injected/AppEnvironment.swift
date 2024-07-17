@@ -54,10 +54,6 @@ extension AppEnvironment {
         let firestoreService = FirestoreService()
         let userDefaultsService = UserDefaultsService()
         
-        let rankingDBRepository = RealRankingDBRepository(
-            userDefaultsService: UserDefaultsService(),
-            coredataService: coredataService
-        )
         let rankingRepository = RealRankingRepository(
             firestoreService: firestoreService,
             userDefaultsService: userDefaultsService,
