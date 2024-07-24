@@ -17,11 +17,21 @@ enum FirestoreError: Error {
 
 enum FirestoreTable: String {
     case ranking = "Ranking"
+    case test = "RankingTest"
 }
 
 
-class FirestoreService {
-    private let db: Firestore
+protocol FirestoreService {
+    var db: Firestore { get set }
+    func save(table: FirestoreTable, value: [String : Any]) -> AnyPublisher<String, Error>
+    func load(table: FirestoreTable) -> AnyPublisher<[[String : Any]], Error>
+    func load(table: FirestoreTable, id: String) -> AnyPublisher<[String : Any], Error>
+    func update(table: FirestoreTable, id: String, value: [String : Any])
+    func delete(table: FirestoreTable, id: String, value: [String : Any])
+}
+
+class RealFirestoreService: FirestoreService {
+    var db: Firestore
     
     init() {
         self.db = Firestore.firestore()

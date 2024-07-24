@@ -1,21 +1,16 @@
 //
-//  RankingRepository.swift
+//  MockedRankingRepository.swift
 //  AnimalPicker
 //
-//  Created by Sandy on 7/16/24.
+//  Created by Sandy on 7/22/24.
 //
 
 import Foundation
 import Combine
 import CoreData
 
-protocol RankingRepository {
-    func loadRankings() -> AnyPublisher<[RankingData], Error>
-    func save(rankingData: RankingData) -> AnyPublisher<String, Error>
-    func uploadUnsyncedData() -> AnyPublisher<Bool, Error>
-}
 
-class RealRankingRepository: RankingRepository {
+class MockedRankingRepository: RankingRepository {
     private var subscription = Set<AnyCancellable>()
     private var firestoreService: FirestoreService
     private var coredataService: CoreDataService
@@ -116,7 +111,8 @@ class RealRankingRepository: RankingRepository {
                 Future<String, Error> { promise in
                     self.firestoreService.save(table: .ranking, value: value)
                         .run(in: &self.subscription) { value in
-                            updateLocalDB(isUploaded: true)
+                            updateLocalDB(isUploaded: false)
+                            print("updateLocalDB")
                             promise(.success(value))
                         } err: { err in
                             print(err)
@@ -141,6 +137,7 @@ class RealRankingRepository: RankingRepository {
                         let saveUnUploadedDatas = rankings.filter({ !$0.isUploaded }).compactMap { (r: Ranking) in
                             return RankingData(id: r.id ?? UUID().uuidString, nickname: r.nickname ?? "", score: Int(r.score), level: r.level.getLevel, createdAt: Int(r.createdAt)).toDictionary()
                         }
+                        print("saveUnUploadedDatas: \(rankings.filter({ !$0.isUploaded }).count)")
                         if saveUnUploadedDatas.isEmpty {
                             promise(.success(false))
                             return

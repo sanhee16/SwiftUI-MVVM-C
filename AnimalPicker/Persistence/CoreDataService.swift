@@ -9,18 +9,11 @@ import Foundation
 import UIKit
 import CoreData
 
-class CoreDataService {
-    lazy var container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "animal_picker_db")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    // MARK: - Core Data Saving support
+protocol CoreDataService {
+    var container: NSPersistentContainer { get set }
+}
+
+extension CoreDataService {
     func saveContext() {
         let context = container.viewContext
         if context.hasChanges {
