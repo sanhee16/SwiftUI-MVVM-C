@@ -70,7 +70,7 @@ class SingleGameVM: BaseViewModel {
     }
     
     func onUploadRanking(_ nickname: String) {
-        if score <= 0 {
+        if (self.score + self.bonusScore) <= 0 {
              return
         }
         

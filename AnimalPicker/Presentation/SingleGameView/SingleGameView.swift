@@ -55,14 +55,25 @@ struct SingleGameView: View {
                     }
                     
                     if let answer = $vm.answer.wrappedValue {
-                        Text("Select All of \(answer)!")
-                            .font(.kr18b)
-                            .paddingTop(16)
+                        Group {
+                            Text("Select All of ")
+                                .font(.kr17r)
+                                .foregroundColor(Color.black)
+                            + Text("\(answer)!")
+                                .font(.kr19b)
+                                .foregroundColor(Color.black)
+                        }
+                        .paddingTop(16)
                         if let leftTime = $vm.leftTime.wrappedValue {
-                            Text("Left Time: \(leftTime)")
-                                .font(leftTime < 4 ? .kr16b : .kr16r)
-                                .foregroundStyle(leftTime < 4 ? Color.red : Color.black)
-                                .paddingTop(4)
+                            Group {
+                                Text("Left Time: ")
+                                    .font(.kr16r)
+                                    .foregroundColor(Color.black)
+                                + Text("\(leftTime)")
+                                    .font(leftTime < 4 ? .kr17b : .kr17r)
+                                    .foregroundColor(leftTime < 4 ? Color.red : Color.black)
+                            }
+                            .paddingTop(4)
                         }
                     }
                 })
