@@ -269,19 +269,14 @@
 		585BB4D22BFC654C007CCD51 /* AnimalPicker */ = {
 			isa = PBXGroup;
 			children = (
-				58856AC92C12901E000F53FF /* Utils */,
 				585BB5322BFC6BAE007CCD51 /* Info.plist */,
 				26DABF142C189152002010F9 /* GoogleService-Info.plist */,
+				585BB5142BFC682D007CCD51 /* Interactors */,
+				5860C97D2C50825F00FAAB70 /* Data */,
 				58C50D2C2C041A1000C4E0F1 /* Domain */,
 				5878B47F2C001B2900A7329B /* Persistence */,
-				585BB5402BFC74FF007CCD51 /* Infrastructure */,
 				585BB50F2BFC680C007CCD51 /* Injected */,
-				585BB5342BFC6D49007CCD51 /* Repositories */,
-				585BB52D2BFC69BE007CCD51 /* Extensions */,
-				585BB52A2BFC6983007CCD51 /* Helper */,
 				585BB51B2BFC68BD007CCD51 /* Presentation */,
-				585BB5142BFC682D007CCD51 /* Interactors */,
-				585BB50A2BFC67EA007CCD51 /* Coordinator */,
 				585BB5052BFC67AD007CCD51 /* Application */,
 				585BB4D72BFC654D007CCD51 /* Assets.xcassets */,
 				585BB4D92BFC654D007CCD51 /* Preview Content */,
@@ -318,6 +313,10 @@
 		585BB5052BFC67AD007CCD51 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				58856AC92C12901E000F53FF /* Utils */,
+				585BB52D2BFC69BE007CCD51 /* Extensions */,
+				585BB52A2BFC6983007CCD51 /* Helper */,
+				585BB50A2BFC67EA007CCD51 /* Coordinator */,
 				585BB5062BFC67B8007CCD51 /* AppDelegate.swift */,
 				585BB5082BFC67CC007CCD51 /* SceneDelegate.swift */,
 				585BB5192BFC6866007CCD51 /* Constants.swift */,
@@ -452,6 +451,22 @@
 			path = Infrastructure;
 			sourceTree = "<group>";
 		};
+		5860C97C2C50825200FAAB70 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		5860C97D2C50825F00FAAB70 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				585BB5402BFC74FF007CCD51 /* Infrastructure */,
+				585BB5342BFC6D49007CCD51 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		58637C4B2BFD837600F48A95 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -532,6 +547,7 @@
 		58C50D2C2C041A1000C4E0F1 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				5860C97C2C50825200FAAB70 /* UseCases */,
 				58C50D2D2C041A1700C4E0F1 /* Entities */,
 			);
 			path = Domain;
