@@ -59,14 +59,12 @@ struct GameRoomListView: View {
                 .onTapGesture {
                     if let participatingRoom = $vm.participatingRoom.wrappedValue {
                         self.coordinator.enterMultiGameRoom(roomData: participatingRoom) {
-                            print("[SD] enterMultiGameRoom dismiss")
                             vm.quitRoom()
                         }
                     } else {
                         self.coordinator.presentCreateRoomView() {
-                            print("[SD] presentCreateRoomView dismiss")
                             //TODO: 방으로 바로 들어가기
-                            self.enterRoom = true
+                            
                         }
                     }
                 }
@@ -75,11 +73,9 @@ struct GameRoomListView: View {
             .frame(width: geometry.size.width, alignment: .center)
         }
         .onChange(of: $vm.participatingRoom.wrappedValue, perform: { value in
-            print("[SD] participatingRoom Name: \(value?.name), enterRoom: \(self.enterRoom)")
             if let room = value, self.enterRoom {
                 self.enterRoom = false
                 self.coordinator.enterMultiGameRoom(roomData: room) {
-                    print("[SD] enterMultiGameRoom dismiss")
                     vm.quitRoom()
                 }
             }

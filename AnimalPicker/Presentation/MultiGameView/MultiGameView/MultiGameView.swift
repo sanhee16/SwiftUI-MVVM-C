@@ -35,7 +35,7 @@ struct MultiGameView: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 Topbar("Multi-Game", type: .back) {
-                    self.coordinator.pop()
+                    vm.quitRoom()
                 }
                 
                 VStack(alignment: .leading, spacing: 0) {

@@ -51,7 +51,7 @@ class MultiGameVM: BaseViewModel {
         if self.isManager {
             self.services.multiGameService.allClear(roomId: self.roomData.id)
         }
-            
+        
         self.observe()
         self.reset()
     }
@@ -107,13 +107,18 @@ class MultiGameVM: BaseViewModel {
         }
     }
     
-//    func onClickQuitRoom() {
-//        self.services.multiGameService.removeMember(roomId: self.roomData.id, memberId: self.deviceId)
-//    }
+    //    func onClickQuitRoom() {
+    //        self.services.multiGameService.removeMember(roomId: self.roomData.id, memberId: self.deviceId)
+    //    }
     
-//    func onClickDeleteRoom() {
-//        self.services.multiGameService.removeRoom(roomId: self.roomData.id)
-//    }
+    //    func onClickDeleteRoom() {
+    //        self.services.multiGameService.removeRoom(roomId: self.roomData.id)
+    //    }
+    
+
+    func quitRoom() {
+        self.onClickDeleteMember(memberId: self.deviceId)
+    }
     
     func onClickDeleteMember(memberId: String) {
         self.services.multiGameService.removeMember(roomId: self.roomData.id, memberId: memberId)
@@ -126,8 +131,8 @@ class MultiGameVM: BaseViewModel {
         self.elapsedTime = 0
         DispatchQueue.global(qos: .background).async {
             self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.timerFired), userInfo: nil, repeats: true)
-                RunLoop.current.run()
-            }
+            RunLoop.current.run()
+        }
     }
     
     @objc
@@ -178,6 +183,7 @@ class MultiGameVM: BaseViewModel {
                 guard let self = self else { return }
                 // 방이 사라짐
                 if response.first(where: { $0.id == self.roomData.id }) == nil {
+                    print("방 사라짐")
                     self.isPop = true
                 }
             } err: { err in
@@ -208,6 +214,7 @@ class MultiGameVM: BaseViewModel {
                 
                 // 방에서 퇴출당했을 때
                 if self.members.first(where: { $0.id == self.deviceId }) == nil {
+                    print("방 퇴출")
                     self.isPop = true
                 }
                 
