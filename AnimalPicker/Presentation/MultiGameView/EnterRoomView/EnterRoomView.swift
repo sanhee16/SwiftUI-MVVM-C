@@ -43,9 +43,16 @@ struct EnterRoomView: View {
                 }
                 .paddingBottom(16)
                 
-                Text("Nickname *")
-                    .font(.kr16b)
-                    .foregroundStyle(Color.black)
+                Group {
+                    Text("Nickname")
+                        .font(.kr16b)
+                        .foregroundColor(Color.black)
+                    + Text(" *")
+                        .font(.kr16b)
+                        .foregroundColor(Color.red)
+                }
+                .paddingBottom(2)
+                
                 SingleBoxTextField(placeholder: "Enter the nickname", text: $nickname, keyboardType: .default, lengthLimit: 10) { _ in
                     self.emptyNickname = false
                 }
